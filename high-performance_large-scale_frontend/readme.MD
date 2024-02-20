@@ -1,6 +1,7 @@
 # 페스트캠퍼스 대규모 시스템 학습
 
 ### 불로그 앱 프로젝트
+❯ yarn create react-app 01-blog --template typescript
 <h3>학습 목표</h3>
   <ul>
     <li>React 앱의 구조와 라우팅을 이해하고, 직접 프로젝트를 설계한다.</li>
@@ -19,4 +20,4 @@
     <li>css의 BEM구조로 스타일링</li>
     <li>Context API를 이용한 상태관리 (다크모드, 사용자 인증)</li>
     <li>Firebase CLI로 배포</li>
-  </ul>
+  </ul>  
