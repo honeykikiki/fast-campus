@@ -156,7 +156,19 @@ footer a:hover {
 
 .post__list a {
   text-decoration: none;
-  color: black;
+  color: gray;
+}
+
+.post__no-post {
+  padding: 24px;
+  text-align: center;
+  color: gray;
+  border: 1px solid #f2f2f2;
+  border-radius: 20px;
+}
+
+.post__text-pre-wrap {
+  white-space: pre-wrap;
 }
 
 /* post detail */
@@ -178,6 +190,11 @@ footer a:hover {
 
 .post__detail .post__text {
   padding: 20px 0px;
+}
+
+.post__detail a {
+  color: gray;
+  text-decoration: none;
 }
 
 /* profile */

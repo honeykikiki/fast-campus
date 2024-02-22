@@ -15,7 +15,7 @@ export default function SignupForm() {
     e.preventDefault();
     try {
       const auth = getAuth(app);
-      const res = await createUserWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       toast.success('회원가입 성공~');
       nav('/');
     } catch (error: any) {
