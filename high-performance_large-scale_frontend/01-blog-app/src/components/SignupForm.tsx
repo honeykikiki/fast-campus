@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { app } from 'firebaseApp';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'react-toastify';
@@ -9,6 +9,7 @@ export default function SignupForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const nav = useNavigate();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,10 +17,11 @@ export default function SignupForm() {
       const auth = getAuth(app);
       const res = await createUserWithEmailAndPassword(auth, email, password);
       toast.success('회원가입 성공~');
+      nav('/');
     } catch (error: any) {
       console.log(error);
 
-      toast.error(error.code);
+      toast.error(error?.code);
     }
   };
 
@@ -43,8 +45,6 @@ export default function SignupForm() {
       setPassword(value);
 
       if (value.length < 8) {
-        console.log('w');
-
         setError('8자리 이상 입력해주세요');
       } else if (passwordConfirm.length > 0 && value !== passwordConfirm) {
         setError('비밀번호 확인 값이 다릅니다. 다시 확인해주세요');
@@ -80,6 +80,7 @@ export default function SignupForm() {
             id="email"
             required
             onChange={onChange}
+            value={email}
           />
         </div>
 
@@ -91,6 +92,7 @@ export default function SignupForm() {
             id="password"
             required
             onChange={onChange}
+            value={password}
           />
         </div>
 
@@ -102,6 +104,7 @@ export default function SignupForm() {
             id="passwordConfirm"
             required
             onChange={onChange}
+            value={passwordConfirm}
           />
         </div>
         {error && error.length > 0 && (

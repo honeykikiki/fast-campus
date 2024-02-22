@@ -26,5 +26,6 @@
     "pages/*": ["pages/*"],
     "components/*": ["components/*"],
     "fiebaseApp/*": ["firebaseApp/*"],
+    "context/*": ["context/*"],
   }
 }
