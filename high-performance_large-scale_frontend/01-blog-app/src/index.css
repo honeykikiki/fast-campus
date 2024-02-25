@@ -135,6 +135,10 @@ footer a:hover {
   font-size: 14px;
   color: gray;
 }
+.post__delete {
+  cursor: pointer;
+}
+
 .post__delete:hover,
 .post__delete:focus {
   color: black;
