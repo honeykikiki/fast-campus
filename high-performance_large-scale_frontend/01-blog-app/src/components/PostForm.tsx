@@ -4,7 +4,11 @@ import { db } from 'firebaseApp';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { PostProps } from './PostList';
+import {
+  CATEGORIES,
+  CategoryTypes as CategoryType,
+  PostProps,
+} from './PostList';
 
 export default function PostForm() {
   const { user } = useContext(AuthContext);
@@ -14,10 +18,13 @@ export default function PostForm() {
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
+  const [category, setCategory] = useState<CategoryType>('Fronted');
   const nav = useNavigate();
 
   const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const {
       target: { name, value },
@@ -34,6 +41,10 @@ export default function PostForm() {
     if (name === 'content') {
       setContent(value);
     }
+
+    if (name === 'category') {
+      setCategory(value as CategoryType);
+    }
   };
 
   const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -47,18 +58,28 @@ export default function PostForm() {
           title,
           summary,
           content,
-          updateAt: new Date().toLocaleDateString(),
+          updateAt: new Date().toLocaleDateString('ko', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+          }),
           uid: user?.uid,
+          category,
         });
         toast.success('글 수정 완료');
         nav(`/posts/${post.id}`);
       } else {
-        const docRef = await addDoc(collection(db, 'posts'), {
+        await addDoc(collection(db, 'posts'), {
           title,
           summary,
           content,
-          created: new Date().toLocaleDateString(),
+          created: new Date().toLocaleDateString('ko', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+          }),
           email: user?.email ?? '',
+          category,
         });
         toast.success('글 작성 완료');
         nav('/');
@@ -72,7 +93,7 @@ export default function PostForm() {
   const getPosts = async (id: string) => {
     const docRef = doc(db, 'posts', id);
     const docSnap = await getDoc(docRef);
-    console.log(docSnap.id, docSnap.data());
+
     setPost({ id: docSnap.id, ...(docSnap.data() as PostProps) });
   };
 
@@ -87,6 +108,7 @@ export default function PostForm() {
       setTitle(post.title);
       setSummary(post.summary);
       setContent(post.content);
+      setCategory(post.category);
     }
   }, [post]);
 
@@ -103,6 +125,23 @@ export default function PostForm() {
             onChange={onChange}
             value={title}
           />
+        </div>
+
+        <div className="form__block">
+          <label htmlFor="category">카테고라</label>
+          <select
+            name="category"
+            id="category"
+            onChange={onChange}
+            defaultValue={category}
+          >
+            <option value="">카테고리를 선택해주세요</option>
+            {CATEGORIES.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="form__block">

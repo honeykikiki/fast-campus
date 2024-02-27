@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import AuthContext from 'context/AuthContext';
 import Loader from './Loader';
 import { toast } from 'react-toastify';
+import Comments from './Comments';
 
 export default function PostDetail() {
   const { id } = useParams();
@@ -39,29 +40,38 @@ export default function PostDetail() {
   return (
     <div className="post__detail">
       {post ? (
-        <div className="post__box">
-          <div className="post__title">{post?.title}</div>
-          <div className="post__profile-box">
-            <div className="post__profile"></div>
-            <div className="post__author-name">{post?.email}</div>
-            <div className="post__date">{post?.created}</div>
-          </div>
-          {post?.email === user?.email ? (
-            <div className="post__utils-box">
-              <div
-                className="post__delete"
-                role="presentation"
-                onClick={handleDelete}
-              >
-                삭제
-              </div>
-              <Link to={`/posts/edit/${post?.id}`} className="post__edit">
-                수정
-              </Link>
+        <>
+          <div className="post__box">
+            <div className="post__title">{post?.title}</div>
+            <div className="post__profile-box">
+              <div className="post__profile"></div>
+              <div className="post__author-name">{post?.email}</div>
+              <div className="post__date">{post?.created}</div>
             </div>
-          ) : null}
-          <div className="post__text post__text-pre-wrap">{post?.content}</div>
-        </div>
+            {post?.email === user?.email ? (
+              <div className="post__utils-box">
+                {post.category && (
+                  <div className="post__category">{post.category}</div>
+                )}
+
+                <div
+                  className="post__delete"
+                  role="presentation"
+                  onClick={handleDelete}
+                >
+                  삭제
+                </div>
+                <Link to={`/posts/edit/${post?.id}`} className="post__edit">
+                  수정
+                </Link>
+              </div>
+            ) : null}
+            <div className="post__text post__text-pre-wrap">
+              {post?.content}
+            </div>
+          </div>
+          <Comments post={post} getPosts={() => getPosts(post.id ?? '')} />
+        </>
       ) : (
         <Loader />
       )}

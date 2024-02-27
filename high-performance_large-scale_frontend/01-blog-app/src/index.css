@@ -63,6 +63,12 @@ footer a:hover {
   color: black;
 }
 
+.footer__theme-btn {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
 /* post navigation */
 .post__navigation {
   display: flex;
@@ -173,6 +179,15 @@ footer a:hover {
 
 .post__text-pre-wrap {
   white-space: pre-wrap;
+}
+
+.post__category {
+  color: gray;
+  border: 1px solid #f2f2f2;
+  background-color: antiquewhite;
+  padding: 0px 4px;
+  border-radius: 10px;
+  font-size: 12px;
 }
 
 /* post detail */
@@ -457,6 +472,14 @@ input:checked + .carousel__slide-container .nav label {
   color: red;
 }
 
+.form select {
+  border: 1px solid #f2f2f2;
+  max-width: 680px;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 0.3rem;
+}
+
 /* loader */
 .loader {
   width: 48px;
@@ -471,4 +494,153 @@ input:checked + .carousel__slide-container .nav label {
   border-radius: 50%;
   z-index: 9999;
   animation: rotation 1s linear infinite;
+}
+
+/* comment */
+.comments {
+  width: 100%;
+}
+
+.comments__form label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.comments__form textarea {
+  width: 100%;
+  max-width: 680px;
+  min-height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  border: 1px solid lightgray;
+  display: block;
+}
+
+.comments__form .form__block {
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.comments__form .form__btn-submit {
+  width: 100px;
+  height: 36px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.comments__form .form__btn-submit:focus,
+.comments__form .form__btn-submit:hover {
+  background-color: #1945a4;
+}
+
+.form__block-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.comments__list {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.comment__box {
+  padding: 12px 0px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.comment__profile-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.comment__email {
+  font-weight: 500;
+  color: black;
+}
+.comment__date {
+  color: gray;
+}
+
+.comment__delete {
+  color: gray;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.comment__delete:focus,
+.comment__delete:hover {
+  color: black;
+}
+
+.comment__text {
+  font-size: 14px;
+  padding-top: 4px;
+  color: black;
+}
+
+/* dark mode */
+.white {
+  transition: all 0.25s linear;
+  background-color: white;
+}
+
+.dark {
+  transition: all 0.25s linear;
+  background-color: #1e2937;
+}
+
+.dark .form label,
+.dark .post__delete,
+.dark .profile__logout,
+.dark .form__title,
+.dark .post__navigation--active,
+.dark .post__title,
+.dark .post-_author-name,
+.dark .footer__theme-btn,
+.dark .profile__name,
+.comments__list {
+  color: white;
+}
+
+.dar a:hover,
+.dark a:focus,
+.dark .post__text,
+.dark .post__text--pre-wrap,
+.dark .profile__email,
+.dark .post__date,
+.dark .form__block,
+.dark .comment__date,
+.dark .comment__delete {
+  color: lightgray;
+}
+
+.dark footer,
+.dark header {
+  background-color: #111;
+}
+.dark header .header__logo {
+  color: white;
+}
+
+.dark header a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: lightgray;
+}
+.dark header a:focus,
+.dark header a:hover,
+.dark .comment__delete:focus,
+.dark .comment__delete:hover {
+  color: white;
 }

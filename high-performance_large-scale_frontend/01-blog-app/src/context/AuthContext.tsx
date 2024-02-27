@@ -2,7 +2,7 @@ import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
 import { app } from 'firebaseApp';
 import { ReactNode, createContext, useEffect, useState } from 'react';
 
-interface Auth {
+interface AuthProps {
   children: ReactNode;
 }
 
@@ -10,7 +10,7 @@ const AuthContext = createContext({
   user: null as User | null,
 });
 
-export const AuthContextProvider = ({ children }: Auth) => {
+export const AuthContextProvider = ({ children }: AuthProps) => {
   const auth = getAuth(app);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
