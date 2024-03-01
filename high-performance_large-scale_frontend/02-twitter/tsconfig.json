@@ -25,7 +25,7 @@
   "paths": {
     "pages/*": ["pages/*"],
     "components/*": ["components/*"],
-    "fiebaseApp/*": ["firebaseApp/*"],
+    "firebaseApp/*": ["firebaseApp/*"],
     "context/*": ["context/*"],
   }
 }
