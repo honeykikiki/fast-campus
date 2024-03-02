@@ -1,4 +1,10 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from 'firebase/auth';
 import { app } from 'firebaseApp';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -47,6 +53,34 @@ export default function LoginForm() {
       toast.error('로그인 실패\n다시한번 해주세요.');
     }
   };
+  const onClickSnsLogin = async (e: any) => {
+    const {
+      target: { name },
+    } = e;
+
+    let provider;
+    const auth = getAuth(app);
+
+    if (name === 'google') {
+      provider = new GoogleAuthProvider();
+    }
+    if (name === 'github') {
+      provider = new GithubAuthProvider();
+    }
+
+    await signInWithPopup(
+      auth,
+      provider as GithubAuthProvider | GoogleAuthProvider
+    )
+      .then((res) => {
+        console.log(res);
+        toast.success('로그인 성공');
+      })
+      .catch((err) => {
+        const errorMsg = err.message;
+        toast.error(errorMsg);
+      });
+  };
 
   return (
     <form onSubmit={onSubmit} className="form form--lg">
@@ -84,7 +118,7 @@ export default function LoginForm() {
 
       <div className="form__block">
         계정이 없으신가요?
-        <Link to="users/signup" className="form__link">
+        <Link to="/users/signup" className="form__link">
           회원가입 하러가기
         </Link>
       </div>
@@ -95,6 +129,26 @@ export default function LoginForm() {
           disabled={error.length > 0}
         >
           로그인
+        </button>
+      </div>
+      <div className="form__block--lg">
+        <button
+          type="button"
+          className="form__btn-google"
+          name="google"
+          onClick={onClickSnsLogin}
+        >
+          구굴 로그인
+        </button>
+      </div>
+      <div className="form__block--lg">
+        <button
+          type="button"
+          className="form__btn-github"
+          name="github"
+          onClick={onClickSnsLogin}
+        >
+          깃헙 로그인
         </button>
       </div>
     </form>

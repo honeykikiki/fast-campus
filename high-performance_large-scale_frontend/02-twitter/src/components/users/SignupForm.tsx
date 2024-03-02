@@ -1,6 +1,12 @@
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from 'firebase/auth';
 import { app } from 'firebaseApp';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -61,6 +67,35 @@ export default function SignupForm() {
     }
   };
 
+  const onClickSnsLogin = async (e: any) => {
+    const {
+      target: { name },
+    } = e;
+
+    let provider;
+    const auth = getAuth(app);
+
+    if (name === 'google') {
+      provider = new GoogleAuthProvider();
+    }
+    if (name === 'github') {
+      provider = new GithubAuthProvider();
+    }
+
+    await signInWithPopup(
+      auth,
+      provider as GithubAuthProvider | GoogleAuthProvider
+    )
+      .then((res) => {
+        console.log(res);
+        toast.success('로그인 성공');
+      })
+      .catch((err) => {
+        const errorMsg = err.message;
+        toast.error(errorMsg);
+      });
+  };
+
   return (
     <form onSubmit={onSubmit} className="form form--lg">
       <div className="form__title">회원가입</div>
@@ -99,8 +134,8 @@ export default function SignupForm() {
           onChange={onChange}
         />
       </div>
-      {/* 에러가 있는겨우 */}
 
+      {/* 에러가 있는겨우 */}
       {error && error.length > 0 && (
         <div className="form__block">
           <div className="form__error">{error}</div>
@@ -112,13 +147,33 @@ export default function SignupForm() {
           로그인 하러가기
         </Link>
       </div>
-      <div className="form__block">
+      <div className="form__block--lg">
         <button
           type="submit"
           className="form__btn-submit"
           disabled={error.length > 0}
         >
           회원가입
+        </button>
+      </div>
+      <div className="form__block--lg">
+        <button
+          type="button"
+          className="form__btn-google"
+          name="google"
+          onClick={onClickSnsLogin}
+        >
+          구굴 회원가입
+        </button>
+      </div>
+      <div className="form__block--lg">
+        <button
+          type="button"
+          className="form__btn-github"
+          name="github"
+          onClick={onClickSnsLogin}
+        >
+          깃헙 회원가입
         </button>
       </div>
     </form>

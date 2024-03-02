@@ -299,7 +299,7 @@ div {
     cursor: pointer;
     font-size: 16px;
     margin: 0 auto;
-    color: white;
+    color: $white;
     background-color: $primaryColor;
 
     &:hover,
@@ -321,5 +321,27 @@ div {
 
   &__error {
     color: $danger;
+  }
+
+  &__btn-google {
+    @extend .form__btn-submit;
+    background-color: $white;
+    color: $activeBorder;
+    &:focus,
+    &:hover {
+      background-color: $primaryColor;
+      color: $white;
+    }
+  }
+
+  &__btn-github {
+    @extend .form__btn-submit;
+    background-color: black;
+    color: $white;
+    &:focus,
+    &:hover {
+      background-color: $activeBackground;
+      color: $white;
+    }
   }
 }
