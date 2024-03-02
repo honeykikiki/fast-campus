@@ -106,9 +106,9 @@ export default function SignupForm() {
           <div className="form__error">{error}</div>
         </div>
       )}
-      <div className="form__block">
+      <div className="form__block--lg">
         계정이 있으신가요?
-        <Link to="/login" className="form__link">
+        <Link to="users/login" className="form__link">
           로그인 하러가기
         </Link>
       </div>
