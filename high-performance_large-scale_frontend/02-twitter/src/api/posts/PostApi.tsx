@@ -1,7 +1,8 @@
-import { Firestore, doc, getDoc } from 'firebase/firestore';
+import { deleteDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from 'firebaseApp';
 import { PostProps } from 'pages/home';
 import { Params } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const getPostData = async ({
   param,
@@ -16,4 +17,17 @@ export const getPostData = async ({
   }
 };
 
-// export const
+export const deletePostData = async ({
+  post,
+}: {
+  post: PostProps;
+}): Promise<boolean> => {
+  const confirm = window.confirm('게시물을 삭제하시겠습니까?');
+  if (confirm) {
+    await deleteDoc(doc(db, 'posts', post.id));
+    toast.success('게시물 삭제 성공');
+    return true;
+  }
+
+  return false;
+};

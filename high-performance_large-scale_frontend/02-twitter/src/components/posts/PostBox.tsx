@@ -1,16 +1,23 @@
+import { deletePostData } from 'api/posts/PostApi';
 import AuthContext from 'context/AuthContext';
 import { PostProps } from 'pages/home';
 import { useContext } from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaUserCircle, FaRegComment } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface PostBoxProps {
   post: PostProps;
 }
 export default function PostBox({ post }: PostBoxProps) {
   const { user } = useContext(AuthContext);
-  const handleDelete = () => {};
+  const nav = useNavigate();
+  const handleDelete = async () => {
+    let result: boolean = await deletePostData({ post });
+    if (result) {
+      nav('/');
+    }
+  };
 
   return (
     <div key={post.id} className="post__box">
@@ -43,7 +50,9 @@ export default function PostBox({ post }: PostBoxProps) {
               Delete
             </button>
             <button type="button" className="post__edit">
-              <Link to={`posts/edit/${post.id}`}>Edit</Link>
+              <Link to={`posts/edit/${post.id}`} className="post__edit">
+                Edit
+              </Link>
             </button>
           </>
         )}
