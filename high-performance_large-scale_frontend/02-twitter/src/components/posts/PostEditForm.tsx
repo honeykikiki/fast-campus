@@ -15,14 +15,13 @@ export default function PostEditForm() {
   const [post, setPost] = useState<PostProps>();
   const [tags, setTags] = useState<string[]>([]);
   const [hashTag, setHashTag] = useState<string>();
-  console.log(post?.id, param.id);
 
   const getPost = useCallback(async () => {
     if (param.id) {
       const postData = await getPostData({ param });
       setPost(postData);
       setContent(post?.content ?? '');
-      setTags(postData?.hashtags ?? []);
+      setTags(postData?.hashTags ?? []);
     }
   }, [param, post?.content]);
 
@@ -36,7 +35,7 @@ export default function PostEditForm() {
         await updateDoc(postRef, {
           content,
           updateAt: getCurrentDate(),
-          hashtags: tags,
+          hashTags: tags,
         });
 
         console.log(post?.id, param.id);

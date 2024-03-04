@@ -1,6 +1,6 @@
 import { BsHouse } from 'react-icons/bs';
-import { BiUserCircle } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
+import { BiSearch, BiUserCircle } from 'react-icons/bi';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { MdLogin, MdLogout } from 'react-icons/md';
 import { useContext } from 'react';
 import AuthContext from 'context/AuthContext';
@@ -11,17 +11,38 @@ import { app } from 'firebaseApp';
 export default function MenuList() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="footer">
       <div className="footer__grid">
-        <button type="button" onClick={() => navigate('/')}>
+        <button
+          type="button"
+          className={location.pathname === '/' ? 'footer__btn-active' : ''}
+          onClick={() => navigate('/')}
+        >
           <BsHouse />
           Home
         </button>
-        <button type="button" onClick={() => navigate('/profile')}>
+        <button
+          type="button"
+          className={
+            location.pathname === '/profile' ? 'footer__btn-active' : ''
+          }
+          onClick={() => navigate('/profile')}
+        >
           <BiUserCircle />
           Profile
+        </button>
+        <button
+          type="button"
+          className={
+            location.pathname === '/search' ? 'footer__btn-active' : ''
+          }
+          onClick={() => navigate('/search')}
+        >
+          <BiSearch />
+          Search
         </button>
         {user === null ? (
           <button type="button" onClick={() => navigate('/user/login')}>

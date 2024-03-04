@@ -23,7 +23,7 @@ export default function PostForm() {
         createdAt: getCurrentDate(),
         uid: user?.uid,
         email: user?.email,
-        hashtags: tags,
+        hashTags: tags,
       });
 
       // 값 초기화
