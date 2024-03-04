@@ -1,6 +1,7 @@
-import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
-import { app } from 'firebaseApp';
 import { ReactNode, createContext, useEffect, useState } from 'react';
+import { User } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { app } from 'firebaseApp';
 
 interface AuthProps {
   children: ReactNode;
