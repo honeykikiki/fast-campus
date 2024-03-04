@@ -1,4 +1,5 @@
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { getPostData } from 'api/posts/PostApi';
+import { doc, updateDoc } from 'firebase/firestore';
 import { db } from 'firebaseApp';
 import { PostProps } from 'pages/home';
 import { useCallback, useEffect, useState } from 'react';
@@ -15,13 +16,10 @@ export default function PostEditForm() {
 
   const getPost = useCallback(async () => {
     if (param.id) {
-      const docRef = doc(db, 'posts', param?.id);
-      const docSnap = await getDoc(docRef);
-
-      setPost({ ...(docSnap.data() as PostProps), id: docSnap.id });
-      setContent(docSnap?.data()?.content);
+      setPost(await getPostData({ param }));
+      setContent(post?.content ?? '');
     }
-  }, [param.id]);
+  }, [param, post?.content]);
 
   const handleFileUpload = async () => {};
 
