@@ -37,6 +37,17 @@ export default function PostBox({ post }: PostBoxProps) {
             <div className="post__createdAt">{post.createdAt}</div>
           </div>
           <div className="post__box-content">{post.content}</div>
+          <span className="post-form__hashtags-outputs">
+            {post.hashtags?.map((tag, i) => (
+              <span
+                className="post-form__hashtags-tag"
+                key={i}
+                // onClick={() => removeTag(tag)}
+              >
+                # {tag}
+              </span>
+            ))}
+          </span>
         </div>
       </Link>
       <div className="post__box-footer">
@@ -50,7 +61,7 @@ export default function PostBox({ post }: PostBoxProps) {
               Delete
             </button>
             <button type="button" className="post__edit">
-              <Link to={`posts/edit/${post.id}`} className="post__edit">
+              <Link to={`/posts/edit/${post.id}`} className="post__edit">
                 Edit
               </Link>
             </button>
