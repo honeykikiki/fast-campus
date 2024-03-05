@@ -12,10 +12,11 @@ export interface PostProps {
   createdAt: string;
   uid: string;
   profileUrl?: string;
-  likesCount?: number;
+  likeCount?: number;
   comments?: any;
   hashTags: string[];
   imageUrl?: string;
+  likes?: string[];
 }
 
 export default function HomePage() {

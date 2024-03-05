@@ -22,7 +22,7 @@ export default function PostEditForm() {
   const [content, setContent] = useState('');
   const [post, setPost] = useState<PostProps>();
   const [tags, setTags] = useState<string[]>([]);
-  const [hashTag, setHashTag] = useState<string>();
+  const [hashTag, setHashTag] = useState<string>('');
   const [imageFile, setImageFile] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 

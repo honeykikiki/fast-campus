@@ -12,7 +12,7 @@ export default function PostForm() {
   const { user } = useContext(AuthContext);
   const [content, setContent] = useState('');
   const [tags, setTags] = useState<string[]>([]);
-  const [hashTag, setHashTag] = useState<string>();
+  const [hashTag, setHashTag] = useState<string>('');
   const [imageFile, setImageFile] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
