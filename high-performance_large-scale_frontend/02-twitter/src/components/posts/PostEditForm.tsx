@@ -1,20 +1,29 @@
-import { getPostData } from 'api/posts/PostApi';
+import {
+  deletePostImage,
+  getPostData,
+  postImageUpload,
+} from 'api/posts/PostApi';
+import AuthContext from 'context/AuthContext';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from 'firebaseApp';
 import { PostProps } from 'pages/home';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { FiImage } from 'react-icons/fi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getCurrentDate } from 'utils/Date';
+import { imageUpload } from 'utils/image';
 
 export default function PostEditForm() {
   const param = useParams();
   const nav = useNavigate();
+  const { user } = useContext(AuthContext);
   const [content, setContent] = useState('');
   const [post, setPost] = useState<PostProps>();
   const [tags, setTags] = useState<string[]>([]);
   const [hashTag, setHashTag] = useState<string>();
+  const [imageFile, setImageFile] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const getPost = useCallback(async () => {
     if (param.id) {
@@ -22,23 +31,44 @@ export default function PostEditForm() {
       setPost(postData);
       setContent(post?.content ?? '');
       setTags(postData?.hashTags ?? []);
+      setImageFile(post?.imageUrl ?? null);
     }
-  }, [param, post?.content]);
+  }, [param, post?.content, post?.imageUrl]);
 
-  const handleFileUpload = async () => {};
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { files },
+    } = e;
+
+    setImageFile(await imageUpload(files));
+  };
+
+  const handleDeleteImg = () => {
+    setImageFile(null);
+  };
 
   const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
     try {
       if (post) {
+        // 기존 사진 지우고 새로운 사진 업로드
+        await deletePostImage({ imageUrl: post.imageUrl });
+
+        // 새로운 이미지가 있는경우 업로드
+        let imageUrl = '';
+        if (imageFile) {
+          imageUrl = await postImageUpload({ uid: user?.uid ?? '', imageFile });
+        }
+
         const postRef = doc(db, 'posts', post.id);
         await updateDoc(postRef, {
           content,
           updateAt: getCurrentDate(),
           hashTags: tags,
+          imageUrl,
         });
-
-        console.log(post?.id, param.id);
 
         toast.success('게시글 수정');
         nav(`/posts/${post.id}`);
@@ -46,6 +76,7 @@ export default function PostEditForm() {
     } catch (error) {
       console.log(error);
     }
+    setIsSubmitting(false);
   };
 
   const onChange = async (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -125,17 +156,37 @@ export default function PostEditForm() {
       </div>
 
       <div className="post-form__submit-area">
-        <label htmlFor="file-input" className="post-form__file">
-          <FiImage className="post-form__file-icon" />
-        </label>
+        <div className="post-form__image-area">
+          <label htmlFor="file-input" className="post-form__file">
+            <FiImage className="post-form__file-icon" />
+          </label>
+          <input
+            type="file"
+            name="file-input"
+            id="file-input"
+            accept="image/*"
+            onChange={handleFileUpload}
+            className="hidden"
+          />
+          {imageFile && (
+            <div className="post-form__attachment">
+              <img src={imageFile} alt="attachment" width={100} height={100} />
+              <button
+                type="button"
+                className="post-form__clear-btn"
+                onClick={handleDeleteImg}
+              >
+                x
+              </button>
+            </div>
+          )}
+        </div>
         <input
-          type="file"
-          name="file-input"
-          accept="image/*"
-          onChange={handleFileUpload}
-          className="hidden"
+          type="submit"
+          value="수정"
+          className="post-form__submit-btn"
+          disabled={isSubmitting}
         />
-        <input type="submit" value="수정" className="post-form__submit-btn" />
       </div>
     </form>
   );

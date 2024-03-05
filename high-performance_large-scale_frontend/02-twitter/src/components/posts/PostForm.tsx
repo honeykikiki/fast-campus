@@ -1,12 +1,12 @@
+import { postImageUpload } from 'api/posts/PostApi';
 import AuthContext from 'context/AuthContext';
 import { addDoc, collection } from 'firebase/firestore';
-import { getDownloadURL, ref, uploadString } from 'firebase/storage';
-import { db, storage } from 'firebaseApp';
+import { db } from 'firebaseApp';
 import { useContext, useState } from 'react';
 import { FiImage } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import { getCurrentDate } from 'utils/Date';
-import { v4 as uuidv4 } from 'uuid';
+import { imageUpload } from 'utils/image';
 
 export default function PostForm() {
   const { user } = useContext(AuthContext);
@@ -21,18 +21,7 @@ export default function PostForm() {
       target: { files },
     } = e;
 
-    if (files && files.length > 0) {
-      const file = files[0];
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onloadend = (e: ProgressEvent<FileReader>) => {
-        const { result } = e.target as FileReader;
-        if (typeof result === 'string') {
-          setImageFile(result);
-        }
-      };
-    }
+    setImageFile(await imageUpload(files));
   };
 
   const handleDeleteImg = () => {
@@ -42,17 +31,14 @@ export default function PostForm() {
   const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const key = `${user?.uid}/${uuidv4()}`;
-    const storageRef = ref(storage, key);
 
     try {
       // 이미지 업로드
       let imageUrl = '';
-      if (imageFile) {
-        const data = await uploadString(storageRef, imageFile, 'data_url');
-        imageUrl = await getDownloadURL(data.ref);
-      }
       // 업로드된 이미지 다운로드 url 업데이트
+      if (imageFile) {
+        imageUrl = await postImageUpload({ uid: user?.uid ?? '', imageFile });
+      }
 
       await addDoc(collection(db, 'posts'), {
         content,
