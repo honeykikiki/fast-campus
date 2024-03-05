@@ -13,6 +13,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getCurrentDate } from 'utils/Date';
 import { imageUpload } from 'utils/image';
+import PostHeader from './Header';
 
 export default function PostEditForm() {
   const param = useParams();
@@ -121,73 +122,83 @@ export default function PostEditForm() {
   }, [param.id, getPost]);
 
   return (
-    <form onSubmit={onSubmit} className="post-form">
-      <textarea
-        className="post-form__textarea"
-        name="content"
-        id="content"
-        required
-        placeholder="What`s happing.."
-        onChange={onChange}
-        value={content}
-      ></textarea>
-      <div className="post-form__hashtags">
-        <span className="post-form__hashtags-outputs">
-          {tags?.map((tag, i) => (
-            <span
-              className="post-form__hashtags-tag"
-              key={i}
-              onClick={() => removeTag(tag)}
-            >
-              # {tag}
-            </span>
-          ))}
-        </span>
-        <input
-          type="text"
-          className="post-form__input"
-          name="hashtags"
-          id="hashtags"
-          placeholder="해시태그 + 스페이스바 입력"
-          onChange={onChangeHashTag}
-          onKeyUp={handleKeyUp}
-          value={hashTag}
-        />
+    <>
+      <div className="post">
+        <PostHeader />
       </div>
-
-      <div className="post-form__submit-area">
-        <div className="post-form__image-area">
-          <label htmlFor="file-input" className="post-form__file">
-            <FiImage className="post-form__file-icon" />
-          </label>
-          <input
-            type="file"
-            name="file-input"
-            id="file-input"
-            accept="image/*"
-            onChange={handleFileUpload}
-            className="hidden"
-          />
-          {imageFile && (
-            <div className="post-form__attachment">
-              <img src={imageFile} alt="attachment" width={100} height={100} />
-              <button
-                type="button"
-                className="post-form__clear-btn"
-                onClick={handleDeleteImg}
+      <form onSubmit={onSubmit} className="post-form">
+        <textarea
+          className="post-form__textarea"
+          name="content"
+          id="content"
+          required
+          placeholder="What`s happing.."
+          onChange={onChange}
+          value={content}
+        ></textarea>
+        <div className="post-form__hashtags">
+          <span className="post-form__hashtags-outputs">
+            {tags?.map((tag, i) => (
+              <span
+                className="post-form__hashtags-tag"
+                key={i}
+                onClick={() => removeTag(tag)}
               >
-                x
-              </button>
-            </div>
-          )}
+                # {tag}
+              </span>
+            ))}
+          </span>
+          <input
+            type="text"
+            className="post-form__input"
+            name="hashtags"
+            id="hashtags"
+            placeholder="해시태그 + 스페이스바 입력"
+            onChange={onChangeHashTag}
+            onKeyUp={handleKeyUp}
+            value={hashTag}
+          />
         </div>
-        <input
-          type="submit"
-          value="수정"
-          className="post-form__submit-btn"
-          disabled={isSubmitting}
-        />
-      </div>
-    </form>
+
+        <div className="post-form__submit-area">
+          <div className="post-form__image-area">
+            <label htmlFor="file-input" className="post-form__file">
+              <FiImage className="post-form__file-icon" />
+            </label>
+            <input
+              type="file"
+              name="file-input"
+              id="file-input"
+              accept="image/*"
+              onChange={handleFileUpload}
+              className="hidden"
+            />
+            {imageFile && (
+              <div className="post-form__attachment">
+                <img
+                  src={imageFile}
+                  alt="attachment"
+                  width={100}
+                  height={100}
+                />
+                <button
+                  type="button"
+                  className="post-form__clear-btn"
+                  onClick={handleDeleteImg}
+                >
+                  x
+                </button>
+              </div>
+            )}
+          </div>
+          <input
+            type="submit"
+            value="수정"
+            className="post-form__submit-btn"
+            disabled={isSubmitting}
+          />
+        </div>
+      </form>
+    </>
   );
 }

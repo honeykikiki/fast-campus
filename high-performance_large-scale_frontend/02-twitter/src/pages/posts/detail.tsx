@@ -4,7 +4,7 @@ import PostHeader from 'components/posts/Header';
 import PostBox from 'components/posts/PostBox';
 import { PostProps } from 'pages/home';
 import { useCallback, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export default function PostDetailPage() {
   const param = useParams();
