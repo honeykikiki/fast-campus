@@ -168,6 +168,23 @@ div {
 
 // post
 .post-form {
+  &__profile {
+    padding: 16px;
+
+    .post-form__input {
+      border-bottom: 1px solid $border;
+      padding: 8px 2px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 20px;
+
+      &:active,
+      &:focus {
+        border-bottom: 1px solid $activeBorder;
+      }
+    }
+  }
+
   &__image-area {
     display: flex;
     align-self: center;
@@ -483,5 +500,47 @@ div {
       background-color: $activeBackground;
       color: $white;
     }
+  }
+}
+
+// profile
+.profile {
+  display: flex;
+  padding: 0 1rem;
+  margin-top: 2.5rem;
+  justify-content: space-between;
+  align-items: center;
+
+  &__image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
+
+  &__btn {
+    @extend .button;
+    background-color: $primaryColor;
+
+    &:focus,
+    &:hover {
+      background-color: $activeBorder;
+    }
+  }
+
+  &__text {
+    padding: 0 1rem;
+    margin-top: 20px;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  &__email {
+    font-size: 14px;
+    color: $gray;
+    margin-bottom: 4px;
   }
 }

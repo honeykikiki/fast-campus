@@ -26,6 +26,7 @@ export default function HomePage() {
     if (user) {
       let postRef = collection(db, 'posts');
       let postQuery = query(postRef, orderBy('createdAt', 'desc'));
+
       onSnapshot(postQuery, (snapshot) => {
         let dateOb = snapshot.docs.map((doc) => ({
           ...doc.data(),
