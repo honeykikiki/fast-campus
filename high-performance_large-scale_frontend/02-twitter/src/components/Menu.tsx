@@ -2,6 +2,7 @@ import { BsHouse } from 'react-icons/bs';
 import { BiSearch, BiUserCircle } from 'react-icons/bi';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MdLogin, MdLogout } from 'react-icons/md';
+import { IoMdNotificationsOutline } from 'react-icons/io';
 import { useContext } from 'react';
 import AuthContext from 'context/AuthContext';
 import { toast } from 'react-toastify';
@@ -43,6 +44,16 @@ export default function MenuList() {
         >
           <BiSearch />
           Search
+        </button>
+        <button
+          type="button"
+          className={
+            location.pathname === '/notification' ? 'footer__btn-active' : ''
+          }
+          onClick={() => navigate('/notification')}
+        >
+          <IoMdNotificationsOutline />
+          notification
         </button>
         {user === null ? (
           <button type="button" onClick={() => navigate('/user/login')}>

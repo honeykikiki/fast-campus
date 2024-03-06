@@ -1,7 +1,9 @@
 import AuthContext from 'context/AuthContext';
 import {
+  addDoc,
   arrayRemove,
   arrayUnion,
+  collection,
   doc,
   onSnapshot,
   setDoc,
@@ -11,6 +13,7 @@ import { db } from 'firebaseApp';
 import { PostProps } from 'pages/home';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { getCurrentDate } from 'utils/Date';
 
 interface FollowingBoxProps {
   post: PostProps;
@@ -47,6 +50,16 @@ export default function FollowingBox({ post }: FollowingBoxProps) {
           { merge: true }
         );
       }
+
+      // 팔로잉 알림 생성
+      await addDoc(collection(db, 'notifications'), {
+        createdAt: getCurrentDate(),
+        uid: post.uid,
+        isRead: false,
+        url: '#',
+        content: `"${user?.email || user?.displayName}"가 팔로우 했습니다.`,
+      });
+
       toast.success('팔로우');
     } catch (error) {
       console.log(error);
