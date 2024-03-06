@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import AuthContext from 'context/AuthContext';
 import { db } from 'firebaseApp';
+import { CommentProps } from 'components/comment/CommentBox';
 
 export interface PostProps {
   id: string;
@@ -13,10 +14,10 @@ export interface PostProps {
   uid: string;
   profileUrl?: string;
   likeCount?: number;
-  comments?: any;
+  likes?: string[];
+  comments?: CommentProps[];
   hashTags: string[];
   imageUrl?: string;
-  likes?: string[];
 }
 
 export default function HomePage() {
