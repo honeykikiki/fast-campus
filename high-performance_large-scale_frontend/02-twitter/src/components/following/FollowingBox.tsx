@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 interface FollowingBoxProps {
   post: PostProps;
 }
-interface UserProps {
+export interface UserProps {
   id: string;
 }
 

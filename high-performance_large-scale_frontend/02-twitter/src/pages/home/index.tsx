@@ -1,10 +1,18 @@
 import PostForm from 'components/posts/PostForm';
 import PostBox from 'components/posts/PostBox';
-import { useContext, useEffect, useState } from 'react';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import {
+  collection,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from 'firebase/firestore';
 import AuthContext from 'context/AuthContext';
 import { db } from 'firebaseApp';
 import { CommentProps } from 'components/comment/CommentBox';
+import { UserProps } from 'components/following/FollowingBox';
 
 export interface PostProps {
   id: string;
@@ -20,14 +28,40 @@ export interface PostProps {
   imageUrl?: string;
 }
 
+type TabType = 'all' | 'following';
+
 export default function HomePage() {
+  const [activeTab, setActiveTab] = useState<TabType>('all');
   const [posts, setPosts] = useState<PostProps[]>([]);
+  const [followingPosts, setFollowingPosts] = useState<PostProps[]>([]);
+  const [followingIds, setFollowingIds] = useState<string[]>(['']);
   const { user } = useContext(AuthContext);
+
+  const getFollowers = useCallback(async () => {
+    if (user?.uid) {
+      const ref = doc(db, 'following', user.uid);
+      onSnapshot(ref, (snap) => {
+        setFollowingIds(['']);
+        snap
+          ?.data()
+          ?.users?.map((user: UserProps) =>
+            setFollowingIds((prev: string[]) =>
+              prev ? [...prev, user.id] : []
+            )
+          );
+      });
+    }
+  }, [user?.uid]);
 
   useEffect(() => {
     if (user) {
       let postRef = collection(db, 'posts');
       let postQuery = query(postRef, orderBy('createdAt', 'desc'));
+      let followingPostQuery = query(
+        postRef,
+        where('uid', 'in', followingIds),
+        orderBy('createdAt')
+      );
 
       onSnapshot(postQuery, (snapshot) => {
         let dateOb = snapshot.docs.map((doc) => ({
@@ -37,32 +71,73 @@ export default function HomePage() {
 
         setPosts(dateOb as PostProps[]);
       });
+
+      onSnapshot(followingPostQuery, (snapshot) => {
+        let dateOb = snapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+
+        setFollowingPosts(dateOb as PostProps[]);
+      });
     }
-  }, [user]);
+  }, [followingIds, user]);
+
+  useEffect(() => {
+    if (user?.uid) {
+      getFollowers();
+    }
+  }, [getFollowers, user?.uid]);
 
   return (
     <div className="home">
       <div className="home__top">
         <div className="home__title">Home</div>
         <div className="home__tabs">
-          <div className="home__tab home__tab--active">For you</div>
-          <div className="home__tab">Following</div>
+          <div
+            className={` ${
+              activeTab === 'all' ? 'home__tab--active' : ''
+            } home__tab`}
+            onClick={() => setActiveTab('all')}
+          >
+            For you
+          </div>
+          <div
+            className={`${
+              activeTab === 'following' ? 'home__tab--active' : ''
+            } home__tab`}
+            onClick={() => setActiveTab('following')}
+          >
+            Following
+          </div>
         </div>
       </div>
 
       {/* 게시물 입력 */}
-      <PostForm />
+      {activeTab === 'all' && <PostForm />}
 
       {/* Tweet Post */}
-      <div className="post">
-        {posts.length > 0 ? (
-          posts.map((post) => <PostBox post={post} key={post.id} />)
-        ) : (
-          <div className="post__no-posts">
-            <div className="post__text">글이 없습니다.</div>
-          </div>
-        )}
-      </div>
+      {activeTab === 'all' ? (
+        <div className="post">
+          {posts.length > 0 ? (
+            posts.map((post) => <PostBox post={post} key={post.id} />)
+          ) : (
+            <div className="post__no-posts">
+              <div className="post__text">글이 없습니다.</div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="post">
+          {followingPosts.length > 0 ? (
+            followingPosts.map((post) => <PostBox post={post} key={post.id} />)
+          ) : (
+            <div className="post__no-posts">
+              <div className="post__text">글이 없습니다.</div>
+            </div>
+          )}
+        </div>
+      )}
       {/* footer */}
     </div>
   );
