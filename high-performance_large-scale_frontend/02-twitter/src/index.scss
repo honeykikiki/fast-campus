@@ -324,6 +324,34 @@ div {
     align-items: center;
   }
 
+  &__flex-between {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__following-btn {
+    @extend .button;
+    background-color: $activeBorder;
+    color: $white;
+
+    &:hover {
+      background-color: $white;
+      color: $primaryColor;
+    }
+  }
+
+  &__follow-btn {
+    @extend .button;
+    color: $activeBorder;
+    background-color: $white;
+
+    &:hover {
+      color: $white;
+      background-color: $primaryColor;
+    }
+  }
+
   &__email,
   &__createdAt {
     font-size: 12px;

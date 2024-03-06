@@ -1,4 +1,5 @@
 import { deletePostData } from 'api/posts/PostApi';
+import FollowingBox from 'components/following/FollowingBox';
 import AuthContext from 'context/AuthContext';
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import { db } from 'firebaseApp';
@@ -44,21 +45,26 @@ export default function PostBox({ post }: PostBoxProps) {
 
   return (
     <div key={post.id} className="post__box">
-      <Link to={`/posts/${post.id}`}>
-        <div className="post__box-profile">
-          <div className="post__flex">
-            {post.profileUrl ? (
-              <img
-                src={post.profileUrl}
-                alt="profileImage"
-                className="post__box-profile-img"
-              />
-            ) : (
-              <FaUserCircle className="post__box-profile-icon" />
-            )}
-            <div className="post__email">{post.email}</div>
-            <div className="post__createdAt">{post.createdAt}</div>
+      <div className="post__box-profile">
+        <div className="post__flex">
+          {post.profileUrl ? (
+            <img
+              src={post.profileUrl}
+              alt="profileImage"
+              className="post__box-profile-img"
+            />
+          ) : (
+            <FaUserCircle className="post__box-profile-icon" />
+          )}
+          <div className="post__flex-between">
+            <div className="post__flex">
+              <div className="post__email">{post.email}</div>
+              <div className="post__createdAt">{post.createdAt}</div>
+            </div>
+            {user?.uid !== post.uid && <FollowingBox post={post} />}
           </div>
+        </div>
+        <Link to={`/posts/${post.id}`}>
           <div className="post__box-content">{post.content}</div>
           {post.imageUrl && (
             <div className="post__image-div">
@@ -81,8 +87,8 @@ export default function PostBox({ post }: PostBoxProps) {
               </span>
             ))}
           </span>
-        </div>
-      </Link>
+        </Link>
+      </div>
       <div className="post__box-footer">
         {user?.uid === post.uid && (
           <>
