@@ -8,11 +8,13 @@ import AuthContext from 'context/AuthContext';
 import { toast } from 'react-toastify';
 import { getAuth, signOut } from 'firebase/auth';
 import { app } from 'firebaseApp';
+import useTranslation from 'hooks/useTranslation';
 
 export default function MenuList() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const t = useTranslation();
 
   return (
     <div className="footer">
@@ -23,7 +25,7 @@ export default function MenuList() {
           onClick={() => navigate('/')}
         >
           <BsHouse />
-          Home
+          {t('MENU_HOME')}
         </button>
         <button
           type="button"
@@ -33,7 +35,7 @@ export default function MenuList() {
           onClick={() => navigate('/profile')}
         >
           <BiUserCircle />
-          Profile
+          {t('MENU_PROFILE')}
         </button>
         <button
           type="button"
@@ -43,7 +45,7 @@ export default function MenuList() {
           onClick={() => navigate('/search')}
         >
           <BiSearch />
-          Search
+          {t('MENU_SEARCH')}
         </button>
         <button
           type="button"
@@ -53,7 +55,7 @@ export default function MenuList() {
           onClick={() => navigate('/notification')}
         >
           <IoMdNotificationsOutline />
-          notification
+          {t('MENU_NOTI')}
         </button>
         {user === null ? (
           <button type="button" onClick={() => navigate('/user/login')}>
@@ -70,7 +72,7 @@ export default function MenuList() {
             }}
           >
             <MdLogout />
-            Logout
+            {t('MENU_LOGOUT')}
           </button>
         )}
       </div>

@@ -13,6 +13,7 @@ import AuthContext from 'context/AuthContext';
 import { db } from 'firebaseApp';
 import { CommentProps } from 'components/comment/CommentBox';
 import { UserProps } from 'components/following/FollowingBox';
+import useTranslation from 'hooks/useTranslation';
 
 export interface PostProps {
   id: string;
@@ -36,6 +37,7 @@ export default function HomePage() {
   const [followingPosts, setFollowingPosts] = useState<PostProps[]>([]);
   const [followingIds, setFollowingIds] = useState<string[]>(['']);
   const { user } = useContext(AuthContext);
+  const t = useTranslation();
 
   const getFollowers = useCallback(async () => {
     if (user?.uid) {
@@ -100,7 +102,7 @@ export default function HomePage() {
             } home__tab`}
             onClick={() => setActiveTab('all')}
           >
-            For you
+            {t('TAB_ALL')}
           </div>
           <div
             className={`${
@@ -108,7 +110,7 @@ export default function HomePage() {
             } home__tab`}
             onClick={() => setActiveTab('following')}
           >
-            Following
+            {t('TAB_FOLLOWING')}
           </div>
         </div>
       </div>

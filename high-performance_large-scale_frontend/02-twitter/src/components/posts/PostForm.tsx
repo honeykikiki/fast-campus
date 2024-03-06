@@ -2,6 +2,7 @@ import { postImageUpload } from 'api/posts/PostApi';
 import AuthContext from 'context/AuthContext';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from 'firebaseApp';
+import useTranslation from 'hooks/useTranslation';
 import { useContext, useState } from 'react';
 import { FiImage } from 'react-icons/fi';
 import { toast } from 'react-toastify';
@@ -15,6 +16,7 @@ export default function PostForm() {
   const [hashTag, setHashTag] = useState<string>('');
   const [imageFile, setImageFile] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const t = useTranslation();
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -104,7 +106,7 @@ export default function PostForm() {
         className="post-form__textarea"
         name="content"
         id="content"
-        placeholder="What`s happing.."
+        placeholder={t('POST_PLACEHOLDER')}
         onChange={onChange}
         value={content}
         required
@@ -127,7 +129,7 @@ export default function PostForm() {
           className="post-form__input"
           name="hashtags"
           id="hashtags"
-          placeholder="해시태그 + 스페이스바 입력"
+          placeholder={t('POST_HASHTAG')}
           onChange={onChangeHashTag}
           onKeyUp={handleKeyUp}
           value={hashTag}
