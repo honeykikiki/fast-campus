@@ -544,6 +544,21 @@ div {
   justify-content: space-between;
   align-items: center;
 
+  &__btn-language {
+    @extend .button;
+    background-color: $gray;
+
+    &:focus,
+    &:hover {
+      background-color: $grayDark;
+    }
+  }
+
+  &__flex {
+    display: flex;
+    gap: 12px;
+  }
+
   &__image {
     border-radius: 50%;
     width: 100px;
