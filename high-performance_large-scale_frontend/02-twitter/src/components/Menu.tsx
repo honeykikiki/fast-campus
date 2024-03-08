@@ -25,7 +25,7 @@ export default function MenuList() {
           onClick={() => navigate('/')}
         >
           <BsHouse />
-          {t('MENU_HOME')}
+          <span className="footer__grid-text">{t('MENU_HOME')}</span>
         </button>
         <button
           type="button"
@@ -35,7 +35,7 @@ export default function MenuList() {
           onClick={() => navigate('/profile')}
         >
           <BiUserCircle />
-          {t('MENU_PROFILE')}
+          <span className="footer__grid-text">{t('MENU_PROFILE')}</span>
         </button>
         <button
           type="button"
@@ -45,7 +45,7 @@ export default function MenuList() {
           onClick={() => navigate('/search')}
         >
           <BiSearch />
-          {t('MENU_SEARCH')}
+          <span className="footer__grid-text">{t('MENU_SEARCH')}</span>
         </button>
         <button
           type="button"
@@ -55,7 +55,7 @@ export default function MenuList() {
           onClick={() => navigate('/notification')}
         >
           <IoMdNotificationsOutline />
-          {t('MENU_NOTI')}
+          <span className="footer__grid-text">{t('MENU_NOTI')}</span>
         </button>
         {user === null ? (
           <button type="button" onClick={() => navigate('/user/login')}>
@@ -72,7 +72,7 @@ export default function MenuList() {
             }}
           >
             <MdLogout />
-            {t('MENU_LOGOUT')}
+            <span className="footer__grid-text">{t('MENU_LOGOUT')}</span>
           </button>
         )}
       </div>
