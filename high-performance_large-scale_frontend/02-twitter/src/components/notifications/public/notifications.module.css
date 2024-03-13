@@ -1,0 +1,35 @@
+.notification {
+  padding: 8px 16px;
+  border-bottom: 1px solid #708090;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.notification:hover {
+  font-weight: 600;
+}
+
+.notification__flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.notification__createdAt {
+  color: #9ca3af;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.notification__unread {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #60a5fa;
+}
