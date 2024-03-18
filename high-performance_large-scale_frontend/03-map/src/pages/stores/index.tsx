@@ -50,6 +50,7 @@ export default function StoreListPage() {
     getNextPageParam: (lastPage) =>
       lastPage.data.length > 0 ? lastPage.page + 1 : undefined,
   });
+
   const FetchNext = useCallback(async () => {
     const res = await fetchNextPage();
     if (res.isError) {
