@@ -5,13 +5,16 @@ import { PrismaClient } from '@prisma/client';
 interface queryProps {
   page?: string;
   id?: string;
+  limit?: string;
+  q?: string;
+  district?: string;
 }
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<StoreApiResponse | StoreType[] | StoreType>
 ) {
-  const { page = '', id }: queryProps = req.query;
+  const { page = '', id, limit = '10', q, district }: queryProps = req.query;
   const prisma = new PrismaClient();
 
   if (page) {
@@ -19,8 +22,12 @@ export default async function handler(
     const skipPage = parseInt(page) - 1;
     const stores = await prisma.store.findMany({
       orderBy: { id: 'asc' },
-      take: 10,
+      take: parseInt(limit),
       skip: skipPage * 10,
+      where: {
+        name: q ? { contains: q } : {},
+        address: district ? { contains: district } : {},
+      },
     });
 
     res.status(200).json({

@@ -24,16 +24,15 @@ export const authOptions = {
       clientId: process.env.KAKAO_CLIENT_ID ?? '',
       clientSecret: process.env.KAKAO_CLIENT_SECRET ?? '',
     }),
-
-    // GithubProvider({
-    //   clientId: process.env.GITHUB_ID,
-    //   clientSecret: process.env.GITHUB_SECRET,
-    // }),
-    // ...add more providers here
   ],
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/users/login',
+  },
+  session: {
+    strategy: 'jwt' as const,
+    maxAge: 3 * 24 * 60 * 60, //3 days
+    updateAge: 24 * 60 * 60, //24 Hours
   },
 };
 
