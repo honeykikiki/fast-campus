@@ -4,12 +4,10 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import Map from '@/components/Map';
-import { useState } from 'react';
 import Marker from '@/components/Marker';
 
 export default function StoreEditPage() {
   const router = useRouter();
-  const [map, setMap] = useState();
   const { id } = router.query;
   const fetchStore = async () => {
     const { data } = await axios(`/api/stores?id=${id}`);
@@ -104,9 +102,9 @@ export default function StoreEditPage() {
       </div>
       {isSuccess && (
         <div className="overflow-hidden w-full mb-20 max-w-5xl mx-auto max-h-[600px]">
-          <Map setMap={setMap} lat={store.lat} lng={store.lng} />
+          <Map lat={store.lat} lng={store.lng} />
           {/* zoom={1} */}
-          <Marker map={map} store={store} />
+          <Marker store={store} />
         </div>
       )}
     </>

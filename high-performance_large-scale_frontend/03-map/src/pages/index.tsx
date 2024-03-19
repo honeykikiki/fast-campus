@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { StoreType } from '@/interface';
 
 import Map from '@/components/Map';
@@ -7,14 +6,11 @@ import StoreBox from '@/components/StoreBox';
 import axios from 'axios';
 
 export default function Home({ stores }: { stores: StoreType[] }) {
-  const [map, setMap] = useState(null);
-  const [currentStore, setCurrentStore] = useState(null);
-
   return (
     <>
-      <Map setMap={setMap} />
-      <Markers stores={stores} map={map} setCurrentStore={setCurrentStore} />
-      <StoreBox store={currentStore} setCurrentStore={setCurrentStore} />
+      <Map />
+      <Markers stores={stores} />
+      <StoreBox />
     </>
   );
 }

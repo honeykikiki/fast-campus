@@ -73,7 +73,7 @@ export default function StoreListPage() {
   }
 
   return (
-    <div className="px-4 md:max-w-4xl mx-auto py-8">
+    <div className="px-4 md:max-w-4xl mx-auto pb-8">
       <SearchFilter setQ={setQ} setDistrict={setDistrict} />
       <ul role="list" className="divide-y divide-gray-100">
         {isLoading ? (
