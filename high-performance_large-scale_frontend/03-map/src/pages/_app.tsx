@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { RecoilRoot } from 'recoil';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,7 @@ export default function App({
         <QueryClientProvider client={queryClient}>
           <Layout>
             <Component {...pageProps} />
+            <ToastContainer />
           </Layout>
           <ReactQueryDevtools />
         </QueryClientProvider>
