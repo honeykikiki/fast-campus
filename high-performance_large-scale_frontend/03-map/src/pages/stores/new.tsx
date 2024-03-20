@@ -1,4 +1,6 @@
+import AddressSearch from '@/components/AddressSearch';
 import { CATEGORY_ARR, FOOD_CERTIFY_ARR, STORE_TYPE_ARR } from '@/data/store';
+import { StoreType } from '@/interface';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
@@ -8,9 +10,10 @@ export default function StoreNewPage() {
   const {
     register,
     handleSubmit,
+    setValue,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm<StoreType>();
   const router = useRouter();
 
   return (
@@ -28,6 +31,7 @@ export default function StoreNewPage() {
             // 실패
             toast.error('다시 시도해주세요.');
           }
+          console.log(result);
         } catch (e) {
           console.log(e);
           toast.error('데이터 생성중 문제가 생겼습니다.\n 다시 시도해주세요.');
@@ -101,21 +105,12 @@ export default function StoreNewPage() {
               </div>
             </div>
 
-            <div className="col-span-full">
-              <label
-                htmlFor="address"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                주소 (다음 주소 검색 API)
-              </label>
-              <div className="mt-2">
-                <input
-                  {...register('address', { required: true })}
-                  className="px-2 block w-full rounded-md border-0 outline-none py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-                {isValid(errors.address?.type === 'required')}
-              </div>
-            </div>
+            <AddressSearch
+              register={register}
+              errors={errors}
+              setValue={setValue}
+              isValid={isValid}
+            />
 
             <div className="sm:col-span-2 sm:col-start-1">
               <label
