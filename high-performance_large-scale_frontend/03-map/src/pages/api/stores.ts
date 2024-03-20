@@ -3,6 +3,8 @@ import { StoreApiResponse, StoreType } from '@/interface';
 
 import prisma from '@/db';
 import axios from 'axios';
+import { getServerSession } from 'next-auth';
+import { authOptions } from './auth/[...nextauth]';
 
 interface queryProps {
   page?: string;
@@ -17,6 +19,8 @@ export default async function handler(
   res: NextApiResponse<StoreApiResponse | StoreType[] | StoreType | null>
 ) {
   const { page = '', id, limit = '10', q, district }: queryProps = req.query;
+  const session = await getServerSession(req, res, authOptions);
+
   if (req.method === 'POST') {
     const formData = req.body;
     const headers = {
@@ -90,7 +94,14 @@ export default async function handler(
     } else {
       const stores = await prisma.store.findMany({
         orderBy: { id: 'asc' },
-        where: { id: id ? parseInt(id) : {} },
+        where: {
+          id: id ? parseInt(id) : {},
+        },
+        include: {
+          likes: {
+            where: session ? { userId: session.user.id } : {},
+          },
+        },
       });
 
       return res.status(200).json(id ? stores[0] : stores);

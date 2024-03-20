@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 
@@ -6,9 +6,10 @@ import GoogleProvider from 'next-auth/providers/google';
 import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
 import prisma from '@/db';
+import { Adapter } from 'next-auth/adapters';
 
-export const authOptions = {
-  PrismaAdapter: PrismaAdapter(prisma),
+export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(prisma) as Adapter,
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
@@ -32,6 +33,22 @@ export const authOptions = {
     strategy: 'jwt' as const,
     maxAge: 3 * 24 * 60 * 60, //3 days
     updateAge: 24 * 60 * 60, //24 Hours
+  },
+  callbacks: {
+    session: ({ session, token }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: token.sub,
+      },
+    }),
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.sub = user.id;
+      }
+
+      return token;
+    },
   },
 };
 

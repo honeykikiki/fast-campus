@@ -9,6 +9,7 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
+import Like from '@/components/Like';
 
 export default function StoreEditPage() {
   const router = useRouter();
@@ -77,8 +78,9 @@ export default function StoreEditPage() {
               {store?.address}
             </p>
           </div>
-          {status === 'authenticated' && (
+          {status === 'authenticated' && store && (
             <div className="flex items-center gap-4 px-4 py-3">
+              <Like storeId={store.id} />
               <Link
                 className="bg-blue-700 hover:bg-blue-600 py-2 px-3.5 rounded-md text-white"
                 href={`/stores/${store?.id}/edit`}
