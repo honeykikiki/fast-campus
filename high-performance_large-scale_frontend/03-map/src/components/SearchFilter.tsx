@@ -7,7 +7,7 @@ export default function SearchFilter() {
   const [search, setSearch] = useRecoilState(searchState);
 
   return (
-    <div className="flex flex-col md:flex-row gap-2 my-4">
+    <div className="flex flex-col md:flex-row gap-2 my-4 mx-2">
       <div className="flex items-center justify-center w-full gap-2">
         <AiOutlineSearch className="w-6 h-6" />
         <input

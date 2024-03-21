@@ -26,9 +26,14 @@ export default function Navbar() {
             찜한 가게
           </Link>
           {status === 'authenticated' ? (
-            <button type="button" onClick={() => signOut()}>
-              로그아웃
-            </button>
+            <>
+              <Link href="/users/mypage" className="navbar__list--item">
+                마이페이지
+              </Link>
+              <button type="button" onClick={() => signOut()}>
+                로그아웃
+              </button>
+            </>
           ) : (
             <Link href="/api/auth/signin" className="navbar__list--item">
               로그인
@@ -46,7 +51,10 @@ export default function Navbar() {
       </div>
       {/* mobile navbar */}
       {isOpen && (
-        <div className="navbar--mobile">
+        <div
+          className="navbar--mobile"
+          onClick={() => setIsOpen((val) => !val)}
+        >
           <div className="navbar__list--mobile">
             <Link href="/stores" className="navbar__list--item--mobile">
               맛집 목록
@@ -57,9 +65,26 @@ export default function Navbar() {
             <Link href="/users/likes" className="navbar__list--item--mobile">
               찜한 가게
             </Link>
-            <Link href="/api/auth/signin" className="navbar__list--item">
-              로그인
-            </Link>
+            {status === 'authenticated' ? (
+              <>
+                <Link
+                  href="/users/mypage"
+                  className="navbar__list--item--mobile"
+                >
+                  마이페이지
+                </Link>
+                <button type="button" onClick={() => signOut()}>
+                  로그아웃
+                </button>
+              </>
+            ) : (
+              <Link
+                href="/api/auth/signin"
+                className="navbar__list--item--mobile"
+              >
+                로그인
+              </Link>
+            )}
           </div>
         </div>
       )}
