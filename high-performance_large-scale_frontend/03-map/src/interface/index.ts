@@ -9,6 +9,7 @@ export interface StoreType {
   storeType?: string | null;
   foodCertifyName?: string | null;
   likes?: LikeType[];
+  comments?: CommentType[];
 }
 
 export interface StoreApiResponse {
@@ -35,4 +36,28 @@ export interface LikeType {
   storeId: number;
   userId: number;
   store?: StoreType;
+}
+
+export interface CommentType {
+  id: number;
+  createdAt: Date;
+  storeId: number;
+  body: string;
+  userId: number;
+  store?: StoreType;
+  user?: UserType;
+}
+
+interface UserType {
+  id: number;
+  email: string;
+  name: string | null;
+  image: string | null;
+}
+
+export interface CommentApiResponse {
+  data: CommentType[];
+  totalPage?: number;
+  totalCount?: number;
+  page?: number;
 }

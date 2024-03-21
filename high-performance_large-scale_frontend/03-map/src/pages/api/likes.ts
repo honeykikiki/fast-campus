@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { NextAuthOptions, getServerSession } from 'next-auth';
-import { AuthOptions } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import prisma from '@/db';
 import { authOptions } from './auth/[...nextauth]';
 import { LikeType } from '@/interface';
@@ -37,7 +36,7 @@ export default async function handler(
       like = await prisma.like.create({
         data: {
           storeId,
-          userId: session?.user.id,
+          userId: session?.user ? session?.user.id : 0,
         },
       });
 

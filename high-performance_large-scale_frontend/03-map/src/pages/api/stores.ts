@@ -86,8 +86,8 @@ export default async function handler(
       });
 
       res.status(200).json({
-        page: parseInt(page),
         data: stores,
+        page: parseInt(page),
         totalCount: count,
         totalPage: Math.floor(count / 10),
       });

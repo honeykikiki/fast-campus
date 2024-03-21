@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import Like from '@/components/Like';
+import Comments from '@/components/Comments';
 
 export default function StoreEditPage() {
   const router = useRouter();
@@ -158,6 +159,8 @@ export default function StoreEditPage() {
           <Marker store={store} />
         </div>
       )}
+
+      {store && <Comments store={store} />}
     </>
   );
 }
