@@ -12,6 +12,7 @@ import Loader from '@/components/Loader';
 import SearchFilter from '@/components/SearchFilter';
 import { useRecoilValue } from 'recoil';
 import { searchState } from '@/atom';
+import StoreList from '@/components/StoreList';
 
 export default function StoreListPage() {
   const router = useRouter();
@@ -79,41 +80,7 @@ export default function StoreListPage() {
           stores?.pages?.map((page, index) => (
             <React.Fragment key={index}>
               {page.data.map((store: StoreType, i: number) => (
-                <li
-                  className="px-4 flex justify-between gap-x-6 py-5 hover:bg-gray-100 cursor-pointer rounded"
-                  key={store.id}
-                  onClick={() => router.push(`/stores/${store.id}`)}
-                >
-                  <div className="flex gap-x-4">
-                    <Image
-                      src={
-                        store?.category
-                          ? `/images/markers/${store?.category}.png`
-                          : '/images/markers/default.png'
-                      }
-                      width={48}
-                      height={48}
-                      alt={'이미지'}
-                    />
-                    <div className="">
-                      <div className="text-sm font-semibold leading-9 text-gray-900">
-                        {store?.name}
-                      </div>
-                      <div className="mt-1 text-xs font-semibold leading-5 text-gray-700">
-                        {store?.name}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hidden sm:flex sm:flex-col sm:items-end">
-                    <div className="text-sm font-semibold leading-9 text-gray-900">
-                      {store?.address}
-                    </div>
-                    <div className="mt-1 text-xs font-semibold leading-5 text-gray-700">
-                      {store?.phone || '번호 없음'} | {store?.foodCertifyName} |{' '}
-                      {store?.category}
-                    </div>
-                  </div>
-                </li>
+                <StoreList i={index} store={store} key={index} />
               ))}
             </React.Fragment>
           ))

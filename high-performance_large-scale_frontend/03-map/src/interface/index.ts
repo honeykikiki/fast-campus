@@ -34,4 +34,5 @@ export interface LikeType {
   createdAt: Date;
   storeId: number;
   userId: number;
+  store?: StoreType;
 }

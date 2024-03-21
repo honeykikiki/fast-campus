@@ -7,7 +7,7 @@ import { LikeType } from '@/interface';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<LikeType | null>
+  res: NextApiResponse<LikeType | LikeType[] | null>
 ) {
   const session = await getServerSession(req, res, authOptions);
   if (!session?.user) {
@@ -43,5 +43,17 @@ export default async function handler(
 
       return res.status(201).json(like);
     }
+  } else if (req.method === 'GET') {
+    const likes = await prisma.like.findMany({
+      orderBy: { createdAt: 'desc' },
+      where: {
+        userId: session.user.id,
+      },
+      include: {
+        store: true,
+      },
+    });
+
+    return res.status(200).json(likes);
   }
 }
