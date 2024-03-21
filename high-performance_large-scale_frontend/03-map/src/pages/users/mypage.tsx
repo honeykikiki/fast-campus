@@ -1,7 +1,26 @@
+import CommentsBox from '@/components/Comments/CommentsBox';
+import Pagination from '@/components/Pagination';
+import { CommentApiResponse } from '@/interface';
+import axios from 'axios';
 import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useQuery } from 'react-query';
 
 export default function MyPagePage() {
   const { data } = useSession();
+  const router = useRouter();
+  let { page = '1' } = router.query;
+  const fetchComments = async () => {
+    const { data } = await axios(
+      `/api/comments?limit=${10}&page=${page}&user=${true}`
+    );
+
+    return data as CommentApiResponse;
+  };
+  const { data: comments, refetch } = useQuery(
+    `comments-${page}`,
+    fetchComments
+  );
 
   return (
     <div className="md:max-w-4xl mx-auto py-8">
@@ -38,7 +57,7 @@ export default function MyPagePage() {
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               <img
                 src={data?.user.image || '/images/markers/default.png'}
-                className="rounded-full"
+                className="rounded-full w-12 h-12"
                 width={48}
                 height={48}
                 alt="프로필 이미지"
@@ -61,6 +80,37 @@ export default function MyPagePage() {
           </div>
         </dl>
       </div>
+      <div className="mt-8 px-4 sm:px-0">
+        <h3 className="text-base font-semibold leading-7 text-gray-900">
+          내가 작성한 댓글
+        </h3>
+        <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+          댓글 리스트 ({comments?.totalCount}개)
+        </p>
+      </div>
+      <div className="my-10">
+        {comments?.data && comments?.data?.length > 0 ? (
+          comments?.data.map((comment, i) => (
+            <CommentsBox
+              key={comment.id}
+              comment={comment}
+              displayStore={true}
+            />
+          ))
+        ) : (
+          <div className="text-sm p-4 border border-gray-200 text-gray-200">
+            댓글이 없습니다.
+          </div>
+        )}
+      </div>
+      {comments?.totalPage && (
+        <Pagination
+          total={comments?.totalPage}
+          page={page.toString()}
+          // pathname={`/stores/${store.id}`}
+          pathname={``}
+        />
+      )}
     </div>
   );
 }

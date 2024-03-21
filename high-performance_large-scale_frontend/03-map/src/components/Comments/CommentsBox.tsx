@@ -6,9 +6,13 @@ import { toast } from 'react-toastify';
 
 interface CommentListProps {
   comment: CommentType;
+  displayStore?: boolean;
 }
 
-export default function CommentsBox({ comment }: CommentListProps) {
+export default function CommentsBox({
+  comment,
+  displayStore,
+}: CommentListProps) {
   const { data: session, status } = useSession();
 
   const handleDeleteComment = async (id: number) => {
@@ -31,7 +35,7 @@ export default function CommentsBox({ comment }: CommentListProps) {
 
   return (
     <div
-      // key={comment.id}
+      key={comment.id}
       className="flex items-center space-x-4 text-sm text-gray-500 mb-8 border-b border-gray-100 pb-8"
     >
       <div>
@@ -52,7 +56,7 @@ export default function CommentsBox({ comment }: CommentListProps) {
           {new Date(comment?.createdAt)?.toLocaleDateString()}
         </div>
         <div className="text-black mt-1 text-base">{comment.body}</div>
-        {/* {displayStore && comment.store && (
+        {displayStore && comment.store && (
           <div className="mt-2">
             <Link
               href={`/stores/${comment.store.id}`}
@@ -61,7 +65,7 @@ export default function CommentsBox({ comment }: CommentListProps) {
               {comment.store.name}
             </Link>
           </div>
-        )} */}
+        )}
       </div>
       <div>
         {comment.userId === session?.user.id && (

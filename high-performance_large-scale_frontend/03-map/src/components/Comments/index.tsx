@@ -5,6 +5,7 @@ import { CommentApiResponse, StoreType } from '@/interface';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Pagination from '../Pagination';
 
 interface CommentsProps {
   store: StoreType;
@@ -22,7 +23,7 @@ export default function Comments({ store }: CommentsProps) {
     return data as CommentApiResponse;
   };
   const { data: comments, refetch } = useQuery(
-    `comments-${store.id}`,
+    `comments-${page}`,
     fetchComments
   );
 
@@ -42,6 +43,13 @@ export default function Comments({ store }: CommentsProps) {
           </div>
         )}
       </div>
+      {comments?.totalPage && (
+        <Pagination
+          total={comments?.totalPage}
+          page={page.toString()}
+          pathname={`/stores/${store.id}`}
+        />
+      )}
     </div>
   );
 }

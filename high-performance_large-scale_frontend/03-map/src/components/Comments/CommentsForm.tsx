@@ -20,7 +20,6 @@ export default function CommentsForm({ storeId, refetch }: CommentsProps) {
     <div className="flex flex-col space-y-2">
       <form
         onSubmit={handleSubmit(async (data) => {
-          console.log(data);
           const result = await axios.post('/api/comments', {
             ...data,
             storeId,
