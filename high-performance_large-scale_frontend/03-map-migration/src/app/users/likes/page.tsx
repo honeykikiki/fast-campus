@@ -39,7 +39,7 @@ export default function LikesPage({ params }: { params: { page: string } }) {
           <Loading />
         ) : (
           likes?.map((like: LikeType, index: number) => (
-            <StoreList i={index} store={like.store} key={index} />
+            <StoreList store={like.store} key={index} />
           ))
         )}
         {isSuccess && likes.length <= 0 && (

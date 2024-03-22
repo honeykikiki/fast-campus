@@ -15,16 +15,18 @@ export default function StoreList({ store }: StoreListProps) {
       onClick={() => router.push(`/stores/${store?.id}`)}
     >
       <div className="flex gap-x-4">
-        <Image
-          src={
-            store?.category
-              ? `/images/markers/${store?.category}.png`
-              : '/images/markers/default.png'
-          }
-          width={48}
-          height={48}
-          alt="아이콘 이미지"
-        />
+        <div>
+          <Image
+            src={
+              store?.category
+                ? `/images/markers/${store?.category}.png`
+                : '/images/markers/default.png'
+            }
+            width={48}
+            height={48}
+            alt="아이콘 이미지"
+          />
+        </div>
         <div>
           <div className="text-sm font-semibold leading-6 text-gray-900">
             {store?.name}
