@@ -1,20 +1,23 @@
+'use client';
+
 import { useSession } from 'next-auth/react';
 import CommentsForm from './CommentsForm';
 import CommentsBox from './CommentsBox';
 import { CommentApiResponse, StoreType } from '@/interface';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import Pagination from '../Pagination';
 
 interface CommentsProps {
   store: StoreType;
+  params?: {
+    page?: string;
+  };
 }
 
-export default function Comments({ store }: CommentsProps) {
+export default function Comments({ store, params }: CommentsProps) {
   const { status } = useSession();
-  const router = useRouter();
-  let { page = '1' } = router.query;
+  let page = params?.page ?? '1';
   const fetchComments = async () => {
     const { data } = await axios(
       `/api/comments?storeId=${store.id}&limit=${10}&page=${page}`
@@ -38,18 +41,16 @@ export default function Comments({ store }: CommentsProps) {
             <CommentsBox key={comment.id} comment={comment} />
           ))
         ) : (
-          <div className="text-sm p-4 border border-gray-200 text-gray-200">
+          <div className="text-sm p-4 border border-gray-600 text-gray-600">
             댓글이 없습니다.
           </div>
         )}
       </div>
-      {comments?.totalPage && (
-        <Pagination
-          total={comments?.totalPage}
-          page={page.toString()}
-          pathname={`/stores/${store.id}`}
-        />
-      )}
+      <Pagination
+        total={comments?.totalPage ?? 0}
+        page={page.toString()}
+        pathname={`/stores/${store.id}`}
+      />
     </div>
   );
 }

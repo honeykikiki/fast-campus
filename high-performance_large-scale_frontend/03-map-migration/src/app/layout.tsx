@@ -1,10 +1,10 @@
 import '@/styles/globals.css';
+import { NextProvider, NextLayout } from './providers';
 import { Metadata } from 'next';
-import { NextLayout, NextProvider } from './provider';
 
 export const metadata: Metadata = {
-  title: 'Next-map',
-  description: '맛집 앱',
+  title: 'Fastcampus NextMap',
+  description: 'Next.js 13을 이용한 맛집 앱',
 };
 
 export default function RootLayout({
@@ -14,9 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <NextProvider>
-        <NextLayout>{children}</NextLayout>
-      </NextProvider>
+      <body>
+        <NextProvider>
+          <NextLayout>{children}</NextLayout>
+        </NextProvider>
+      </body>
     </html>
   );
 }
