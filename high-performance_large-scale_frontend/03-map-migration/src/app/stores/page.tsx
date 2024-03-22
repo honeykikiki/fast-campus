@@ -79,7 +79,7 @@ export default function StoreListPage() {
           stores?.pages?.map((page, index) => (
             <React.Fragment key={index}>
               {page.data.map((store: StoreType, i: number) => (
-                <StoreList i={index} store={store} key={index} />
+                <StoreList store={store} key={store.id} />
               ))}
             </React.Fragment>
           ))

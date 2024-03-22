@@ -34,10 +34,7 @@ export default function CommentsBox({
   };
 
   return (
-    <div
-      key={comment.id}
-      className="flex items-center space-x-4 text-sm text-gray-500 mb-8 border-b border-gray-100 pb-8"
-    >
+    <div className="flex items-center space-x-4 text-sm text-gray-500 mb-8 border-b border-gray-100 pb-8">
       <div>
         <img
           src={comment?.user?.image || '/images/markers/default.png'}

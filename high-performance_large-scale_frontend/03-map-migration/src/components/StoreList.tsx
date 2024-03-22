@@ -4,16 +4,14 @@ import { useRouter } from 'next/navigation';
 
 interface StoreListProps {
   store?: StoreType;
-  i: number;
 }
 
-export default function StoreList({ store, i }: StoreListProps) {
+export default function StoreList({ store }: StoreListProps) {
   const router = useRouter();
 
   return (
     <li
       className="flex justify-between gap-x-6 py-5 cursor-pointer hover:bg-gray-50"
-      key={i}
       onClick={() => router.push(`/stores/${store?.id}`)}
     >
       <div className="flex gap-x-4">
