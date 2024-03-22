@@ -4,12 +4,14 @@ import Map from '@/components/Map';
 import Markers from '@/components/Markers';
 import StoreBox from '@/components/StoreBox';
 import axios from 'axios';
+import CurrentLocationButton from '@/components/CurrentLocationButton';
 
 export default function Home({ stores }: { stores: StoreType[] }) {
   return (
     <>
       <Map />
       <Markers stores={stores} />
+      <CurrentLocationButton />
       <StoreBox />
     </>
   );
