@@ -5,15 +5,13 @@ import Pagination from '@/components/Pagination';
 import { CommentApiResponse } from '@/interface';
 import axios from 'axios';
 import { signOut, useSession } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 import { useQuery } from 'react-query';
 
-export default function MyPagePage({
-  searchParams,
-}: {
-  searchParams: { page: string };
-}) {
+export default function MyPagePage({}) {
   const { data } = useSession();
-  let { page = '1' } = searchParams;
+  const searchParams = useSearchParams();
+  const page = searchParams?.get('page') ?? '1';
   const fetchComments = async () => {
     const { data } = await axios(
       `/api/comments?limit=${10}&page=${page}&user=${true}`

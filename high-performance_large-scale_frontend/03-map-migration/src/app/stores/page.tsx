@@ -59,7 +59,7 @@ export default function StoreListPage() {
     }
 
     return () => clearTimeout(timerId);
-  }, [FetchNext, isPageEnd, hasNextPage]);
+  }, [FetchNext, isPageEnd, hasNextPage, fetchNextPage]);
 
   if (isError) {
     return (
@@ -78,7 +78,7 @@ export default function StoreListPage() {
         ) : (
           stores?.pages?.map((page, index) => (
             <React.Fragment key={index}>
-              {page.data.map((store: StoreType, i: number) => (
+              {page.data.map((store: StoreType) => (
                 <StoreList store={store} key={store.id} />
               ))}
             </React.Fragment>

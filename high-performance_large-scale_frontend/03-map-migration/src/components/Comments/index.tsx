@@ -15,7 +15,6 @@ interface CommentsProps {
 
 export default function Comments({ store, page = '1' }: CommentsProps) {
   const { status } = useSession();
-  console.log(page);
 
   const fetchComments = async () => {
     const { data } = await axios(

@@ -6,13 +6,11 @@ import { useQuery } from 'react-query';
 import Pagination from '@/components/Pagination';
 import { LikeType } from '@/interface';
 import StoreList from '@/components/StoreList';
+import { useSearchParams } from 'next/navigation';
 
-export default function LikesPage({
-  searchParams,
-}: {
-  searchParams: { page: string };
-}) {
-  const { page = '1' } = searchParams;
+export default function LikesPage() {
+  const searchParams = useSearchParams();
+  const page = searchParams?.get('page') ?? '1';
 
   const fetchLikes = async () => {
     const { data } = await axios(`/api/likes?limit=10&page=${page}`);

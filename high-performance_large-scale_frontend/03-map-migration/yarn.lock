@@ -11,6 +11,7 @@ __metadata:
   dependencies:
     "@auth/prisma-adapter": ^1.5.0
     "@prisma/client": ^5.11.0
+    "@types/gtag.js": ^0.0.19
     "@types/node": ^20
     "@types/react": ^18
     "@types/react-dom": ^18
@@ -486,6 +487,13 @@ __metadata:
   version: 0.6.0
   resolution: "@types/cookie@npm:0.6.0"
   checksum: 5edce7995775b0b196b142883e4d4f71fd93c294eaec973670f1fa2540b70ea7390408ed513ddefef5fcb12a578100c76596e8f2a714b0c2ae9f70ee773f4510
+  languageName: node
+  linkType: hard
+
+"@types/gtag.js@npm:^0.0.19":
+  version: 0.0.19
+  resolution: "@types/gtag.js@npm:0.0.19"
+  checksum: 7ecd5ae645a33f02ca886f2ba0419b20c95358b80ef389a2dc42e80fbf850e92139e868f18d04285f93cdadbf6cb8861a64a7e77cc42eb6b8c84d3e812604192
   languageName: node
   linkType: hard
 

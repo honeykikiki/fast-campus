@@ -3,7 +3,7 @@
 import Loader from '@/components/Loader';
 import { StoreType } from '@/interface';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useQuery } from 'react-query';
 import Map from '@/components/Map';
 import Marker from '@/components/Marker';
@@ -14,13 +14,9 @@ import { useEffect } from 'react';
 import Like from '@/components/Like';
 import Comments from '@/components/Comments';
 
-export default function StoreEditPage({
-  params,
-  searchParams,
-}: {
-  params: { id: string };
-  searchParams: { page: string };
-}) {
+export default function StoreEditPage({ params }: { params: { id: string } }) {
+  const searchParams = useSearchParams();
+  const page = searchParams?.get('page') ?? '1';
   const router = useRouter();
   const { id } = params;
   const { status } = useSession();
@@ -162,7 +158,7 @@ export default function StoreEditPage({
         </div>
       )}
 
-      {store && <Comments store={store} page={searchParams.page} />}
+      {store && <Comments store={store} page={page} />}
     </>
   );
 }
