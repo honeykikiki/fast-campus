@@ -28,7 +28,6 @@ export default function StoreEditPage({
     const { data } = await axios(`/api/stores?id=${id}`);
     return data as StoreType;
   };
-  console.log(searchParams);
 
   const {
     data: store,
@@ -57,13 +56,6 @@ export default function StoreEditPage({
       }
     }
   };
-
-  // useEffect(() => {
-  //   if (isSuccess && !store) {
-  //     toast.error('가게의 정보가 없습니다.');
-  //     router.replace('/');
-  //   }
-  // }, [isSuccess, store]);
 
   if (isError) {
     return (
