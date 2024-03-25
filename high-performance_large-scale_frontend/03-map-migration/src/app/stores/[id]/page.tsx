@@ -14,7 +14,13 @@ import { useEffect } from 'react';
 import Like from '@/components/Like';
 import Comments from '@/components/Comments';
 
-export default function StoreEditPage({ params }: { params: { id: string } }) {
+export default function StoreEditPage({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: { page: string };
+}) {
   const router = useRouter();
   const { id } = params;
   const { status } = useSession();
@@ -22,6 +28,7 @@ export default function StoreEditPage({ params }: { params: { id: string } }) {
     const { data } = await axios(`/api/stores?id=${id}`);
     return data as StoreType;
   };
+  console.log(searchParams);
 
   const {
     data: store,
@@ -163,7 +170,7 @@ export default function StoreEditPage({ params }: { params: { id: string } }) {
         </div>
       )}
 
-      {store && <Comments store={store} />}
+      {store && <Comments store={store} page={searchParams.page} />}
     </>
   );
 }

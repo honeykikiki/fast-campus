@@ -10,14 +10,13 @@ import Pagination from '../Pagination';
 
 interface CommentsProps {
   store: StoreType;
-  params?: {
-    page?: string;
-  };
+  page: string;
 }
 
-export default function Comments({ store, params }: CommentsProps) {
+export default function Comments({ store, page = '1' }: CommentsProps) {
   const { status } = useSession();
-  let page = params?.page ?? '1';
+  console.log(page);
+
   const fetchComments = async () => {
     const { data } = await axios(
       `/api/comments?storeId=${store.id}&limit=${10}&page=${page}`
@@ -26,7 +25,7 @@ export default function Comments({ store, params }: CommentsProps) {
     return data as CommentApiResponse;
   };
   const { data: comments, refetch } = useQuery(
-    `comments-${page}`,
+    `comments-${store.id}-${page}`,
     fetchComments
   );
 
@@ -37,7 +36,7 @@ export default function Comments({ store, params }: CommentsProps) {
       )}
       <div className="my-10">
         {comments?.data && comments?.data?.length > 0 ? (
-          comments?.data.map((comment, i) => (
+          comments?.data.map((comment) => (
             <CommentsBox key={comment.id} comment={comment} />
           ))
         ) : (
@@ -48,7 +47,7 @@ export default function Comments({ store, params }: CommentsProps) {
       </div>
       <Pagination
         total={comments?.totalPage ?? 0}
-        page={page.toString()}
+        page={page?.toString()}
         pathname={`/stores/${store.id}`}
       />
     </div>

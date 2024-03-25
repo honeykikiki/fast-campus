@@ -7,8 +7,12 @@ import Pagination from '@/components/Pagination';
 import { LikeType } from '@/interface';
 import StoreList from '@/components/StoreList';
 
-export default function LikesPage({ params }: { params: { page: string } }) {
-  const { page = '1' } = params;
+export default function LikesPage({
+  searchParams,
+}: {
+  searchParams: { page: string };
+}) {
+  const { page = '1' } = searchParams;
 
   const fetchLikes = async () => {
     const { data } = await axios(`/api/likes?limit=10&page=${page}`);
@@ -48,6 +52,7 @@ export default function LikesPage({ params }: { params: { page: string } }) {
           </div>
         )}
       </ul>
+
       <Pagination
         total={likes?.totalPage}
         page={page}
