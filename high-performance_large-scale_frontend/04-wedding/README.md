@@ -149,5 +149,22 @@ module.exports = {
 
 
 # SCSS 세팅
+- yarn add classnames sass
 
-yarn add classnames sass
+# JSON Server
+<a href="https://github.com/typicode/json-server">https://github.com/typicode/json-server</a>
+
+- REST 는 웹의 기본 프로토콜인 HTTP를 기반으로 구현되며, HTTP 메서드와 URL 을 이용하여 자원과 하고자하는 행동을 표현합니다
+- REST API는 REST 한 방식으로 설계된 API 입니다
+- Json Server는 JSON 파일을 이용하여 Rest API 서버를 빠르고 간단하게 생성하기 위한 도구입니다.
+
+- JSON Server 설치
+  > yarn add -D json-server
+- db.json 생성
+- package.json 에 명령어 추가
+  - script에 코드 추가
+``` json
+"scripts": { 
+  "dev:db": "json-server db.json --watch --port=8888"
+}
+```
