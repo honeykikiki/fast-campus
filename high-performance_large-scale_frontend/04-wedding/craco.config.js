@@ -6,7 +6,7 @@ module.exports = {
       plugin: CrocoAlias,
       options: {
         source: 'tsconfig',
-        tsConfigPath: 'tsconfing.paths.js',
+        tsConfigPath: 'tsconfig.paths.json',
       },
     },
   ],

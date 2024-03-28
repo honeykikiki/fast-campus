@@ -151,7 +151,7 @@ module.exports = {
 # SCSS 세팅
 - yarn add classnames sass
 
-# JSON Server
+# JSON Server 세팅
 <a href="https://github.com/typicode/json-server">https://github.com/typicode/json-server</a>
 
 - REST 는 웹의 기본 프로토콜인 HTTP를 기반으로 구현되며, HTTP 메서드와 URL 을 이용하여 자원과 하고자하는 행동을 표현합니다
@@ -167,4 +167,16 @@ module.exports = {
 "scripts": { 
   "dev:db": "json-server db.json --watch --port=8888"
 }
+```
+
+# font 세팅
+- 웹 폰트 서비스 이용
+  - 웹서버에서 가져오기 떄문에 오래걸리는 이슈가 있음
+ex: <link href="폰트 서비스 url">
+
+- 웹 폰트 서비스 이용
+  - 다운로드 방식
+ex: 
+``` css
+@font-face { font-family: "폰트이름"; src: url("폰트경로"); }
 ```
