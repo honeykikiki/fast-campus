@@ -6,11 +6,12 @@ import Video from './components/sections/Video'
 import FullScreenMessage from '@shared/FullScreenMessage'
 import { Wedding } from '@models/wedding'
 import ImageGallery from '@components/sections/ImageGallery'
-import Intro from './components/sections/Intro'
-import Invitation from './components/sections/Invitation'
-import Calendar from './components/sections/Calendar'
-import Map from './components/sections/Map'
-import Contact from './components/sections/contact'
+import Intro from '@components/sections/Intro'
+import Invitation from '@components/sections/Invitation'
+import Calendar from '@components/sections/Calendar'
+import Map from '@components/sections/Map'
+import Contact from '@components/sections/contact'
+import Share from '@components/sections/Share'
 
 const cx = classNames.bind(styles)
 
@@ -78,6 +79,7 @@ function App() {
       <Calendar date={date} />
       <Map location={location} />
       <Contact groom={groom} bride={bride} />
+      <Share groomName={groom.name} brideName={bride.name} date={date} />
     </div>
   )
 }
