@@ -10,7 +10,5 @@ export default function Text({ children }: { children: string }) {
     )
   })
 
-  console.log(message)
-
   return <div>{message}</div>
 }

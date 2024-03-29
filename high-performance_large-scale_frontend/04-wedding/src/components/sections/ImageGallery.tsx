@@ -1,10 +1,10 @@
 import Section from '@shared/Section'
-import classnames from 'classnames/bind'
+import classNames from 'classnames/bind'
 import styles from './ImageGallery.module.scss'
 import ImageViewer from '../imageViewer'
 import { useState } from 'react'
 
-const cx = classnames.bind(styles)
+const cx = classNames.bind(styles)
 
 export default function ImageGallery({ images }: { images: string[] }) {
   const [selectedIdx, setSelectedIdx] = useState(-1)
