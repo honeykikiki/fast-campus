@@ -44,11 +44,11 @@ export default function AttendCountModal({ wedding }: { wedding: Wedding }) {
           },
         })
 
-        // localStorage.setItem('@have-seen-modal', 'true')
+        localStorage.setItem('@have-seen-modal', 'true')
         close()
       },
     })
-  }, []) // eslint-disable-line
+  }, [close, havSeenModal, open, wedding])
 
   return <div></div>
 }
