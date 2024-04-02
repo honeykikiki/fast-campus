@@ -1,52 +1,23 @@
-import classNames from 'classnames/bind'
-import { useEffect, useState } from 'react'
-import styles from './App.module.scss'
-import Heading from './components/sections/Heading'
-import Video from './components/sections/Video'
-import FullScreenMessage from '@shared/FullScreenMessage'
-import { Wedding } from '@models/wedding'
+import Calendar from '@components/sections/Calendar'
+import Contact from '@components/sections/contact'
 import ImageGallery from '@components/sections/ImageGallery'
 import Intro from '@components/sections/Intro'
 import Invitation from '@components/sections/Invitation'
-import Calendar from '@components/sections/Calendar'
 import Map from '@components/sections/Map'
-import Contact from '@components/sections/contact'
 import Share from '@components/sections/Share'
+import FullScreenMessage from '@shared/FullScreenMessage'
+import classNames from 'classnames/bind'
+import styles from './App.module.scss'
 import AttendCountModal from './components/AttendCountModal'
+import Heading from './components/sections/Heading'
+import Video from './components/sections/Video'
+import useWedding from './hooks/useWedding'
 
 const cx = classNames.bind(styles)
 
 function App() {
-  const [wedding, setWedding] = useState<Wedding | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-  const [count, setCount] = useState(0)
-
   // 1. 웨딩 데이터 호출 (빈 배열은 한번만 호출)
-  useEffect(() => {
-    setLoading(true)
-    fetch('http://localhost:8888/wedding')
-      .then((res) => {
-        if (res.ok === false) {
-          throw new Error('청첩장 정보를 불러오지 못했습니다.')
-        }
-        return res.json()
-      })
-      .then((data) => {
-        setWedding(data)
-      })
-      .catch((e) => {
-        setError(true)
-        console.log(e)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [])
-
-  if (loading) {
-    return <FullScreenMessage type={'loading'} />
-  }
+  const { wedding, error } = useWedding()
 
   if (error) {
     return <FullScreenMessage type={'error'} />
@@ -67,12 +38,6 @@ function App() {
 
   return (
     <div className={cx('container')}>
-      <button
-        style={{ position: 'fixed', top: '0' }}
-        onClick={() => setCount((prev) => prev + 1)}
-      >
-        + {count}
-      </button>
       <Heading date={date} />
       <Video />
       <Intro

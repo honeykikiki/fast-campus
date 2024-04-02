@@ -1,10 +1,10 @@
-import classNames from 'classnames/bind'
 import Accordion from '@shared/Accordion'
-
 import Section from '@shared/Section'
+import classNames from 'classnames/bind'
+
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import styles from './Contact.module.scss'
 import { Person, Wedding } from '@/models/wedding'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 const cx = classNames.bind(styles)
 

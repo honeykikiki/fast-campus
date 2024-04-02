@@ -58,7 +58,7 @@ node_modules 삭제
 
 
 # ESLint 세팅
-  - yarn add -D eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-react eslint-config-react-app
+  - yarn add -D eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-react eslint-config-react-app eslint-plugin-simple-import-sort
   - Config 설정 분리
   - yarn add @yarnpkg/sdks vscode
 
@@ -68,15 +68,23 @@ node_modules 삭제
     - 하단의 내용을 추가해준다.
 
     ``` json
-    {
-        "extends": [
-          "react-app",
-          "react-app/jest",
-          "plugin:prettier/recommended"
-        ],
-        "plugins": ["prettier"],
+      {
+        "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended"],
+        "plugins": ["prettier", "simple-import-sort"],
         "rules": {
-          "prettier/prettier": "error"
+          "prettier/prettier": "error",
+          // import 정렬 순서
+          "import/order": [
+            "error",
+            {
+              "groups": ["builtin", "external", "internal", ["parent", "type"], "sibling", "index", "object"],
+              // 정렬순서
+              "alphabetize": {
+                "order": "asc",
+                "caseInsensitive": true
+              }
+            }
+          ]
         }
       }
     ```

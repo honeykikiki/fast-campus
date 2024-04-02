@@ -1,3 +1,4 @@
+import Modal from '@shared/Modal'
 import {
   createContext,
   ComponentProps,
@@ -7,8 +8,6 @@ import {
   useMemo,
 } from 'react'
 import { createPortal } from 'react-dom'
-
-import Modal from '@shared/Modal'
 
 type ModalProps = ComponentProps<typeof Modal>
 type ModalOptions = Omit<ModalProps, 'open'>

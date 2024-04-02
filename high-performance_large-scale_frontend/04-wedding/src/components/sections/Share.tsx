@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind'
-import { useEffect } from 'react'
-import Section from '../shared/Section'
-import styles from './Share.module.scss'
 import { format, parseISO } from 'date-fns'
 import { ko } from 'date-fns/locale'
+import { useEffect } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
+import Section from '../shared/Section'
+import styles from './Share.module.scss'
 
 const cx = classNames.bind(styles)
 

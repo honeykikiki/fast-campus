@@ -1,8 +1,8 @@
-import { Location } from '@/models/wedding'
 import classNames from 'classnames/bind'
 import { useEffect, useRef } from 'react'
 import Section from '../shared/Section'
 import styles from './Map.module.scss'
+import { Location } from '@/models/wedding'
 
 const cx = classNames.bind(styles)
 

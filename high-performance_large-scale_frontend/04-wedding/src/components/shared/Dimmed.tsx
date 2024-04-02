@@ -1,6 +1,5 @@
 import classnames from 'classnames/bind'
 import React from 'react'
-
 import styles from './Dimmed.module.scss'
 
 const cx = classnames.bind(styles)

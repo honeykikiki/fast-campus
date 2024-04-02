@@ -1,9 +1,9 @@
-import classNames from 'classnames/bind'
 import Section from '@shared/Section'
-import styles from './Intro.module.scss'
+import Text from '@shared/Text'
+import classNames from 'classnames/bind'
 import { format, parseISO } from 'date-fns'
 import { ko } from 'date-fns/locale'
-import Text from '@shared/Text'
+import styles from './Intro.module.scss'
 
 const cx = classNames.bind(styles)
 

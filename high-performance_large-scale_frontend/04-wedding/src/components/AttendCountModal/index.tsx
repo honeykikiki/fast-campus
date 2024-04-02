@@ -1,6 +1,6 @@
+import { useEffect, useRef } from 'react'
 import { useModalContext } from '@/contexts/ModalContext'
 import { Wedding } from '@/models/wedding'
-import { useEffect, useRef } from 'react'
 
 export default function AttendCountModal({ wedding }: { wedding: Wedding }) {
   const { open, close } = useModalContext()
