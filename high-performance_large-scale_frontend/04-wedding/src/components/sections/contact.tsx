@@ -25,6 +25,7 @@ export default function Contact({
         />
         {groom.parents.map((item) => (
           <ContactInfo
+            key={item.phoneNumber}
             name={item.name}
             account={item.account}
             phoneNumber={item.phoneNumber}
@@ -39,6 +40,7 @@ export default function Contact({
         />
         {bride.parents.map((item) => (
           <ContactInfo
+            key={item.phoneNumber}
             name={item.name}
             account={item.account}
             phoneNumber={item.phoneNumber}
