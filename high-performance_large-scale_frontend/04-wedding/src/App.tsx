@@ -8,7 +8,6 @@ import Invitation from '@components/sections/Invitation'
 import Map from '@components/sections/Map'
 import Share from '@components/sections/Share'
 import Video from '@components/sections/Video'
-import FullScreenMessage from '@shared/FullScreenMessage'
 import classNames from 'classnames/bind'
 import styles from './App.module.scss'
 import useWedding from './hooks/useWedding'
@@ -17,7 +16,7 @@ const cx = classNames.bind(styles)
 
 function App() {
   // 1. 웨딩 데이터 호출 (빈 배열은 한번만 호출)
-  const { wedding, error } = useWedding()
+  const { wedding } = useWedding()
 
   if (wedding == null) {
     return null
