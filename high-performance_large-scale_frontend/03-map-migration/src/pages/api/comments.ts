@@ -1,8 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { getServerSession } from 'next-auth';
-import prisma from '@/db';
-import { CommentApiResponse, CommentType } from '@/interface';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import type { NextApiRequest, NextApiResponse } from "next";
+import { getServerSession } from "next-auth";
+import prisma from "@/db";
+import { CommentApiResponse, CommentType } from "@/interface";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 interface ResponseType {
   id?: string;
@@ -20,12 +20,12 @@ export default async function handler(
   const {
     id,
     user = false,
-    page = '1',
-    limit = '10',
-    storeId = '',
+    page = "1",
+    limit = "10",
+    storeId = "",
   }: ResponseType = req.query;
 
-  if (req.method === 'POST') {
+  if (req.method === "POST") {
     if (!session?.user) {
       // 권한 없음
       return res.status(401);
@@ -42,7 +42,7 @@ export default async function handler(
     });
 
     return res.status(200).json(data);
-  } else if (req.method === 'DELETE') {
+  } else if (req.method === "DELETE") {
     if (!session?.user || !id) {
       // 권한 없음
       return res.status(401);
@@ -53,7 +53,7 @@ export default async function handler(
     });
 
     return res.status(200).json(result);
-  } else if (req.method === 'GET') {
+  } else if (req.method === "GET") {
     const skipPage = parseInt(page) - 1;
     const count = await prisma.comment.count({
       where: {
@@ -63,7 +63,7 @@ export default async function handler(
     });
 
     const comments = await prisma.comment.findMany({
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: "desc" },
       where: {
         storeId: storeId ? parseInt(storeId) : {},
         userId: user ? session?.user.id : {},

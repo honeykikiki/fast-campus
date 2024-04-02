@@ -12,7 +12,7 @@ interface ModalProps {
   body: React.ReactNode
   rightButtonLabel?: string
   onRightButtonClick: () => void
-  LeftButtonLabel?: string
+  leftButtonLabel?: string
   onLeftButtonClick: () => void
 }
 
@@ -22,7 +22,7 @@ export default function Modal({
   body,
   rightButtonLabel = '확인',
   onRightButtonClick,
-  LeftButtonLabel = '닫기',
+  leftButtonLabel = '닫기',
   onLeftButtonClick,
 }: ModalProps) {
   if (open === false) {
@@ -40,10 +40,10 @@ export default function Modal({
             {body}
           </div>
           <div className={cx('wrap-buttons')}>
-            <button type="button" onClick={onRightButtonClick}>
-              {LeftButtonLabel}
-            </button>
             <button type="button" onClick={onLeftButtonClick}>
+              {leftButtonLabel}
+            </button>
+            <button type="button" onClick={onRightButtonClick}>
               {rightButtonLabel}
             </button>
           </div>
