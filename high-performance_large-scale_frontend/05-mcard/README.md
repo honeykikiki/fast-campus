@@ -189,3 +189,7 @@ tsconfig.json
   "jsxImportSource": "@emotion/react"
 }
 ```
+
+# vscode-styled-components 오류
+타입스크립트와 버전이 익스텐션 충돌로 안되는 경우
+https://jha-memo.tistory.com/177
