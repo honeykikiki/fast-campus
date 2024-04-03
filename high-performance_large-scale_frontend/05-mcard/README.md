@@ -153,11 +153,15 @@ module.exports = {
     "tsconfig.paths.json"
   ],  
 }
-
 ```
 
-
 # FireBase 세팅
-- 
+- [firebase](https://console.firebase.google.com/)
+- 프로젝트 생성 후 웹 서비스 추가
 
 # emotion 세팅
+- yarn add @emotion/react @emotion/styled
+- yarn add -D @emotion/babel-plugin @babel/preset-react
+
+- babel 설정
+- tsconfig 설정
