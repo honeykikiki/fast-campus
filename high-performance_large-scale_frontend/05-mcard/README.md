@@ -164,4 +164,28 @@ module.exports = {
 - yarn add -D @emotion/babel-plugin @babel/preset-react
 
 - babel 설정
+  우리는 지금 croco를 사용중이다
+
+croco.config.js
+``` js
+module.exports = {
+  babel: {
+    presets: [
+      [
+        '@babel/preset-react',
+        { runtime: 'automatic', importSource: '@emotion/react' },
+      ],
+    ],
+    plugins: ['@emotion/babel-plugin'],
+  },
+}
+```
+
 - tsconfig 설정
+
+tsconfig.json
+```json
+"compilerOptions": {
+  "jsxImportSource": "@emotion/react"
+}
+```
