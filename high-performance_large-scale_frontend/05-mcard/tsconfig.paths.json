@@ -9,7 +9,7 @@
       "@contexts/*": ["src/contexts/*"],
       "@models/*": ["src/models/*"],
       "@pages/*": ["src/pages/*"],
-      "@constants/*": ["src/constants/*"],
+      "@constants/*": ["src/constants/index"],
       "@remote/*": ["src/remote/*"]
     }
   }

@@ -193,3 +193,12 @@ tsconfig.json
 # vscode-styled-components 오류
 타입스크립트와 버전이 익스텐션 충돌로 안되는 경우
 https://jha-memo.tistory.com/177
+
+
+# 인피니티 스크롤
+- yarn add lodash
+- yarn add @types/lodash
+- yarn add react-infinite-scroll-component
+
+하단 경로에 예시가 있음
+- components/home/CardList.tsx
