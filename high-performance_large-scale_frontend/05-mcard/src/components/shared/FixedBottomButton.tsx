@@ -1,5 +1,6 @@
-import { css, keyframes } from '@emotion/react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 import { createPortal } from 'react-dom'
 import Button from './Button'
 import { colors } from '@/styles/colorPlatte'
@@ -18,20 +19,28 @@ function FixedBottomButton({ label, onClick }: FixedBottomButtonProps) {
 
   return createPortal(
     <Container>
-      <Button onClick={onClick} full={true} size="medium" css={buttonStyle}>
-        {label}
-      </Button>
+      <motion.div
+        initial={{
+          translateY: 90,
+        }}
+        transition={{
+          duration: 1.2,
+          ease: 'easeInOut',
+        }}
+        animate={{
+          translateY: 0,
+        }}
+        css={buttonStyle}
+      >
+        <Button onClick={onClick} full={true} size="medium">
+          {label}
+        </Button>
+      </motion.div>
     </Container>,
     $portalRoot,
   )
 }
 
-const slideup = keyframes`
-  to {
-    transform: translateY(0%);
-
-  }
-`
 const Container = styled.div`
   position: fixed;
   left: 0;
@@ -39,8 +48,6 @@ const Container = styled.div`
   bottom: 0;
   background-color: ${colors.white};
   padding: 20px 10px 8px;
-  transform: translateY(100%);
-  animation: ${slideup} 0.5s ease-in-out forwards;
 `
 
 const buttonStyle = css`
