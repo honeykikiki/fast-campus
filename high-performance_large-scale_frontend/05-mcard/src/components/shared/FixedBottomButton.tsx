@@ -8,9 +8,14 @@ import { colors } from '@/styles/colorPlatte'
 interface FixedBottomButtonProps {
   label: string
   onClick: () => void
+  disabled?: boolean
 }
 
-function FixedBottomButton({ label, onClick }: FixedBottomButtonProps) {
+function FixedBottomButton({
+  label,
+  onClick,
+  disabled,
+}: FixedBottomButtonProps) {
   const $portalRoot = document.querySelector('#root-portal')
 
   if ($portalRoot == null) {
@@ -32,7 +37,7 @@ function FixedBottomButton({ label, onClick }: FixedBottomButtonProps) {
         }}
         css={buttonStyle}
       >
-        <Button onClick={onClick} full={true} size="medium">
+        <Button onClick={onClick} full={true} size="medium" disabled={disabled}>
           {label}
         </Button>
       </motion.div>
