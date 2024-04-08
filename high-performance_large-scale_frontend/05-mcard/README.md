@@ -201,4 +201,4 @@ https://jha-memo.tistory.com/177
 - yarn add react-infinite-scroll-component
 
 하단 경로에 예시가 있음
-- components/home/CardList.tsx
+- */src/components/home/CardList.tsx

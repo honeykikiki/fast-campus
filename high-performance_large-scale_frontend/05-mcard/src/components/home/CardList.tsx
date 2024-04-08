@@ -3,9 +3,12 @@ import { flatten } from 'lodash'
 import { useCallback } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useInfiniteQuery } from 'react-query'
+import { useNavigate } from 'react-router-dom'
+import Badge from '../shared/Badge'
 import { getCards } from '@/remote/card'
 
 function CardList() {
+  const nav = useNavigate()
   const {
     data,
     hasNextPage = false,
@@ -47,18 +50,26 @@ function CardList() {
         hasMore={hasNextPage}
         loader={<div>loader....</div>}
         next={loadMore}
+        scrollThreshold="100px"
       >
-        {cards.map((card, idx) => (
-          <ListRow
-            key={card.id}
-            left={<div>left</div>}
-            contents={
-              <ListRow.Texts title={`${idx + 1} 위`} subTitle={card.name} />
-            }
-            right={card.payback != null ? <div>${card.payback}</div> : null}
-            withArrow
-          />
-        ))}
+        <ul>
+          {cards.map((card, idx) => (
+            <ListRow
+              key={card.id}
+              // left={<div>left</div>}
+              contents={
+                <ListRow.Texts title={`${idx + 1} 위`} subTitle={card.name} />
+              }
+              right={
+                card.payback != null ? <Badge label={card.payback} /> : null
+              }
+              withArrow={true}
+              onClick={() => {
+                nav(`/card/${card.id}`)
+              }}
+            />
+          ))}
+        </ul>
       </InfiniteScroll>
     </div>
   )
