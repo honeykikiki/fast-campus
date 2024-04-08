@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { motion } from 'framer-motion'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
 import FixedBottomButton from '@/components/shared/FixedBottomButton'
@@ -7,8 +8,6 @@ import ListRow from '@/components/shared/ListRows'
 import Text from '@/components/shared/Text'
 import Top from '@/components/shared/Top'
 import { getCard } from '@/remote/card'
-
-interface CardPageProps {}
 
 function CardPage() {
   const { id = '' } = useParams()
@@ -32,13 +31,34 @@ function CardPage() {
       <ul>
         {benefit.map((text, index) => {
           return (
-            <ListRow
-              key={text}
-              left={<IconCheck />}
-              contents={
-                <ListRow.Texts title={`혜택 ${index + 1}`} subTitle={text} />
-              }
-            ></ListRow>
+            <motion.li
+              initial={{
+                opacity: 0,
+                translateX: -90,
+              }}
+              transition={{
+                duration: 1.2,
+                ease: 'easeOut',
+                delay: index * 0.1,
+              }}
+              animate={{
+                opacity: 1,
+                translateX: 0,
+              }}
+              // whileInView={{
+              //   opacity: 1,
+              //   translateX: 0,
+              // }}
+            >
+              <ListRow
+                as="div"
+                key={text}
+                left={<IconCheck />}
+                contents={
+                  <ListRow.Texts title={`혜택 ${index + 1}`} subTitle={text} />
+                }
+              ></ListRow>
+            </motion.li>
           )
         })}
       </ul>
