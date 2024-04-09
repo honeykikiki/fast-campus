@@ -1,20 +1,41 @@
 import { css } from '@emotion/react'
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
 import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import FixedBottomButton from '@/components/shared/FixedBottomButton'
 import Flex from '@/components/shared/Flex'
 import ListRow from '@/components/shared/ListRows'
 import Text from '@/components/shared/Text'
 import Top from '@/components/shared/Top'
+import { useAlertContext } from '@/contexts/AlertContext'
+import useUser from '@/hooks/auth/useUser'
 import { getCard } from '@/remote/card'
 
 function CardPage() {
   const { id = '' } = useParams()
-
+  const nav = useNavigate()
+  const user = useUser()
+  const { open } = useAlertContext()
   const { data } = useQuery(['card', id], () => getCard(id), {
     enabled: id !== '',
   })
+
+  const moveToApply = useCallback(() => {
+    if (user == null) {
+      open({
+        title: '로그인이 필요한 기능입니다.',
+        onButtonClick: () => {
+          nav(`/signin`)
+        },
+        buttonLabel: '로그인하기',
+      })
+
+      return
+    }
+
+    nav(`/apply/${id}`)
+  }, [id, nav, open, user])
 
   if (data == null) {
     return null
@@ -26,7 +47,6 @@ function CardPage() {
 
   return (
     <div>
-      <FixedBottomButton label="신청하기" onClick={() => {}} />
       <Top title={`${name} ${corpName}`} subTitle={subTitle} />
       <ul>
         {benefit.map((text, index) => {
@@ -69,6 +89,7 @@ function CardPage() {
           <Text typography="t7">{removeHtmlTags(promotion.terms)}</Text>
         </Flex>
       ) : null}
+      <FixedBottomButton label="신청하기" onClick={moveToApply} />
     </div>
   )
 }

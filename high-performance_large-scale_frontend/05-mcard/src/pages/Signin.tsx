@@ -17,6 +17,7 @@ function SignInPage() {
 
       try {
         const response = await signInWithEmailAndPassword(auth, email, password)
+
         if (response.user !== null) {
           nav('/')
         }
