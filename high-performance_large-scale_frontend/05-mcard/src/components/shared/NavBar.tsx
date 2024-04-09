@@ -12,10 +12,15 @@ function Nav() {
     <Flex justify="space-between" align="center" css={navBarContainerStyles}>
       <Link to="/">홈</Link>
       {showSignButton ? (
-        <Link to="signup">
+        <Link to="signin">
           <Button>회원가입/로그인</Button>
         </Link>
       ) : null}
+      {/* {showSignButton ? (
+        <Link to="signin">
+          <Button>로그아웃</Button>
+        </Link>
+      ) : null} */}
     </Flex>
   )
 }

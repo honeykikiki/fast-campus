@@ -1,11 +1,11 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { collection, doc, setDoc } from 'firebase/firestore'
-import Form from '@/components/singnup/Form'
+import Form from '@/components/signup/Form'
 import { COLLECTIONS } from '@/constants'
 import { FormValues } from '@/models/signup'
 import { auth, store } from '@/remote/firebase'
 
-function Signup() {
+function SignupPage() {
   const handleSubmit = async (formValues: FormValues) => {
     const { email, password, name } = formValues
 
@@ -32,4 +32,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default SignupPage

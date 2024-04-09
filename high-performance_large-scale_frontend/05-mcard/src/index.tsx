@@ -6,6 +6,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import App from './App'
+import AuthGuard from './components/auth/AuthGuard'
 import reportWebVitals from './reportWebVitals'
 import globalStyles from './styles/globalStyles'
 
@@ -16,10 +17,12 @@ const queryClient = new QueryClient({
 
 root.render(
   <React.StrictMode>
+    <Global styles={globalStyles} />
     <QueryClientProvider client={queryClient}>
       <AlertContextProvider>
-        <Global styles={globalStyles} />
-        <App />
+        <AuthGuard>
+          <App />
+        </AuthGuard>
       </AlertContextProvider>
     </QueryClientProvider>
   </React.StrictMode>,
