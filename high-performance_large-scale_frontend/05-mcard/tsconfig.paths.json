@@ -10,7 +10,9 @@
       "@models/*": ["src/models/*"],
       "@pages/*": ["src/pages/*"],
       "@constants/*": ["src/constants/index"],
-      "@remote/*": ["src/remote/*"]
+      "@remote/*": ["src/remote/*"],
+      "@atom/*": ["src/atom/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   }
 }

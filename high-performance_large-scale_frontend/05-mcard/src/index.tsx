@@ -5,6 +5,7 @@ import { Global } from '@emotion/react'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { RecoilRoot } from 'recoil'
 import App from './App'
 import AuthGuard from './components/auth/AuthGuard'
 import reportWebVitals from './reportWebVitals'
@@ -18,13 +19,15 @@ const queryClient = new QueryClient({
 root.render(
   <React.StrictMode>
     <Global styles={globalStyles} />
-    <QueryClientProvider client={queryClient}>
-      <AlertContextProvider>
-        <AuthGuard>
-          <App />
-        </AuthGuard>
-      </AlertContextProvider>
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <AlertContextProvider>
+          <AuthGuard>
+            <App />
+          </AuthGuard>
+        </AlertContextProvider>
+      </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>,
 )
 
