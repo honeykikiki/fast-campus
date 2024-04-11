@@ -29,7 +29,6 @@ function BasicInfo({ onNext }: { onNext: (infoValues: infoValues) => void }) {
   const 모든정보가_선택되었는가 = Object.values(infoValues).every(
     (value) => value,
   )
-  console.log(모든정보가_선택되었는가)
 
   return (
     <Flex direction="column" css={ContainerBasicInfoStyles}>

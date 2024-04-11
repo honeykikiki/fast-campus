@@ -1,6 +1,7 @@
 import Agreement from '@shared/Agreement'
 import { MouseEvent, useCallback, useState } from 'react'
 import FixedBottomButton from '../shared/FixedBottomButton'
+import { Spacing } from '../shared/Spacing'
 import { 약관목록 } from '@/constants/apply'
 import { ApplyValues } from '@/models/apply'
 
@@ -43,6 +44,7 @@ function Terms({ onNext }: { onNext: (terms: ApplyValues['terms']) => void }) {
         >
           약간의 모두 동의
         </Agreement.Title>
+        <Spacing size={4} />
         {약관목록.map(({ id, title, link }) => (
           <Agreement.Description
             key={id}

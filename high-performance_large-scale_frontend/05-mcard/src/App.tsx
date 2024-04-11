@@ -8,6 +8,7 @@ import Signin from '@pages/Signin'
 import SignupPage from '@pages/Signup'
 import TestPage from '@pages/Test'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import ApplyDonePage from './pages/ApplyDone'
 
 function App() {
   return (
@@ -24,6 +25,14 @@ function App() {
           element={
             <PrivateRoute>
               <ApplyPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/apply/done"
+          element={
+            <PrivateRoute>
+              <ApplyDonePage />
             </PrivateRoute>
           }
         />
