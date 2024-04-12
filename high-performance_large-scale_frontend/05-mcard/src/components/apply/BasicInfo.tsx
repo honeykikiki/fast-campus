@@ -4,6 +4,7 @@ import { ChangeEvent, useCallback, useState } from 'react'
 import FixedBottomButton from '../shared/FixedBottomButton'
 import Flex from '../shared/Flex'
 import Select from '../shared/Select'
+import { Spacing } from '../shared/Spacing'
 import { ApplyValues } from '@/models/apply'
 
 type infoValues = Pick<ApplyValues, 'salary' | 'creditScore' | 'payDate'>
@@ -40,6 +41,7 @@ function BasicInfo({ onNext }: { onNext: (infoValues: infoValues) => void }) {
         placeholder={연소득옵션[0].label}
         onChange={handleInfoChange}
       />
+      <Spacing size={8} />
       <Select
         name="creditScore"
         label="신용점수"
@@ -48,6 +50,7 @@ function BasicInfo({ onNext }: { onNext: (infoValues: infoValues) => void }) {
         placeholder={신용점수옵션[0].label}
         onChange={handleInfoChange}
       />
+      <Spacing size={8} />
       <Select
         name="payDate"
         label="결제일"
