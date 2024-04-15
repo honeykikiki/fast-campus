@@ -9,8 +9,23 @@ function ApplyDonePage() {
   })
 
   return (
-    <Flex>
-      <Text>{success === 'true' ? '카드발급' : '카드발급실패'}</Text>
+    <Flex align="center" justify="center">
+      <Text
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
+      >
+        {success === 'true' ? '카드발급 성공~~' : '카드발급실패'}
+      </Text>
+
+      <img
+        width="100%"
+        src="https://cdn.pixabay.com/animation/2023/10/21/02/28/02-28-10-555_512.gif"
+        alt=""
+      />
       <FixedBottomButton
         label="확인"
         onClick={() => {
