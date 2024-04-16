@@ -10,6 +10,7 @@ import TestPage from '@pages/Test'
 import { Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ApplyDonePage from './pages/ApplyDone'
+import MyPage from './pages/My'
 
 function App() {
   return (
@@ -39,6 +40,15 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/my"
+          element={
+            <PrivateRoute>
+              <MyPage />
+            </PrivateRoute>
+          }
+        />
+
         <Route path="/test" Component={TestPage} />
       </Routes>
     </BrowserRouter>
