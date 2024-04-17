@@ -89,7 +89,10 @@ function CardPage() {
           <Text typography="t7">{removeHtmlTags(promotion.terms)}</Text>
         </Flex>
       ) : null}
-      <FixedBottomButton label="신청하기" onClick={moveToApply} />
+      <FixedBottomButton
+        label="1분만에 신청하고 혜택받기"
+        onClick={moveToApply}
+      />
     </div>
   )
 }

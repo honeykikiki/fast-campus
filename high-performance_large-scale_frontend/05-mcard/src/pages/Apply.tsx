@@ -10,6 +10,12 @@ import useUser from '@/hooks/auth/useUser'
 import { APPLY_STATUS } from '@/models/apply'
 import { updateApplyCard } from '@/remote/apply'
 
+const STATUS_MESSAGE = {
+  [APPLY_STATUS.READY]: '카드 심사를 준비하고 있습니다.',
+  [APPLY_STATUS.PROGRESS]: '카드를 심사 중입니다. 잠시만 기다려 주세요.',
+  [APPLY_STATUS.COMPLETE]: '카드 신청이 완료 되었습니다.',
+}
+
 function ApplyPage() {
   const { open } = useAlertContext()
   const user = useUser()
@@ -44,7 +50,7 @@ function ApplyPage() {
     },
   })
 
-  usePollApplyStatus({
+  const { data: status } = usePollApplyStatus({
     onSuccess: async () => {
       await updateApplyCard({
         cardId: cardId,
@@ -53,7 +59,6 @@ function ApplyPage() {
           status: APPLY_STATUS.COMPLETE,
         },
       })
-
       nav('/apply/done?success=true', {
         replace: true,
       })
@@ -66,7 +71,6 @@ function ApplyPage() {
           status: APPLY_STATUS.REJECT,
         },
       })
-
       nav('/apply/done?success=false', {
         replace: true,
       })
@@ -89,8 +93,8 @@ function ApplyPage() {
     return null
   }
 
-  if (readyToPoll || 카드를_신청중인가) {
-    return <FullPageLoader message="카드를 신청중입니다." />
+  if (true || readyToPoll || 카드를_신청중인가) {
+    return <FullPageLoader message={STATUS_MESSAGE[status ?? 'READY']} />
   }
 
   return <Apply onSubmit={mutate} />

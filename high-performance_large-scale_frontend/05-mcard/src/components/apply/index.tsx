@@ -1,3 +1,4 @@
+import ProgressBar from '@shared/ProgressBar'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import BasicInfo from '@/components/apply/BasicInfo'
@@ -69,6 +70,7 @@ function Apply({ onSubmit }: { onSubmit: (applyValues: ApplyValues) => void }) {
 
   return (
     <div>
+      <ProgressBar progress={(ApplyValues.step as number) / 3} />
       {ApplyValues.step === 0 ? <Terms onNext={handleTermsChange} /> : null}
       {ApplyValues.step === 1 ? (
         <BasicInfo onNext={handleBasicInfoChange} />
