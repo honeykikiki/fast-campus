@@ -11,7 +11,18 @@ import { colors } from '@/styles/colorPlatte'
 import 'swiper/css'
 
 function AdBanners() {
-  const { data } = useQuery(['adBanners'], () => getAdBanner())
+  const { data, isLoading } = useQuery(['adBanners'], () => getAdBanner())
+
+  if (data == null || isLoading) {
+    return (
+      <Container>
+        <Flex direction="column" css={bannerContainerStyles}>
+          <Text bold={true}>&nbsp;</Text>
+          <Text typography="t7">&nbsp;</Text>
+        </Flex>
+      </Container>
+    )
+  }
 
   return (
     <Container>

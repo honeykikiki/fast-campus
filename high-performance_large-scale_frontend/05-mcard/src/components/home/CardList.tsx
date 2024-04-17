@@ -25,6 +25,7 @@ function CardList() {
         // snapShot.lastVisible 커서 정보를 2번쨰 함수로 넘겨준다.
         return snapShot.lastVisible
       },
+      suspense: true,
     },
   )
 
@@ -48,7 +49,7 @@ function CardList() {
       <InfiniteScroll
         dataLength={cards.length}
         hasMore={hasNextPage}
-        loader={<div>loader....</div>}
+        loader={<ListRow.Skeleton></ListRow.Skeleton>}
         next={loadMore}
         scrollThreshold="100px"
       >

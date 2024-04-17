@@ -4,8 +4,6 @@ const BundleAnalyzerPlugin =
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-console.log(isProduction)
-
 module.exports = {
   plugins: [
     {
