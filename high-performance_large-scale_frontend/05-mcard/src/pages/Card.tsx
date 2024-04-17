@@ -3,9 +3,11 @@ import { motion } from 'framer-motion'
 import { useCallback } from 'react'
 import { useQuery } from 'react-query'
 import { useNavigate, useParams } from 'react-router-dom'
+import Review from '@/components/card/Review'
 import FixedBottomButton from '@/components/shared/FixedBottomButton'
 import Flex from '@/components/shared/Flex'
 import ListRow from '@/components/shared/ListRows'
+import { Spacing } from '@/components/shared/Spacing'
 import Text from '@/components/shared/Text'
 import Top from '@/components/shared/Top'
 import { useAlertContext } from '@/contexts/AlertContext'
@@ -89,6 +91,11 @@ function CardPage() {
           <Text typography="t7">{removeHtmlTags(promotion.terms)}</Text>
         </Flex>
       ) : null}
+
+      <Spacing size={1000} />
+      <Review />
+      <Spacing size={100} />
+
       <FixedBottomButton
         label="1분만에 신청하고 혜택받기"
         onClick={moveToApply}
