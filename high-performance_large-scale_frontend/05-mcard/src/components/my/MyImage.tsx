@@ -34,12 +34,15 @@ function MyImage({
     try {
       const uploaded = await uploadBytes(storageRef, files[0])
 
+      // 스토리지에 이미지 추가
       const downloadUrl = await getDownloadURL(uploaded.ref)
 
+      // 인증된 유저 정보에 photoURL 추가
       await updateProfile(currentUser, {
         photoURL: downloadUrl,
       })
 
+      // 데이터 베이스에 photoURL 수정
       await updateDoc(
         doc(collection(store, COLLECTIONS.USER), currentUser.uid),
         {

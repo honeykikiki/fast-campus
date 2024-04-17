@@ -1,5 +1,5 @@
 import ListRow from '@shared/ListRows'
-import { flatten } from 'lodash'
+import flatten from 'lodash.flatten'
 import { useCallback } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useInfiniteQuery } from 'react-query'
