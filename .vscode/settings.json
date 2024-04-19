@@ -11,8 +11,8 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
-  "typescript.tsdk": "high-performance_large-scale_frontend/05-mcard/.yarn/sdks/typescript/lib",
+  "typescript.tsdk": "high-performance_large-scale_frontend/06-lovetrip/.yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "eslint.nodePath": "high-performance_large-scale_frontend/05-mcard/.yarn/sdks",
-  "prettier.prettierPath": "high-performance_large-scale_frontend/05-mcard/.yarn/sdks/prettier/index.cjs"
+  "eslint.nodePath": "high-performance_large-scale_frontend/06-lovetrip/.yarn/sdks",
+  "prettier.prettierPath": "high-performance_large-scale_frontend/06-lovetrip/.yarn/sdks/prettier/index.cjs"
 }

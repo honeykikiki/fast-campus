@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import React, { MouseEvent } from 'react'
 import Flex from './Flex'
 import Text from './Text'
-import { colors } from '@/styles/colorPlatte'
+import { colors } from '@styles/colorPlatte'
 
 function Agreement({ children }: { children: React.ReactNode }) {
   return (

@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Flex from '../shared/Flex'
 import Text from '../shared/Text'
 import { getAdBanner } from '@/remote/adBanner'
-import { colors } from '@/styles/colorPlatte'
+import { colors } from '@styles/colorPlatte'
 
 import 'swiper/css'
 

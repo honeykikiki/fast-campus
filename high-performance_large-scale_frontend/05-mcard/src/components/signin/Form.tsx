@@ -8,7 +8,7 @@ import TextFiled from '../shared/TextField'
 import Button from '@/components/shared/Button'
 import Text from '@/components/shared/Text'
 import { FormValues } from '@/models/signin'
-import { colors } from '@/styles/colorPlatte'
+import { colors } from '@styles/colorPlatte'
 
 function Form({ onSubmit }: { onSubmit: (formValues: FormValues) => void }) {
   const [formValues, setFormValues] = useState<FormValues>({

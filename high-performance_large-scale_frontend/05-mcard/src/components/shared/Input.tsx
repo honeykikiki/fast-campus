@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from '@/styles/colorPlatte'
+import { colors } from '@styles/colorPlatte'
 
 const Input = styled.input`
   padding: 0 16px;

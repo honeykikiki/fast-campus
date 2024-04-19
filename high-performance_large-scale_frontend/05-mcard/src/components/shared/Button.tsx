@@ -9,7 +9,7 @@ import {
   ButtonSize,
   buttonSizeMap,
   buttonWeakMap,
-} from '@/styles/button'
+} from '@styles/button'
 
 interface ButtonProps {
   color?: ButtonColor

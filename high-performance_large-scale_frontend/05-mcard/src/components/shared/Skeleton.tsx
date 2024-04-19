@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import { colors } from '@/styles/colorPlatte'
+import { colors } from '@styles/colorPlatte'
 
 const opacity = keyframes`
   0% {

@@ -1,0 +1,19 @@
+{
+  "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended"],
+  "plugins": ["prettier", "simple-import-sort"],
+  "rules": {
+    "prettier/prettier": "error",
+    // import 정렬 순서
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", ["parent", "type"], "sibling", "index", "object"],
+        // 정렬순서
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
+}

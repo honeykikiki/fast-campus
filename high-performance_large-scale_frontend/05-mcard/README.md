@@ -17,10 +17,10 @@
 
 
 # yarn berry 세팅
-yarn create react-app 04-wedding --template typescript
+yarn create react-app 05-card --template typescript
 node_modules 삭제
 
-❯ yarn set version 3.6.2
+❯ yarn set version 3.6.3
   - yarn berry 세팅
   - .yarnrc.yml 파일로 이동
   - nodeLinker: pnp > 작성
@@ -128,7 +128,7 @@ yarn add -D @craco/craco craco-alias
 }
 ```
 
-- corco.config.js
+- - craco.config.js
 ``` javascript
 const CrocoAlias = require('craco-alias')
 
@@ -138,7 +138,7 @@ module.exports = {
       plugin: CrocoAlias,
       options: {
         source: 'tsconfig',
-        tsConfigPath: 'tsconfing.paths.js',
+        tsConfigPath: 'tsconfig.paths.js',
       },
     },
   ],

@@ -3,7 +3,7 @@ import { forwardRef, SelectHTMLAttributes } from 'react'
 import Flex from './Flex'
 import Text from './Text'
 import { Option } from '@/models/apply'
-import { colors } from '@/styles/colorPlatte'
+import { colors } from '@styles/colorPlatte'
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string

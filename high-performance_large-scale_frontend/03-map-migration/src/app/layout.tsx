@@ -1,12 +1,12 @@
-import '@/styles/globals.css';
-import { NextProvider, NextLayout } from './providers';
-import { Metadata } from 'next';
-import GoogleAnalytics from './googleAnalytics';
-import { GA_TRACKING_ID } from '@/lib/gtag';
+import "@styles/globals.css";
+import { NextProvider, NextLayout } from "./providers";
+import { Metadata } from "next";
+import GoogleAnalytics from "./googleAnalytics";
+import { GA_TRACKING_ID } from "@/lib/gtag";
 
 export const metadata: Metadata = {
-  title: 'Fastcampus NextMap',
-  description: 'Next.js 13을 이용한 맛집 앱',
+  title: "Fastcampus NextMap",
+  description: "Next.js 13을 이용한 맛집 앱",
 };
 
 export default function RootLayout({

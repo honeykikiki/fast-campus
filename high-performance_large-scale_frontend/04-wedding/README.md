@@ -127,7 +127,7 @@ yarn add -D @craco/craco craco-alias
 }
 ```
 
-- corco.config.js
+- craco.config.js
 ``` javascript
 const CrocoAlias = require('craco-alias')
 
@@ -137,7 +137,7 @@ module.exports = {
       plugin: CrocoAlias,
       options: {
         source: 'tsconfig',
-        tsConfigPath: 'tsconfing.paths.js',
+        tsConfigPath: 'tsconfig.paths.js',
       },
     },
   ],
