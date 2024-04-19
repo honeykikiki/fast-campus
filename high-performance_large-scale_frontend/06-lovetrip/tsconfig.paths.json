@@ -3,8 +3,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@components/*": ["src/components"],
-      "@shared/*": ["src/components/shared"],
+      "@components/*": ["src/components/*"],
+      "@shared/*": ["src/components/shared/*"],
+      "@pages/*": ["src/pages/*"],
+      "@remote/*": ["src/remote/*"],
+      "@constants": ["src/constants/index"],
+      "@constants/*": ["src/constants/*"],
       "@styles/*": ["src/styles/*"]
     }
   }
