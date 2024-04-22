@@ -7,8 +7,10 @@
       "@shared/*": ["src/components/shared/*"],
       "@pages/*": ["src/pages/*"],
       "@remote/*": ["src/remote/*"],
+      "@models/*": ["src/models/*"],
       "@constants": ["src/constants/index"],
       "@constants/*": ["src/constants/*"],
+      "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"]
     }
   }
