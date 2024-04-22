@@ -14,4 +14,12 @@ export interface Hotel {
   name: string
   price: number
   starRating: number
+  event?: {
+    name: string
+    promoEndTime?: string
+    tagThemeStyle: {
+      backgroundColor: string
+      fontColor: string
+    }
+  }
 }
