@@ -7,11 +7,11 @@ import { css } from '@emotion/react'
 import { differenceInMilliseconds, parseISO } from 'date-fns'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Hotel as IHotel } from '@/models/hotel'
+import { Hotel } from '@/models/hotel'
 import addDelimiter from '@/utils/addDelimiter'
 import formatTime from '@/utils/formatTime'
 
-function HotelItem({ hotel }: { hotel: IHotel }) {
+function HotelItem({ hotel }: { hotel: Hotel }) {
   const [remainedTime, setRemainedTime] = useState(0)
   useEffect(() => {
     if (hotel.event == null || hotel.event.promoEndTime == null) {
