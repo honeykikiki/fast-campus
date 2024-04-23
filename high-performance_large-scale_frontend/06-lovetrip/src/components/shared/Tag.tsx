@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { Colors, colors } from '@/styles/colorPlatte'
+import { typographyMap } from '@/styles/typography'
 
 interface TagProps {
   color?: string
@@ -24,7 +25,7 @@ const Tag = styled.span<TagProps>(
     if (type === 'sm') {
       styles = {
         ...styles,
-        fontSize: '10px',
+        fontSize: '9px',
         padding: '3px 4px',
       }
     } else if (type === 'lg') {
