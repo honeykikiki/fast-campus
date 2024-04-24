@@ -9,7 +9,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Flex from './Flex'
 import { Spacing } from './Spacing'
-import Text from './Text'
+import MyText from './Text'
 
 interface ButtonProps {
   color?: ButtonColor
@@ -56,9 +56,9 @@ function ButtonGroup({
     <Flex direction="column">
       {title != null ? (
         <>
-          <Text typography="t6" bold={true}>
+          <MyText typography="t6" bold={true}>
             {title}
-          </Text>
+          </MyText>
           <Spacing size={8} />
         </>
       ) : null}

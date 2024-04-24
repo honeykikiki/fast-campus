@@ -1,6 +1,6 @@
 import { colors } from '@styles/colorPlatte'
 import styled from '@emotion/styled'
-import Text from './Text'
+import MyText from './Text'
 
 interface BadgeProps {
   label: string
@@ -9,9 +9,9 @@ interface BadgeProps {
 function Badge({ label }: BadgeProps) {
   return (
     <Container>
-      <Text bold={true} typography="t7" color="white">
+      <MyText bold={true} typography="t7" color="white">
         {label}
-      </Text>
+      </MyText>
     </Container>
   )
 }

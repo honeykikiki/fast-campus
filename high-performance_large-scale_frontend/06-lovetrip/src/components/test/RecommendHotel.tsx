@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, writeBatch } from 'firebase/firestore'
+import { collection, getDocs, writeBatch } from 'firebase/firestore'
 import Button from '../shared/Button'
 import { COLLECTION } from '@/constants'
 import { store } from '@/remote/firebase'

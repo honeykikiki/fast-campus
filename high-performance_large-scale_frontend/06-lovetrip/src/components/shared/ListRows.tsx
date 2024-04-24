@@ -2,7 +2,7 @@ import { css, SerializedStyles } from '@emotion/react'
 import Flex from './Flex'
 import Skeleton from './Skeleton'
 import { Spacing } from './Spacing'
-import Text from './Text'
+import MyText from './Text'
 
 interface ListRowProps {
   left?: React.ReactNode
@@ -59,8 +59,8 @@ function ListRowTexts({
 }) {
   return (
     <Flex direction="column">
-      <Text bold={true}>{title}</Text>
-      <Text typography="t7">{subTitle}</Text>
+      <MyText bold={true}>{title}</MyText>
+      <MyText typography="t7">{subTitle}</MyText>
     </Flex>
   )
 }

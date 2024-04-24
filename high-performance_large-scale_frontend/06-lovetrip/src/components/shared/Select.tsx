@@ -2,7 +2,7 @@ import { colors } from '@styles/colorPlatte'
 import styled from '@emotion/styled'
 import { forwardRef, SelectHTMLAttributes } from 'react'
 import Flex from './Flex'
-import Text from './Text'
+import MyText from './Text'
 
 export interface Option {
   label: string
@@ -37,14 +37,14 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
   return (
     <Flex direction="column">
       {label ? (
-        <Text
+        <MyText
           typography="t7"
           color="black"
           display="inline-block"
           style={{ marginBottom: 6 }}
         >
           {label}
-        </Text>
+        </MyText>
       ) : null}
       <BaseSelect required={true} ref={ref} value={value} {...props}>
         <option disabled={true} hidden={true} value="">

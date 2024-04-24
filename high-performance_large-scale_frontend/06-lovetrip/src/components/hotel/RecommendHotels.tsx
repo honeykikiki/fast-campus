@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Button from '../shared/Button'
 import ListRow from '../shared/ListRows'
 import { Spacing } from '../shared/Spacing'
-import Text from '../shared/Text'
+import MyText from '../shared/Text'
 import useRecommendHotels from './hooks/useRecommend'
 import addDelimiter from '@/utils/addDelimiter'
 
@@ -19,9 +19,9 @@ function RecommendHotels({ hotelIds }: { hotelIds: string[] }) {
 
   return (
     <div style={{ margin: '24px 0' }}>
-      <Text typography="t4" bold={true} style={{ padding: '0 24px' }}>
+      <MyText typography="t4" bold={true} style={{ padding: '0 24px' }}>
         추천 호텔
-      </Text>
+      </MyText>
       <Spacing size={16} />
       <ul>
         {hotelList.map((hotel) => (

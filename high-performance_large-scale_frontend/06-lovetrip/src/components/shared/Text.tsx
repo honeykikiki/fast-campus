@@ -12,7 +12,7 @@ interface TextProps {
   bold?: boolean
 }
 
-const Text = styled.span<TextProps>(
+const MyText = styled.span<TextProps>(
   ({ color = 'black', display, textAlign, fontWeight, bold }) => ({
     color: colors[color],
     textAlign,
@@ -22,4 +22,4 @@ const Text = styled.span<TextProps>(
   ({ typography = 't5' }) => typographyMap[typography],
 )
 
-export default Text
+export default MyText

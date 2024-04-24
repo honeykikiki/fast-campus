@@ -1,6 +1,6 @@
 import Flex from './Flex'
 import { Spacing } from './Spacing'
-import Text from './Text'
+import MyText from './Text'
 
 function FullPageLoader({ message }: { message?: string }) {
   return (
@@ -24,9 +24,9 @@ function FullPageLoader({ message }: { message?: string }) {
         {message != null ? (
           <>
             <Spacing size={120} />
-            <Text typography="t4" bold={true}>
+            <MyText typography="t4" bold={true}>
               {message}
-            </Text>
+            </MyText>
           </>
         ) : null}
       </Flex>

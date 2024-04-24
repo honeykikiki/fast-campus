@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import Flex from './Flex'
-import Text from './Text'
+import MyText from './Text'
 
 interface Topprops {
   title: string
@@ -9,10 +9,10 @@ interface Topprops {
 function Top({ title, subTitle }: Topprops) {
   return (
     <Flex direction="column" css={ContainerStyles}>
-      <Text typography="t4" bold={true}>
+      <MyText typography="t4" bold={true}>
         {title}
-      </Text>
-      <Text typography="t7">{subTitle}</Text>
+      </MyText>
+      <MyText typography="t7">{subTitle}</MyText>
     </Flex>
   )
 }

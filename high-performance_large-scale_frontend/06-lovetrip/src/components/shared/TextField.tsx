@@ -5,7 +5,7 @@ import {
   useState,
 } from 'react'
 import Input from './Input'
-import Text from './Text'
+import MyText from './Text'
 
 interface TextFiledProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactNode
@@ -35,14 +35,14 @@ const TextFiled = forwardRef<HTMLInputElement, TextFiledProps>(
     return (
       <div>
         {label ? (
-          <Text
+          <MyText
             typography="t7"
             color={labelColor}
             display="inline-block"
             style={{ marginBottom: 6 }}
           >
             {label}
-          </Text>
+          </MyText>
         ) : null}
         <Input
           ref={ref}
@@ -52,14 +52,14 @@ const TextFiled = forwardRef<HTMLInputElement, TextFiledProps>(
           {...props}
         />
         {helpMessage ? (
-          <Text
+          <MyText
             typography="t7"
             color={labelColor}
             display="inline-block"
             style={{ marginTop: 6, fontSize: 12 }}
           >
             {helpMessage}
-          </Text>
+          </MyText>
         ) : null}
       </div>
     )

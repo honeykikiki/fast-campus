@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import Button from './Button'
 import Dimmed from './Dimmed'
 import Flex from './Flex'
-import Text from './Text'
+import MyText from './Text'
 
 interface Alert {
   open?: boolean
@@ -27,15 +27,15 @@ function Alert({
   return (
     <Dimmed>
       <AlertContainer>
-        <Text
+        <MyText
           typography="t4"
           bold={true}
           display="block"
           style={{ marginBottom: 6 }}
         >
           {title}
-        </Text>
-        {description ? <Text typography="t7">{description}</Text> : null}
+        </MyText>
+        {description ? <MyText typography="t7">{description}</MyText> : null}
         <Flex justify="flex-end">
           <Button
             onClick={onButtonClick}

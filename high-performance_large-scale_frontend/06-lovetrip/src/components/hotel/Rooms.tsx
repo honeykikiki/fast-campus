@@ -1,6 +1,6 @@
 import Flex from '@shared/Flex'
 import ListRow from '@shared/ListRows'
-import Text from '@shared/Text'
+import MyText from '@shared/Text'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Button from '../shared/Button'
@@ -15,12 +15,12 @@ function Rooms({ hotelId }: { hotelId: string }) {
   return (
     <Container>
       <Header justify="space-between">
-        <Text typography="t4" bold={true}>
+        <MyText typography="t4" bold={true}>
           객실정보
-        </Text>
-        <Text typography="t6" color="gray400">
+        </MyText>
+        <MyText typography="t6" color="gray400">
           1박, 세금 포함
-        </Text>
+        </MyText>
       </Header>
 
       <ul>
@@ -42,7 +42,7 @@ function Rooms({ hotelId }: { hotelId: string }) {
                 <ListRow.Texts
                   title={
                     <Flex>
-                      <Text>{room.roomName}</Text>
+                      <MyText>{room.roomName}</MyText>
                       <Spacing size={6} direction="horizontal" />
                       {마감인박인가 === true ? (
                         <Tag type="sm" backgroundColor="red">

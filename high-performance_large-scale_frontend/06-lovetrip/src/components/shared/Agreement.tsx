@@ -2,7 +2,7 @@ import { colors } from '@styles/colorPlatte'
 import { css } from '@emotion/react'
 import React, { MouseEvent } from 'react'
 import Flex from './Flex'
-import Text from './Text'
+import MyText from './Text'
 
 function Agreement({ children }: { children: React.ReactNode }) {
   return (
@@ -24,7 +24,7 @@ function AgreementTitle({
   return (
     <Flex as="li" onClick={(e) => onChange(e, !checked)}>
       <IconCheck checked={checked} withCircle={true} />
-      <Text bold={true}>{children}</Text>
+      <MyText bold={true}>{children}</MyText>
     </Flex>
   )
 }
@@ -44,12 +44,12 @@ function AgreementDescription({
     <Flex as="li" justify="space-between">
       <Flex onClick={(e) => onChange(e, !checked)}>
         <IconCheck checked={checked} />
-        <Text typography="t6">{children}</Text>
+        <MyText typography="t6">{children}</MyText>
       </Flex>
 
       {link != null ? (
         <a href={link} target="_blank" rel="noreferrer">
-          <Text typography="t6">링크</Text>
+          <MyText typography="t6">링크</MyText>
         </a>
       ) : null}
     </Flex>

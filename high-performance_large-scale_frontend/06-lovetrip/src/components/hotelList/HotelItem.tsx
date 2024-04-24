@@ -2,7 +2,7 @@ import Flex from '@shared/Flex'
 import ListRow from '@shared/ListRows'
 import { Spacing } from '@shared/Spacing'
 import Tag from '@shared/Tag'
-import Text from '@shared/Text'
+import MyText from '@shared/Text'
 import { css } from '@emotion/react'
 import { differenceInMilliseconds, parseISO } from 'date-fns'
 import { useEffect, useState } from 'react'
@@ -74,16 +74,16 @@ function HotelItem({ hotel }: { hotel: Hotel }) {
               {tagComponent()}
               <ListRow.Texts title={hotel.name} subTitle={hotel.comment} />
               <Spacing size={4} />
-              <Text typography="t7" color="gray600">
+              <MyText typography="t7" color="gray600">
                 {hotel.starRating} 성급
-              </Text>
+              </MyText>
             </Flex>
           }
           right={
             <Flex direction="column" align="flex-end">
               <img src={hotel.mainImageUrl} alt="" css={imageStyles} />
               <Spacing size={8} />
-              <Text bold={true}>{addDelimiter(hotel.price)}원</Text>
+              <MyText bold={true}>{addDelimiter(hotel.price)}원</MyText>
             </Flex>
           }
         />

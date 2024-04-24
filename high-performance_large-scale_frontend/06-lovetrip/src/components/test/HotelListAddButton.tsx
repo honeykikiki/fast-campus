@@ -2,7 +2,7 @@ import { COLLECTION } from '@constants'
 import { store } from '@remote/firebase'
 import { collection, doc, writeBatch } from 'firebase/firestore'
 import Button from '../shared/Button'
-import { HOTEL_NAMES, IMAGES, EVENTS, HOTEL, ROOMS, FORMS } from '@/mock/data'
+import { HOTEL_NAMES, IMAGES, EVENTS, HOTEL, ROOMS } from '@/mock/data'
 
 function random(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1))
