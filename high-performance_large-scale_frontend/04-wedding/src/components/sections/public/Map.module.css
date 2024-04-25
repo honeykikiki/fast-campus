@@ -1,0 +1,65 @@
+.wrap-header {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.wrap-header .txt-title {
+  margin-bottom: 16px;
+}
+
+.wrap-header .txt-subtitle {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.wrap-map {
+  position: relative;
+}
+
+.wrap-map .map {
+  width: 100%;
+  height: 250px;
+}
+
+.wrap-map .btn-find-way {
+  -webkit-box-shadow: 1px 5px 10px var(--black);
+          box-shadow: 1px 5px 10px var(--black);
+  padding: 8px 32px;
+  z-index: 2;
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  background-color: #fff;
+  color: var(--black);
+  text-decoration: none;
+  border-radius: 32px;
+}
+
+.wrap-map .btn-find-way:hover {
+  -webkit-box-shadow: 1px 1px 5px var(--black);
+          box-shadow: 1px 1px 5px var(--black);
+  -webkit-transition: -webkit-box-shadow 0.15s;
+  transition: -webkit-box-shadow 0.15s;
+  transition: box-shadow 0.15s;
+  transition: box-shadow 0.15s, -webkit-box-shadow 0.15s;
+}
+
+.wrap-waytocome {
+  margin: 16px 0;
+  line-height: 1.3;
+}
+
+.wrap-waytocome .txt-label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}

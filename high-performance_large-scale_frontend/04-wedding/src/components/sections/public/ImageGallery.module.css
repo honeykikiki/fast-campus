@@ -1,0 +1,32 @@
+.container {
+  text-align: center;
+}
+
+.container .wrap-images {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.container .wrap-images .wrap-image {
+  position: relative;
+  width: 100%;
+}
+
+.container .wrap-images .wrap-image::after {
+  display: block;
+  content: '';
+  padding-bottom: 100%;
+}
+
+.container .wrap-images .wrap-image img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}

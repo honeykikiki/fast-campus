@@ -1,0 +1,48 @@
+.wrap-contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 8px;
+}
+
+.wrap-contact .wrap-contact-info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  line-height: 1.3;
+}
+
+.wrap-contact .wrap-buttons .button {
+  width: 52px;
+  height: 24px;
+  border: 1px solid var(--black);
+  border-radius: 6px;
+  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  font-weight: 400;
+  margin-bottom: 6px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.wrap-contact .wrap-buttons .button:hover {
+  background-color: gainsboro;
+}

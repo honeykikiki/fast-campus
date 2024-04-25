@@ -12,6 +12,7 @@
       "@constants/*": ["src/constants/*"],
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@store/*": ["src/store/*"],
       "@styles/*": ["src/styles/*"]
     }
   }

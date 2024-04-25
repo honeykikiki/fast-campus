@@ -1,0 +1,14 @@
+.wrap-share {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrap-share svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}

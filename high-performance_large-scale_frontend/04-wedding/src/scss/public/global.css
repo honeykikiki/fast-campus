@@ -1,0 +1,13 @@
+@import url("./reset.scss");
+@import url("./fonts.scss");
+@import url("./utils.scss");
+:root {
+  --red: #ea7664;
+  --black: #544f4f;
+  --brown: #89757a;
+  --beige: #f6f5f5;
+}
+
+body {
+  font-family: 'NanumGaRamYeonGgoc';
+}

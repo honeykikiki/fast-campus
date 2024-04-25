@@ -1,0 +1,37 @@
+.wrap-accordion {
+  margin-bottom: 6px;
+}
+
+.wrap-accordion .wrap-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  background-color: var(--beige);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.wrap-accordion .wrap-header .ico-arrow-down {
+  width: 20px;
+  height: 20px;
+}
+
+.wrap-accordion .wrap-content {
+  display: none;
+}
+
+.wrap-accordion.open .ico-arrow-down {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.wrap-accordion.open .wrap-content {
+  display: block;
+}
