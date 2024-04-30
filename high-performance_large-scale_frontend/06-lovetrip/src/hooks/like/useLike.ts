@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router-dom'
 import useUser from '../auth/userUser'
 import { useAlertContext } from '@/context/AlertContext'
@@ -9,9 +9,10 @@ function useLike() {
   const user = useUser()
   const { open } = useAlertContext()
   const nav = useNavigate()
+  const client = useQueryClient()
 
   const { data } = useQuery(
-    ['like', user?.uid],
+    ['likes'],
     () => getLikes({ userId: user?.uid as string }),
     {
       enabled: user != null,
@@ -26,7 +27,11 @@ function useLike() {
 
       return toggleLike({ hotel, userId: user?.uid })
     },
+
     {
+      onSuccess: () => {
+        client.invalidateQueries(['likes'])
+      },
       onError: (e: Error) => {
         if (e.message === '로그인필요') {
           open({

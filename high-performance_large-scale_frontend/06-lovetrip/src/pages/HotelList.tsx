@@ -4,7 +4,7 @@ import useHotels from '@/components/hotelList/hooks/userHotels'
 import HotelItem from '@/components/hotelList/HotelItem'
 import { Spacing } from '@/components/shared/Spacing'
 import Top from '@/components/shared/Top'
-import useLike from '@/hooks/like/userLike'
+import useLike from '@/hooks/like/useLike'
 
 function HotelList() {
   const { data: hotels, hasNextPage, loadMore } = useHotels()

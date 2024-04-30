@@ -3,7 +3,7 @@ import CopyToClipboard from 'react-copy-to-clipboard'
 import Flex from '../shared/Flex'
 import { Spacing } from '../shared/Spacing'
 import MyText from '../shared/Text'
-import useLike from '@/hooks/like/userLike'
+import useLike from '@/hooks/like/useLike'
 import useShare from '@/hooks/useShare'
 import { Hotel } from '@/models/hotel'
 
