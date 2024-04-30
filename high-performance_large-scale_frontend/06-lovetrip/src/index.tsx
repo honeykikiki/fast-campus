@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { RecoilRoot } from 'recoil'
 import App from './App'
+import { AlertContextProvider } from './context/AlertContext'
 import reportWebVitals from './reportWebVitals'
 
 const client = new QueryClient({
@@ -22,7 +23,9 @@ root.render(
     <Global styles={globalStyles} />
     <RecoilRoot>
       <QueryClientProvider client={client}>
-        <App />
+        <AlertContextProvider>
+          <App />
+        </AlertContextProvider>
       </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>,

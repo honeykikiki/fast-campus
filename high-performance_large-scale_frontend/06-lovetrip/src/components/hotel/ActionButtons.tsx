@@ -1,28 +1,37 @@
 import { css } from '@emotion/react'
-
 import CopyToClipboard from 'react-copy-to-clipboard'
 import Flex from '../shared/Flex'
 import { Spacing } from '../shared/Spacing'
 import MyText from '../shared/Text'
+import useLike from '@/hooks/like/userLike'
 import useShare from '@/hooks/useShare'
 import { Hotel } from '@/models/hotel'
 
 function ActionButtons({ hotel }: { hotel: Hotel }) {
   const share = useShare()
-  // const { data: likes, mutate: like } = useLike()
+  const { data: likes, mutate: onLike } = useLike()
 
   const { name, comment, mainImageUrl } = hotel
 
-  // const isLike = Boolean(likes?.find((like) => like.hotelId === hotel.id))
+  const isLike = Boolean(likes?.find((like) => like.hotelId === hotel.id))
+
+  const handleLike = () => {
+    onLike({
+      hotel: {
+        name: hotel.name,
+        mainImageUrl: hotel.mainImageUrl,
+        id: hotel.id,
+      },
+    })
+  }
 
   return (
     <Flex css={containerStyles}>
       <Button
         label="찜하기"
-        onClick={() => {}}
+        onClick={() => handleLike()}
         iconUrl={
-          // isLike
-          true
+          isLike
             ? 'https://cdn4.iconfinder.com/data/icons/twitter-29/512/166_Heart_Love_Like_Twitter-64.png'
             : 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-64.png'
         }

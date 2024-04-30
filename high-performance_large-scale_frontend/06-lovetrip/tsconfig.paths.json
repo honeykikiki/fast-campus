@@ -13,6 +13,7 @@
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
       "@store/*": ["src/store/*"],
+      "@context/*": ["src/context/*"],
       "@styles/*": ["src/styles/*"]
     }
   }

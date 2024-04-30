@@ -18,6 +18,7 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
         displayName: user.displayName ?? '',
         photoUrl: user.photoURL ?? '',
       })
+
       setInitialize(true)
     }
   })

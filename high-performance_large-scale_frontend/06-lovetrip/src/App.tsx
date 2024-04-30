@@ -18,8 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HotelList />} />
           <Route path="/hotel/:id" element={<HotelPage />} />
-          <Route path="/my" element={<MyPage />} />
           <Route path="/signin" element={<SigninPage />} />
+          <Route path="/my" element={<MyPage />} />
           <Route path="/test" element={<TestPage />} />
         </Routes>
       </AuthGuard>
