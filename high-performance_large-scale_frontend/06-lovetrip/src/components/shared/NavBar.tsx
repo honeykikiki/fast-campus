@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 import Button from './Button'
 import Flex from './Flex'
+import { Spacing } from './Spacing'
 import useUser from '@/hooks/auth/userUser'
 
 function Nav() {
@@ -15,18 +16,30 @@ function Nav() {
   const renderButton = useCallback(() => {
     if (user != null) {
       return (
-        <Link to="/my">
-          <img
-            src={
-              user.photoUrl ??
-              'https://cdn3.iconfinder.com/data/icons/font-awesome-regular-1/512/circle-user-1024.png'
-            }
-            alt="유저의 이미지"
-            width={40}
-            height={40}
-            style={{ borderRadius: '100%' }}
-          />
-        </Link>
+        <Flex align="center">
+          <Link to="/my">
+            <img
+              src={
+                user.photoUrl ??
+                'https://cdn3.iconfinder.com/data/icons/font-awesome-regular-1/512/circle-user-1024.png'
+              }
+              alt="유저의 이미지"
+              width={40}
+              height={40}
+              style={{ borderRadius: '100%' }}
+            />
+          </Link>
+          <Spacing size={4} direction="horizontal" />
+          <Link to="/settings">
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-06-1024.png"
+              alt="세팅 아이콘"
+              width={40}
+              height={40}
+              style={{ borderRadius: '100%' }}
+            />
+          </Link>
+        </Flex>
       )
     }
     if (showSignButton) {
