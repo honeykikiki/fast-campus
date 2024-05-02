@@ -1,6 +1,8 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import { useState } from 'react'
+
 import { useSetRecoilState } from 'recoil'
+import SigninPage from '@/pages/Signin'
 import { auth } from '@/remote/firebase'
 import { userAtom } from '@/store/atom/user'
 
@@ -24,7 +26,8 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
   })
 
   if (initialize === false) {
-    return null
+    // 계정이 없는 경우 회원가입 먼저
+    return <SigninPage />
   }
 
   return <>{children}</>

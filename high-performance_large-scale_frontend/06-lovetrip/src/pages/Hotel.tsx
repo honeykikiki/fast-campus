@@ -4,6 +4,7 @@ import Carousel from '@/components/hotel/Carousel'
 import Contents from '@/components/hotel/Contents'
 import useHotel from '@/components/hotel/hooks/useHotel'
 import RecommendHotels from '@/components/hotel/RecommendHotels'
+import Review from '@/components/hotel/Review'
 import Rooms from '@/components/hotel/Rooms'
 import Top from '@/components/shared/Top'
 
@@ -25,6 +26,7 @@ function HotelPage() {
       <Contents contents={contents} />
       <ActionButtons hotel={data} />
       <RecommendHotels hotelIds={RecommendHotel} />
+      <Review hotelId={id} />
     </div>
   )
 }

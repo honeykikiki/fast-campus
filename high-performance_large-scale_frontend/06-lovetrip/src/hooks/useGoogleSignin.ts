@@ -24,7 +24,7 @@ function useGoogleSignin() {
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
-          photoUrl: user.photoURL,
+          photoURL: user.photoURL,
         }
 
         await setDoc(

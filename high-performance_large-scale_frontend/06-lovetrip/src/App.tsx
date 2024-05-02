@@ -21,7 +21,6 @@ function App() {
         <Routes>
           <Route path="/" element={<HotelList />} />
           <Route path="/hotel/:id" element={<HotelPage />} />
-          <Route path="/signin" element={<SigninPage />} />
           <Route
             path="/my"
             element={
@@ -47,6 +46,7 @@ function App() {
             }
           />
           <Route path="/test" element={<TestPage />} />
+          <Route path="/signin" element={<SigninPage />} />
         </Routes>
       </AuthGuard>
     </BrowserRouter>
