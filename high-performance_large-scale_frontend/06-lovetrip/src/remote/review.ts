@@ -1,27 +1,28 @@
 import {
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
   orderBy,
   query,
+  setDoc,
 } from 'firebase/firestore'
 import { store } from './firebase'
 import { COLLECTION } from '@/constants'
 import { Review } from '@/models/review'
 import { User } from '@/models/user'
 
-export async function getReview({ hotelId }: { hotelId: string }) {
+export async function getReviews({ hotelId }: { hotelId: string }) {
   const hotelRef = doc(store, COLLECTION.HOTEL, hotelId)
-
   const reviewQuery = query(
     collection(hotelRef, COLLECTION.REVIEW),
     orderBy('createdAt', 'desc'),
   )
 
-  const reviewSnapShat = await getDocs(reviewQuery)
+  const reviewSnapshot = await getDocs(reviewQuery)
 
-  const reviews = reviewSnapShat.docs.map((doc) => {
+  const reviews = reviewSnapshot.docs.map((doc) => {
     const review = doc.data()
 
     return {
@@ -31,17 +32,16 @@ export async function getReview({ hotelId }: { hotelId: string }) {
     } as Review
   })
 
-  // 1. 리뷰가 3개 인 경우
   const userMap: {
     [key: string]: User
   } = {}
 
-  const results: Array<Review & { user: User }> = []
+  const results: Array<Review & { user: User | undefined }> = []
 
   for (let review of reviews) {
     const 캐시된유저 = userMap[review.userId]
 
-    if (캐시된유저 == null) {
+    if (캐시된유저 == null || 캐시된유저 === undefined) {
       const userSnapshot = await getDoc(
         doc(collection(store, COLLECTION.USER), review.userId),
       )
@@ -62,4 +62,24 @@ export async function getReview({ hotelId }: { hotelId: string }) {
   }
 
   return results
+}
+
+export function writeReview(review: Omit<Review, 'id'>) {
+  const hotelRef = doc(store, COLLECTION.HOTEL, review.hotelId)
+  const reviewRef = doc(collection(hotelRef, COLLECTION.REVIEW))
+
+  return setDoc(reviewRef, review)
+}
+
+export function removeReview({
+  reviewId,
+  hotelId,
+}: {
+  reviewId: string
+  hotelId: string
+}) {
+  const hotelRef = doc(store, COLLECTION.HOTEL, hotelId)
+  const reviewRef = doc(collection(hotelRef, COLLECTION.REVIEW), reviewId)
+
+  return deleteDoc(reviewRef)
 }

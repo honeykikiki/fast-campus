@@ -27,7 +27,8 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
 
   if (initialize === false) {
     // 계정이 없는 경우 회원가입 먼저
-    return <SigninPage />
+    // return <SigninPage />
+    return null
   }
 
   return <>{children}</>
