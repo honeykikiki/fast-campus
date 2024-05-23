@@ -1,6 +1,6 @@
 export interface Room {
   avaliableCount: number
-  basicInfo?: {
+  basicInfo: {
     [key: string]: string | number
   }
   bed: string

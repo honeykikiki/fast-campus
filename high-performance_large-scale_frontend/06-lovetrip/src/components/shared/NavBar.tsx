@@ -67,7 +67,7 @@ const navBarContainerStyles = css`
   top: 0;
   background-color: ${colors.white};
   z-index: 10;
-  border-bottom: 1px solid ${colors.gray};
+  border-bottom: 1px solid ${colors.gray600};
 `
 
 export default Nav
