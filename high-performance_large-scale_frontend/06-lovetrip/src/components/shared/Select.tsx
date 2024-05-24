@@ -13,25 +13,28 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string
   placeholder?: string
   options: Option[]
+  hasError?: boolean
+  helpMessage?: React.ReactNode
 }
 
 const BaseSelect = styled.select`
-  height: 52px;
-  background-color: ${colors.gray};
-  border: none;
-  border-radius: 15px;
-  padding: 0 16px;
+  height: 42px;
+  border: 1px solid ${colors.gray};
+  border-radius: 6px;
+  padding: 0 14px;
 
   cursor: pointer;
-
-  border-right: 16px solid transparent;
 
   &:required:invalid {
     color: #c0c4c7;
   }
+
+  &[aria-invalid='true'] {
+    border-color: ${colors.red};
+  }
 `
 const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
-  { label, options, value, placeholder, ...props },
+  { label, options, value, placeholder, hasError, helpMessage, ...props },
   ref,
 ) {
   return (
@@ -46,16 +49,33 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
           {label}
         </MyText>
       ) : null}
-      <BaseSelect required={true} ref={ref} value={value} {...props}>
+      <BaseSelect
+        required={true}
+        ref={ref}
+        value={value}
+        {...props}
+        aria-invalid={hasError}
+      >
         <option disabled={true} hidden={true} value="">
           {placeholder}
         </option>
+
         {options.map(({ label, value }) => (
           <option key={label} value={value}>
             {label}
           </option>
         ))}
       </BaseSelect>
+
+      {helpMessage ? (
+        <MyText
+          typography="t7"
+          display="inline-block"
+          style={{ marginTop: 6, fontSize: 12 }}
+        >
+          {helpMessage}
+        </MyText>
+      ) : null}
     </Flex>
   )
 })
