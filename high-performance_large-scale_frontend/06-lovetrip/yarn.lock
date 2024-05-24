@@ -46,6 +46,7 @@ __metadata:
     react-query: ^3.39.3
     react-router-dom: ^6.22.3
     react-scripts: 5.0.1
+    react-virtuoso: ^4.7.11
     recoil: ^0.7.7
     swiper: ^11.1.1
     typescript: ^4.4.2
@@ -13221,6 +13222,16 @@ __metadata:
   bin:
     react-scripts: bin/react-scripts.js
   checksum: 92afa2f245c7092ccc97d5609dc7a2130616262e34da7f15072d9442e2d2e1d4909a91022abd1faac1336eb17c5525a10d9bd43e1ae374c7ec941ca20addca68
+  languageName: node
+  linkType: hard
+
+"react-virtuoso@npm:^4.7.11":
+  version: 4.7.11
+  resolution: "react-virtuoso@npm:4.7.11"
+  peerDependencies:
+    react: ">=16 || >=17 || >= 18"
+    react-dom: ">=16 || >=17 || >= 18"
+  checksum: 3e9b56e8bd2ae88b04563ff3ce221c95db493741ff89667475e390a8abfb202a9b0692cbe9edd822316a27c902c835ce0e287b036df6644909317c7a6c1462fc
   languageName: node
   linkType: hard
 
