@@ -15,6 +15,15 @@ function SettingPage() {
               withArrow={true}
             />
           </Link>
+          <Link to="/reservation/list">
+            <ListRow
+              as="div"
+              contents={
+                <ListRow.Texts title="예약목록" subTitle="예약 목록 보러가기" />
+              }
+              withArrow={true}
+            />
+          </Link>
         </li>
       </ul>
     </div>

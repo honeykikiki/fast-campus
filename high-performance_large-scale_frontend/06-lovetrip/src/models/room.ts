@@ -1,5 +1,5 @@
 export interface Room {
-  avaliableCount: number
+  availableCount: number
   basicInfo: {
     [key: string]: string | number
   }

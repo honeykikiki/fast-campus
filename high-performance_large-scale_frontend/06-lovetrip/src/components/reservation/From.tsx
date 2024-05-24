@@ -7,16 +7,22 @@ import MyText from '../shared/Text'
 import TextFiled from '../shared/TextField'
 import { Hotel, ReservationForm } from '@/models/hotel'
 
+type FormData = {
+  [key: string]: string
+}
+
 function Form({
   forms,
   onSubmit,
   buttonLabel,
 }: {
   forms: Hotel['forms']
-  onSubmit: () => void
+  onSubmit: (formValues: FormData) => void
   buttonLabel: string
 }) {
-  const { register, formState, handleSubmit } = useForm({ mode: 'onBlur' })
+  const { register, formState, handleSubmit } = useForm<FormData>({
+    mode: 'onBlur',
+  })
 
   const component = useCallback(
     (form: ReservationForm) => {
@@ -39,7 +45,7 @@ function Form({
               required: form.required,
               pattern: VALIDATION_MESSAGE_MAP[form.id],
             })}
-          ></TextFiled>
+          />
         )
       } else if (form.type === 'SELECT') {
         return (
@@ -63,9 +69,15 @@ function Form({
     <div style={{ padding: 24 }}>
       <MyText bold={true}>예약정보</MyText>
 
+      <Spacing size={16} />
       <form>
         {forms.map((form) => {
-          return <Fragment key={form.id}>{component(form)}</Fragment>
+          return (
+            <Fragment key={form.id}>
+              {component(form)}
+              <Spacing size={8} />
+            </Fragment>
+          )
         })}
       </form>
 

@@ -1,12 +1,16 @@
 import { parse } from 'qs'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Form from '@/components/reservation/From'
 import useReservation from '@/components/reservation/hooks/useReservation'
 import Summary from '@/components/reservation/Summary'
 import { Spacing } from '@/components/shared/Spacing'
+import useUser from '@/hooks/auth/userUser'
 import addDelimiter from '@/utils/addDelimiter'
 
 function ReservationPage() {
+  const user = useUser()
+  const nav = useNavigate()
   const { startDate, endDate, nights, roomId, hotelId } = parse(
     window.location.search,
     {
@@ -22,15 +26,18 @@ function ReservationPage() {
 
   useEffect(() => {
     if (
-      [startDate, endDate, nights, roomId, hotelId].some((param) => {
+      [user, startDate, endDate, nights, roomId, hotelId].some((param) => {
         return param == null
       })
     ) {
       window.history.back()
     }
-  }, [startDate, endDate, nights, roomId, hotelId])
+  }, [startDate, endDate, nights, roomId, hotelId, user])
 
-  const { data, isLoading } = useReservation({ roomId, hotelId })
+  const { data, isLoading, makeReservation } = useReservation({
+    roomId,
+    hotelId,
+  })
 
   if (data == null || isLoading === true) {
     return null
@@ -38,7 +45,23 @@ function ReservationPage() {
 
   const { hotel, room } = data
 
-  const handleSubmit = () => {}
+  const handleSubmit = async (formValues: { [key: string]: string }) => {
+    console.log(formValues)
+    const newReservation = {
+      userId: user?.uid as string,
+      hotelId,
+      roomId,
+      startDate,
+      endDate,
+      price: room.price * Number(nights),
+      formValues,
+    }
+
+    console.log(newReservation)
+
+    await makeReservation(newReservation)
+    nav(`/reservation/done?hotelName=${hotel.name}`)
+  }
 
   const buttonLabel = `${nights}박 ${addDelimiter(room.price * Number(nights))}원 예약하기`
 

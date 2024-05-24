@@ -32,8 +32,8 @@ function Rooms({ hotelId }: { hotelId: string }) {
 
       <ul>
         {data?.map((room) => {
-          const 마감인박인가 = room.avaliableCount === 1
-          const 매진인가 = room.avaliableCount === 0
+          const 마감인박인가 = room.availableCount === 1
+          const 매진인가 = room.availableCount === 0
 
           const params = qs.stringify(
             {

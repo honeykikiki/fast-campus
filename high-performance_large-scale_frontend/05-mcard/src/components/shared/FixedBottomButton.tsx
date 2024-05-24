@@ -1,9 +1,9 @@
+import { colors } from '@styles/colorPlatte'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import { createPortal } from 'react-dom'
 import Button from './Button'
-import { colors } from '@styles/colorPlatte'
 
 interface FixedBottomButtonProps {
   label: string

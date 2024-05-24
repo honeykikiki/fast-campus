@@ -1,5 +1,5 @@
 import { colors } from '@styles/colorPlatte'
-// import { motion } from 'framer-motion'
+
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { createPortal } from 'react-dom'
