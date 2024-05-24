@@ -78,7 +78,7 @@ node_modules 삭제
           "import/order": [
             "error",
             {
-              "groups": ["builtin", "external", "internal", ["parent", "type"], "sibling", "index", "object"],
+              "groups": ["external", "builtin",  "internal", ["parent", "type"], "sibling", "index", "object"],
               // 정렬순서
               "alphabetize": {
                 "order": "asc",

@@ -2,7 +2,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useState } from 'react'
 
 import { useSetRecoilState } from 'recoil'
-import SigninPage from '@/pages/Signin'
+
 import { auth } from '@/remote/firebase'
 import { userAtom } from '@/store/atom/user'
 
