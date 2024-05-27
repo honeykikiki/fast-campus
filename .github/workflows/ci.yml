@@ -24,6 +24,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '18'
-      - run: cd high-performance_large-scale_frontend/06-lovetrip
+      # - run: cd high-performance_large-scale_frontend/06-lovetrip
       - run: yarn install
       - run: CI='false' yarn build
