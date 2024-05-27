@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react'
+import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import AuthGuard from '@/components/auth/AuthGuard'
@@ -23,73 +24,75 @@ function App() {
 
   return (
     <Suspense fallback={<></>}>
-      <BrowserRouter>
-        <AuthGuard>
-          <Nav />
-          <Routes>
-            <Route path="/" element={<HotelList />} />
-            <Route path="/hotel/:id" element={<HotelPage />} />
-            <Route
-              path="/my"
-              element={
-                <PrivateRoute>
-                  <MyPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/settings"
-              element={
-                <PrivateRoute>
-                  <SettingPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/settings/like"
-              element={
-                <PrivateRoute>
-                  <LikePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/schedule"
-              element={
-                <PrivateRoute>
-                  <SchedulePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/reservation"
-              element={
-                <PrivateRoute>
-                  <ReservationPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/reservation/done"
-              element={
-                <PrivateRoute>
-                  <ReservationDonePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/reservation/list"
-              element={
-                <PrivateRoute>
-                  <ReservationListPage />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/test" element={<TestPage />} />
-            <Route path="/signin" element={<SigninPage />} />
-          </Routes>
-        </AuthGuard>
-      </BrowserRouter>
+      <HelmetProvider>
+        <BrowserRouter>
+          <AuthGuard>
+            <Nav />
+            <Routes>
+              <Route path="/" element={<HotelList />} />
+              <Route path="/hotel/:id" element={<HotelPage />} />
+              <Route
+                path="/my"
+                element={
+                  <PrivateRoute>
+                    <MyPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/settings"
+                element={
+                  <PrivateRoute>
+                    <SettingPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/settings/like"
+                element={
+                  <PrivateRoute>
+                    <LikePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/schedule"
+                element={
+                  <PrivateRoute>
+                    <SchedulePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/reservation"
+                element={
+                  <PrivateRoute>
+                    <ReservationPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/reservation/done"
+                element={
+                  <PrivateRoute>
+                    <ReservationDonePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/reservation/list"
+                element={
+                  <PrivateRoute>
+                    <ReservationListPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/test" element={<TestPage />} />
+              <Route path="/signin" element={<SigninPage />} />
+            </Routes>
+          </AuthGuard>
+        </BrowserRouter>
+      </HelmetProvider>
     </Suspense>
   )
 }

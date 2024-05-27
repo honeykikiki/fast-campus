@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import { useParams } from 'react-router-dom'
 import ActionButtons from '@/components/hotel/ActionButtons'
 import Carousel from '@/components/hotel/Carousel'
@@ -6,6 +7,8 @@ import useHotel from '@/components/hotel/hooks/useHotel'
 import RecommendHotels from '@/components/hotel/RecommendHotels'
 import Review from '@/components/hotel/Review'
 import Rooms from '@/components/hotel/Rooms'
+import ScrollProgressBar from '@/components/shared/ScrollProgressBar'
+import SEO from '@/components/shared/SEO'
 import Top from '@/components/shared/Top'
 
 function HotelPage() {
@@ -20,6 +23,8 @@ function HotelPage() {
 
   return (
     <div>
+      <SEO title={name} description={comment} image={Images[0]} />
+      <ScrollProgressBar style={scrollProgressBarStyles} />
       <Top title={name} subTitle={comment} />
       <Carousel images={Images} />
       <Rooms hotelId={id} />
@@ -30,5 +35,11 @@ function HotelPage() {
     </div>
   )
 }
+
+const scrollProgressBarStyles = css`
+  position: sticky;
+  top: 64px;
+  z-index: 2;
+`
 
 export default HotelPage
