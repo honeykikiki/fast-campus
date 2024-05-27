@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useHotels from '@/components/hotelList/hooks/userHotels'
 import HotelItem from '@/components/hotelList/HotelItem'
+import withSuspense from '@/components/shared/hocs/withSuspense'
 import { Spacing } from '@/components/shared/Spacing'
 import Top from '@/components/shared/Top'
 import useLike from '@/hooks/like/useLike'
@@ -45,4 +46,6 @@ function HotelList() {
   )
 }
 
-export default HotelList
+export default withSuspense(HotelList, {
+  fallback: <div>호텔리스트 불러오는중....</div>,
+})

@@ -6,6 +6,7 @@ import styled from '@emotion/styled'
 import qs from 'qs'
 import { useNavigate } from 'react-router-dom'
 import Button from '../shared/Button'
+import withSuspense from '../shared/hocs/withSuspense'
 import { Spacing } from '../shared/Spacing'
 import Tag from '../shared/Tag'
 import useRooms from './hooks/useRoom'
@@ -120,4 +121,6 @@ const imageStyles = css`
   border-radius: 4px;
 `
 
-export default Rooms
+export default withSuspense(Rooms, {
+  fallback: <div>객실 데이터 불러오는중...</div>,
+})
