@@ -7,6 +7,10 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./high-performance_large-scale_frontend/06-lovetrip
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -20,14 +24,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - run: yarn install
-        working-directory: ./high-performance_large-scale_frontend/06-lovetrip
       - run: yarn lint
-        working-directory: ./high-performance_large-scale_frontend/06-lovetrip
 
   build:
     name: Build
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./high-performance_large-scale_frontend/06-lovetrip
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -41,6 +47,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - run: yarn install
-        working-directory: ./high-performance_large-scale_frontend/06-lovetrip
       - run: CI='false' yarn build
-        working-directory: ./high-performance_large-scale_frontend/06-lovetrip
