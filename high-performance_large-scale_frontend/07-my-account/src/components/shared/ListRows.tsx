@@ -54,13 +54,18 @@ const listRowContentsStyles = css`
 function ListRowTexts({
   title,
   subTitle,
+  spacingSize,
 }: {
   title: React.ReactNode
   subTitle: React.ReactNode
+  spacingSize?: number
 }) {
   return (
     <Flex direction="column">
-      <MyText bold={true}>{title}</MyText>
+      <MyText bold={true} style={{ whiteSpace: 'pre-wrap' }}>
+        {title}
+      </MyText>
+      <Spacing size={spacingSize ?? 0} />
       <MyText typography="t7">{subTitle}</MyText>
     </Flex>
   )
