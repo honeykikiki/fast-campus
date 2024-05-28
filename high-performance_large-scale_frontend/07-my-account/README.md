@@ -71,16 +71,14 @@ node_modules 삭제
 
     ``` json
       {
-        "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended"],
+        "extends": ["next/babel", "next/core-web-vitals", "plugin:prettier/recommended"],
         "plugins": ["prettier", "simple-import-sort"],
         "rules": {
           "prettier/prettier": "error",
-          // import 정렬 순서
           "import/order": [
             "error",
             {
-              "groups": ["external", "builtin",  "internal", ["parent", "type"], "sibling", "index", "object"],
-              // 정렬순서
+              "groups": ["builtin", "external", "internal", ["parent", "type"], "sibling", "index", "object"],
               "alphabetize": {
                 "order": "asc",
                 "caseInsensitive": true
@@ -89,6 +87,7 @@ node_modules 삭제
           ]
         }
       }
+
     ```
 
 # Prettier 세팅

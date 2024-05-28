@@ -1,20 +1,21 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import dynamic from 'next/dynamic'
+import Skeleton from '@/components/shared/Skeleton'
+
+// import EventBanners from ''
+const EventBanners = dynamic(() => import('@/components/home/EventBanners'), {
+  ssr: false,
+  loading: () => (
+    <Skeleton width="100%" height={100} style={{ borderRadius: 8 }} />
+  ),
+})
 
 export default function Home() {
   return (
-    <>
-      <Container>
-        <div css={bold}>hello</div>
-      </Container>
-    </>
+    <Container>
+      <EventBanners />
+    </Container>
   )
 }
 
-const Container = styled.div`
-  background: pink;
-`
-
-const bold = css`
-  font-weight: bold;
-`
+const Container = styled.div``

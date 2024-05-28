@@ -15,11 +15,11 @@ const opacity = keyframes`
     opacity: 1;
   }
 `
-const Skeleton = styled.div<{ width: number; height: number }>(
+const Skeleton = styled.div<{ width: number | string; height: number }>(
   ({ width, height }) => ({
     width,
     height,
-    backgroundColor: colors.gray,
+    backgroundColor: colors.gray100,
     animation: `${opacity} 2s ease-in-out 0.5s infinite`,
     borderRadius: 2,
   }),
