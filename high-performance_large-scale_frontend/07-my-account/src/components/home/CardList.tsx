@@ -1,12 +1,12 @@
+import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import Badge from '../shared/Badge'
 import Button from '../shared/Button'
+import withSuspense from '../shared/hocs/withSuspense'
 import ListRow from '../shared/ListRows'
 import Skeleton from '../shared/Skeleton'
 import MyText from '../shared/Text'
-import withSuspense from '../shared/hocs/withSuspense'
 import useCards from './hooks/useCards'
-import { css } from '@emotion/react'
 import { colors } from '@/styles/colorPlatte'
 
 function CardList() {

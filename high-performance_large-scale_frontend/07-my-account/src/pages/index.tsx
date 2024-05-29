@@ -1,10 +1,10 @@
+import { CardListSkeleton } from '@components/home/CardList'
+
 import styled from '@emotion/styled'
 import dynamic from 'next/dynamic'
 import Account from '@/components/home/Account'
 import { BannerSkeleton } from '@/components/home/EventBanners'
-import { CreditScoreSkeleton } from '@components/home/CreditScore'
 import { Spacing } from '@/components/shared/Spacing'
-import { CardListSkeleton } from '@components/home/CardList'
 
 const EventBanners = dynamic(() => import('@components/home/EventBanners'), {
   ssr: false,
