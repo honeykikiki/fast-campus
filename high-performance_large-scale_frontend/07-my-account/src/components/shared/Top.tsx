@@ -2,11 +2,11 @@ import { css } from '@emotion/react'
 import Flex from './Flex'
 import MyText from './Text'
 
-interface Topprops {
+interface TopProps {
   title: string
   subTitle: string
 }
-function Top({ title, subTitle }: Topprops) {
+function Top({ title, subTitle }: TopProps) {
   return (
     <Flex direction="column" css={ContainerStyles}>
       <MyText typography="t4" bold={true}>

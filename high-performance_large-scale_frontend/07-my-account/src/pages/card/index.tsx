@@ -4,7 +4,9 @@ import { useRouter } from 'next/router'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { QueryClient, dehydrate, useInfiniteQuery } from 'react-query'
 import Badge from '@/components/shared/Badge'
+import Input from '@/components/shared/Input'
 import ListRow from '@/components/shared/ListRows'
+import Top from '@/components/shared/Top'
 import { getCards } from '@/remote/card'
 import { colors } from '@/styles/colorPlatte'
 
@@ -37,6 +39,14 @@ function CardListPage() {
 
   return (
     <div>
+      <Top title="추천카드" subTitle="회원님을 위해 준비했어요" />
+      <div style={{ padding: '0 24px 12px 24px' }}>
+        <Input
+          onFocus={() => {
+            navigate.push('/card/search')
+          }}
+        />
+      </div>
       <InfiniteScroll
         dataLength={cards.length}
         hasMore={hasNextPage}
