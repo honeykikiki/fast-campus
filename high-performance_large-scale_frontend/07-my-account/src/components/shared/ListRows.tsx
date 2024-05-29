@@ -87,7 +87,6 @@ function ListRowSkeleton() {
         />
       </Flex>
       <Flex></Flex>
-      <IconArrowRight />
     </Flex>
   )
 }

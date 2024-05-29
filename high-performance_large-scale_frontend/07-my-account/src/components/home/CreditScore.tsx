@@ -1,4 +1,3 @@
-// import CreditScoreChart from '@shared/CreditScoreChart'
 import withSuspense from '@shared/hocs/withSuspense'
 import CreditScoreChart from '../shared/CreditScoreChart'
 import ListRow from '../shared/ListRows'
