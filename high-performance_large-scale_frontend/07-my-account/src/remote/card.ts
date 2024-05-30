@@ -1,6 +1,8 @@
 import {
   QuerySnapshot,
   collection,
+  doc,
+  getDoc,
   getDocs,
   limit,
   query,
@@ -44,4 +46,13 @@ export async function getSearchCards(keyword: string) {
     id: doc.id,
     ...(doc.data() as Card),
   }))
+}
+
+export async function getCard(id: string) {
+  const cardSnapshot = await getDoc(doc(collection(store, COLLECTION.CARD), id))
+
+  return {
+    id: cardSnapshot.id,
+    ...(cardSnapshot.data() as Card),
+  }
 }

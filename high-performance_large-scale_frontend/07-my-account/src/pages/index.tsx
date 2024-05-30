@@ -2,6 +2,7 @@ import { CardListSkeleton } from '@components/home/CardList'
 
 import styled from '@emotion/styled'
 import dynamic from 'next/dynamic'
+import { useSession } from 'next-auth/react'
 import Account from '@/components/home/Account'
 import { BannerSkeleton } from '@/components/home/EventBanners'
 import { Spacing } from '@/components/shared/Spacing'
@@ -22,6 +23,9 @@ const CardList = dynamic(() => import('@components/home/CardList'), {
 })
 
 export default function Home() {
+  const { data } = useSession()
+  console.log(data)
+
   return (
     <Container>
       <EventBanners />

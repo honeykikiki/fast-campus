@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
 import React from 'react'
+import styled from '@emotion/styled'
 
 function Dimmed({ children }: { children: React.ReactNode }) {
   return <Container>{children}</Container>
