@@ -2,8 +2,8 @@ import { useCallback } from 'react'
 import { signOut } from 'next-auth/react'
 import Button from '@/components/shared/Button'
 import Flex from '@/components/shared/Flex'
-import withAuth from '@/components/shared/hocs/withAuth'
 import { Spacing } from '@/components/shared/Spacing'
+import withAuth from '@/hooks/withAuth'
 
 function myPage() {
   return (

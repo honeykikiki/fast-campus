@@ -1,11 +1,12 @@
-import withSuspense from '@shared/hocs/withSuspense'
+import Link from 'next/link'
+import Button from '../shared/Button'
 import CreditScoreChart from '../shared/CreditScoreChart'
+import Flex from '../shared/Flex'
 import ListRow from '../shared/ListRows'
 
-import Button from '../shared/Button'
-import Flex from '../shared/Flex'
 import { Spacing } from '../shared/Spacing'
 import MyText from '../shared/Text'
+import withSuspense from '@/hooks/withSuspense'
 
 function CreditScore() {
   return (
@@ -17,7 +18,9 @@ function CreditScore() {
             점수를 올리세요
           </MyText>
           <Spacing size={8} />
-          <Button>내 신용점수 보러가기</Button>
+          <Link href="/credit">
+            <Button>내 신용점수 보러가기</Button>
+          </Link>
         </Flex>
       }
       right={<CreditScoreChart score={500} width={80} height={80} />}
