@@ -1,11 +1,12 @@
-import { colors } from '@styles/colorPlatte'
 import styled from '@emotion/styled'
+
 import Button from './Button'
 import Dimmed from './Dimmed'
 import Flex from './Flex'
-import MyText from './Text'
+import Text from './Text'
+import { colors } from '@/styles/colorPlatte'
 
-interface Alert {
+interface AlertProps {
   open?: boolean
   title: React.ReactNode
   description?: React.ReactNode
@@ -19,7 +20,7 @@ function Alert({
   description,
   buttonLabel = '확인',
   onButtonClick,
-}: Alert) {
+}: AlertProps) {
   if (open === false) {
     return null
   }
@@ -27,15 +28,15 @@ function Alert({
   return (
     <Dimmed>
       <AlertContainer>
-        <MyText
+        <Text
           typography="t4"
           bold={true}
           display="block"
           style={{ marginBottom: 6 }}
         >
           {title}
-        </MyText>
-        {description ? <MyText typography="t7">{description}</MyText> : null}
+        </Text>
+        {description ? <Text typography="t7">{description}</Text> : null}
         <Flex justify="flex-end">
           <Button
             onClick={onButtonClick}

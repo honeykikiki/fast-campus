@@ -5,6 +5,7 @@ export default css`
   ${colorPalette}
 
   :root {
+    --navbar-zindex: 9;
     --dimmed-zindex: 10;
     --alert-zindex: 11;
   }

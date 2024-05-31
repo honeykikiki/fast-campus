@@ -45,7 +45,6 @@ function signinPage({
 
 export async function getServerSideProps() {
   const providers = await getProviders()
-  console.log('provider', providers)
 
   return {
     props: { providers },

@@ -6,7 +6,7 @@ function useEventBanners() {
 
   return useQuery(
     ['event-banner'],
-    () => getEventBanners({ hasAccount: true }),
+    () => getEventBanners({ hasAccount: false }),
     {
       suspense: true,
     },

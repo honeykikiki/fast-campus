@@ -1,18 +1,16 @@
+import Button from '@shared/Button'
+import Flex from '@shared/Flex'
 import { useCallback } from 'react'
 import { css } from '@emotion/react'
-import styled from '@emotion/styled'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
-import Button from './Button'
-import Flex from './Flex'
-import MyText from './Text'
 import { colors } from '@/styles/colorPlatte'
 
-function NavBar() {
+function Navbar() {
+  const { data: session } = useSession()
   const router = useRouter()
-  const { data: session, status } = useSession()
   const showSignButton = ['/auth/signin'].includes(router.pathname) === false
 
   const renderButton = useCallback(() => {
@@ -24,12 +22,10 @@ function NavBar() {
             height={40}
             alt="유저이미지"
             src={session.user?.image ?? ''}
-            style={{ borderRadius: '50%' }}
           />
         </Link>
       )
     }
-    console.log(showSignButton)
 
     if (showSignButton) {
       return (
@@ -43,16 +39,14 @@ function NavBar() {
   }, [session, showSignButton])
 
   return (
-    <Flex css={navBarStyles} justify="space-between" align="center">
-      <Link href={'/'}>
-        <MyText>My_Account</MyText>
-      </Link>
+    <Flex justify="space-between" align="center" css={navbarStyles}>
+      <Link href="/">MyAccount</Link>
       {renderButton()}
     </Flex>
   )
 }
 
-const navBarStyles = css`
+const navbarStyles = css`
   padding: 10px 24px;
   position: sticky;
   top: 0;
@@ -61,4 +55,4 @@ const navBarStyles = css`
   border-bottom: 1px solid ${colors.gray100};
 `
 
-export default NavBar
+export default Navbar
