@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import useCredit from '../credit/hooks/useCredit'
 import Button from '../shared/Button'
 import CreditScoreChart from '../shared/CreditScoreChart'
 import Flex from '../shared/Flex'
@@ -6,9 +7,14 @@ import ListRow from '../shared/ListRows'
 
 import { Spacing } from '../shared/Spacing'
 import MyText from '../shared/Text'
-import withSuspense from '@/hooks/withSuspense'
 
 function CreditScore() {
+  const { data: credit, isLoading } = useCredit()
+
+  if (isLoading === true) {
+    return <CreditScoreSkeleton />
+  }
+
   return (
     <ListRow
       contents={
@@ -23,7 +29,13 @@ function CreditScore() {
           </Link>
         </Flex>
       }
-      right={<CreditScoreChart score={500} width={80} height={80} />}
+      right={
+        <CreditScoreChart
+          score={credit?.creditScore ?? 0}
+          width={80}
+          height={80}
+        />
+      }
     />
   )
 }

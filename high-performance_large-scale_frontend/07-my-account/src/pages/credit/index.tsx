@@ -1,7 +1,11 @@
 import { useCallback } from 'react'
+import { GetServerSidePropsContext } from 'next'
 import dynamic from 'next/dynamic'
 
 import { useRouter } from 'next/router'
+import { getSession } from 'next-auth/react'
+import { QueryClient, dehydrate } from 'react-query'
+import useCredit from '@/components/credit/hooks/useCredit'
 import CreditScoreChart from '@/components/shared/CreditScoreChart'
 import Flex from '@/components/shared/Flex'
 import ListRow from '@/components/shared/ListRows'
@@ -9,6 +13,8 @@ import { Spacing } from '@/components/shared/Spacing'
 import MyText from '@/components/shared/Text'
 import { useAlertContext } from '@/context/AlertContext'
 import useUser from '@/hooks/useUser'
+import { User } from '@/models/user'
+import { getCredit } from '@/remote/credit'
 
 const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
   ssr: false,
@@ -19,6 +25,7 @@ function CreditPage() {
   const router = useRouter()
   const user = useUser()
   const { open } = useAlertContext()
+  const { data: credit } = useCredit()
 
   const handleCheck = useCallback(() => {
     if (user == null) {
@@ -35,10 +42,9 @@ function CreditPage() {
     router.push('/credit/check')
   }, [open, router, user])
 
-  if (신용점수를조회했는가 === false) {
+  if (credit != null) {
     return (
       <div>
-        {' '}
         <Spacing size={40} />
         <Flex direction="column" align="center">
           <MyText typography="t4" bold={true} textAlign="center">
@@ -46,7 +52,7 @@ function CreditPage() {
           </MyText>
           <Spacing size={10} />
           {/* 실제 점수 */}
-          <CreditScoreChart score={0} width={80} height={80} />
+          <CreditScoreChart score={credit.creditScore} width={80} height={80} />
         </Flex>
         <Spacing size={80} />
         <ul>
@@ -104,6 +110,28 @@ function CreditPage() {
       />
     </div>
   )
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await getSession(context)
+
+  if (session != null && session.user != null) {
+    const client = new QueryClient()
+
+    await client.prefetchQuery(['credit', (session.user as User)?.id], () =>
+      getCredit((session.user as User)?.id),
+    )
+
+    return {
+      props: {
+        dehydrateState: JSON.parse(JSON.stringify(dehydrate(client))),
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
 }
 
 export default CreditPage

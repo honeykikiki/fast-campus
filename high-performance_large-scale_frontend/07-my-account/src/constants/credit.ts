@@ -1,0 +1,6 @@
+export const CHECK_STATUS = {
+  READY: 'REDAY',
+  PROGRESS: 'PROFRESS',
+  COMPLETE: 'COMPLETE',
+  REJECT: 'REJECT',
+} as const

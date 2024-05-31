@@ -23,7 +23,7 @@ function EventPage({ initialEvent, id }: EventPageProps) {
 
       if (이벤트가_종료_되었는가) {
         open({
-          title: `${event.title}}\n종료된 이벤트 입니다.`,
+          title: `${event.title}\n종료된 이벤트 입니다.`,
           description: '다음에 더 좋은 이벤트로 찾아오겠습니다.',
           onButtonClick: () => {
             window.history.back()
