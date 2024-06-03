@@ -21,7 +21,6 @@ const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
 })
 
 function CreditPage() {
-  const 신용점수를조회했는가 = false
   const router = useRouter()
   const user = useUser()
   const { open } = useAlertContext()
