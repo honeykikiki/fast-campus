@@ -8,7 +8,6 @@ import { QueryClient, dehydrate } from 'react-query'
 import Account from '@/components/home/Account'
 import { BannerSkeleton } from '@/components/home/EventBanners'
 import { Spacing } from '@/components/shared/Spacing'
-import useAccount from '@/hooks/useAccount'
 import { User } from '@/models/user'
 import { getAccount } from '@/remote/account'
 

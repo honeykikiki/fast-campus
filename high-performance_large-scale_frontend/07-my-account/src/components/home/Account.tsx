@@ -76,7 +76,11 @@ function Account() {
           </MyText>
         </Flex>
       }
-      right={<Button>분석</Button>}
+      right={
+        <Link href={'/account'}>
+          <Button>분석</Button>
+        </Link>
+      }
     />
   )
 }
