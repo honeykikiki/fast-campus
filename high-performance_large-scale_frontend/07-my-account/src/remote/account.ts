@@ -1,6 +1,8 @@
 import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
+
 import { store } from './firebase'
 import { COLLECTION } from '@/constants/collection'
+import { Account } from '@/models/account'
 
 export function setTerms({
   userId,
@@ -27,5 +29,27 @@ export async function getTerm(userId: string) {
   return {
     id: snapshot.id,
     ...(snapshot.data() as { userId: string; termIds: string[] }),
+  }
+}
+
+export async function createAccount(newAccount: Account) {
+  return setDoc(
+    doc(collection(store, COLLECTION.ACCOUNT), newAccount.userId),
+    newAccount,
+  )
+}
+
+export async function getAccount(userId: string) {
+  const snapshot = await getDoc(
+    doc(collection(store, COLLECTION.ACCOUNT), userId),
+  )
+
+  if (snapshot.exists() === false) {
+    return null
+  }
+
+  return {
+    id: snapshot.id,
+    ...(snapshot.data() as Account),
   }
 }

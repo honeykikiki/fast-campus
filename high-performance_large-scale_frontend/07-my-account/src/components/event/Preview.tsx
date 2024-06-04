@@ -65,6 +65,12 @@ const markDownStyles = css`
     padding-inline-start: 20px;
     margin: 18px;
   }
+
+  p {
+    overflow: scroll;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
 `
 
 export default Preview
