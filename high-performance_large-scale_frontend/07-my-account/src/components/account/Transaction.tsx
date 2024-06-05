@@ -12,8 +12,6 @@ import addDelimiter from '@/utils/addDelimiter'
 function Transaction() {
   const { data } = useTransactionㄴ({ suspense: true })
 
-  console.log(data)
-
   const transactions = data?.pages
     .map(({ items }) => items)
     .flat()
