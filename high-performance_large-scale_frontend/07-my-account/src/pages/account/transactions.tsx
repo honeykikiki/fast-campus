@@ -40,7 +40,6 @@ function Transaction() {
     isFetching,
     fetchNextPage,
   } = useTransaction({ filter })
-  console.log(data)
 
   const loadMore = useCallback(() => {
     if (hasNextPage === false || isFetching) {

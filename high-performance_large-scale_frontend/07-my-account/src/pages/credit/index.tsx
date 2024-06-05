@@ -25,7 +25,6 @@ function CreditPage() {
   const user = useUser()
   const { open } = useAlertContext()
   const { data: credit } = useCredit()
-  console.log(credit)
 
   const handleCheck = useCallback(() => {
     if (user == null) {

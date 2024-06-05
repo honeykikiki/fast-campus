@@ -59,3 +59,9 @@ export function updateAccountBalance(userId: string, balance: number) {
 
   return updateDoc(snapShot, { balance })
 }
+
+export function updateTerms(userId: string, termIds: string[]) {
+  const snapshot = doc(collection(store, COLLECTION.TERMS), userId)
+
+  return updateDoc(snapshot, { termIds })
+}
