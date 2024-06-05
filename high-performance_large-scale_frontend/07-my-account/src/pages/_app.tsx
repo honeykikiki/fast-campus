@@ -12,14 +12,14 @@ const client = new QueryClient()
 
 export default function App({
   Component,
-  pageProps: { dehydrate, session, ...pageProps },
+  pageProps: { dehydratedState, session, ...pageProps },
 }: AppProps) {
   return (
     <Layout>
       <Global styles={globalStyles} />
       <SessionProvider session={session}>
         <QueryClientProvider client={client}>
-          <Hydrate state={dehydrate}>
+          <Hydrate state={dehydratedState}>
             <AlertContextProvider>
               <AuthGuard>
                 <NavBar />

@@ -51,7 +51,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     return {
       props: {
-        dehydrateState: JSON.parse(JSON.stringify(dehydrate(client))),
+        dehydratedState: JSON.parse(JSON.stringify(dehydrate(client))),
       },
     }
   }
@@ -60,4 +60,5 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     props: {},
   }
 }
+
 const Container = styled.div``

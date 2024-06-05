@@ -25,6 +25,7 @@ function CreditPage() {
   const user = useUser()
   const { open } = useAlertContext()
   const { data: credit } = useCredit()
+  console.log(credit)
 
   const handleCheck = useCallback(() => {
     if (user == null) {
@@ -123,7 +124,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     return {
       props: {
-        dehydrateState: JSON.parse(JSON.stringify(dehydrate(client))),
+        dehydratedState: JSON.parse(JSON.stringify(dehydrate(client))),
       },
     }
   }
