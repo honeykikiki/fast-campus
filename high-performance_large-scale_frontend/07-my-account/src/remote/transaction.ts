@@ -12,7 +12,7 @@ import {
 } from 'firebase/firestore'
 import { store } from './firebase'
 import { COLLECTION } from '@/constants/collection'
-import { Transaction } from '@/models/transaction'
+import { Transaction, TransactionFilterType } from '@/models/transaction'
 
 export async function createTransaction(newTransaction: Transaction) {
   return setDoc(doc(collection(store, COLLECTION.TRANSACTION)), newTransaction)
@@ -21,25 +21,13 @@ export async function createTransaction(newTransaction: Transaction) {
 export async function getTransactions({
   pageParam,
   userId,
+  filter = 'all',
 }: {
   pageParam?: QuerySnapshot<Transaction>
   userId: string
+  filter?: TransactionFilterType
 }) {
-  const transactionQuery =
-    pageParam == null
-      ? query(
-          collection(store, COLLECTION.TRANSACTION),
-          where('userId', '==', userId),
-          orderBy('date', 'desc'),
-          limit(15),
-        )
-      : query(
-          collection(store, COLLECTION.TRANSACTION),
-          where('userId', '==', userId),
-          orderBy('date', 'desc'),
-          startAfter(pageParam),
-          limit(15),
-        )
+  const transactionQuery = generateQuery({ pageParam, userId, filter })
 
   const transactionSnapshot = await getDocs(transactionQuery)
   const lastVisible =
@@ -52,5 +40,36 @@ export async function getTransactions({
   return {
     items,
     lastVisible,
+  }
+}
+
+function generateQuery({
+  filter,
+  pageParam,
+  userId,
+}: {
+  pageParam?: QuerySnapshot<Transaction>
+  userId: string
+  filter?: TransactionFilterType
+}) {
+  const baseQuery = query(
+    collection(store, COLLECTION.TRANSACTION),
+    where('userId', '==', userId),
+    orderBy('date', 'desc'),
+    limit(15),
+  )
+
+  if (filter !== 'all') {
+    if (pageParam == null) {
+      return query(baseQuery, where('type', '==', filter))
+    }
+
+    return query(baseQuery, startAfter(pageParam), where('type', '==', filter))
+  } else {
+    if (pageParam == null) {
+      return baseQuery
+    }
+
+    return query(baseQuery, startAfter(pageParam))
   }
 }

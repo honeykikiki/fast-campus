@@ -1,14 +1,18 @@
 import { useInfiniteQuery } from 'react-query'
 import useUser from '@/hooks/useUser'
+import { TransactionFilterType } from '@/models/transaction'
 import { getTransactions } from '@/remote/transaction'
 
-function useTransaction({ suspense }: { suspense?: boolean } = {}) {
+function useTransactionㄴ({
+  suspense,
+  filter = 'all',
+}: { suspense?: boolean; filter?: TransactionFilterType } = {}) {
   const user = useUser()
 
   return useInfiniteQuery(
-    ['transaction', user?.id],
+    ['transaction', user?.id, filter],
     ({ pageParam }) =>
-      getTransactions({ pageParam, userId: user?.id as string }),
+      getTransactions({ pageParam, userId: user?.id as string, filter }),
     {
       getNextPageParam: (snapshot) => {
         return snapshot.lastVisible
@@ -18,4 +22,4 @@ function useTransaction({ suspense }: { suspense?: boolean } = {}) {
   )
 }
 
-export default useTransaction
+export default useTransactionㄴ

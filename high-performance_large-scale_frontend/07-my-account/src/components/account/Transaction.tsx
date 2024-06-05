@@ -1,15 +1,16 @@
 import { format, parseISO } from 'date-fns'
+import { css } from '@emotion/react'
 import Link from 'next/link'
 import Button from '../shared/Button'
 import Flex from '../shared/Flex'
 import ListRow from '../shared/ListRows'
 import MyText from '../shared/Text'
-import useTransaction from './hooks/useTransaction'
+import useTransactionㄴ from './hooks/useTransaction'
 import withSuspense from '@/hooks/withSuspense'
 import addDelimiter from '@/utils/addDelimiter'
 
 function Transaction() {
-  const { data } = useTransaction({ suspense: true })
+  const { data } = useTransactionㄴ({ suspense: true })
 
   console.log(data)
 
@@ -18,10 +19,8 @@ function Transaction() {
     .flat()
     .slice(0, 5)
   return (
-    <div>
-      <MyText bold={true} style={{ padding: 24 }}>
-        입출금 내역
-      </MyText>
+    <div style={{ padding: 24 }}>
+      <MyText bold={true}>입출금 내역</MyText>
 
       {transactions?.length === 0 ? (
         <Flex style={{ padding: 24 }}>
@@ -34,14 +33,14 @@ function Transaction() {
 
             return (
               <ListRow
+                style={css`
+                  padding: 24px 0px;
+                `}
                 key={transaction.id}
                 contents={
                   <ListRow.Texts
                     title={transaction.displayText}
-                    subTitle={format(
-                      parseISO(transaction.date),
-                      'yyyy-MM-ddyyyy-MM-dd',
-                    )}
+                    subTitle={format(parseISO(transaction.date), 'yyyy-MM-dd')}
                   />
                 }
                 right={
