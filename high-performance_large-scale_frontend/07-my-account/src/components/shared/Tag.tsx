@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
 import { Colors, colors } from '@/styles/colorPlatte'
+import styled from '@emotion/styled'
 
 interface TagProps {
   color?: string

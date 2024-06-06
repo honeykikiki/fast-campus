@@ -1,6 +1,7 @@
-import { SerializedStyles } from '@emotion/react'
 import { useEffect, useRef, useState } from 'react'
+
 import { colors } from '@/styles/colorPlatte'
+import { SerializedStyles } from '@emotion/react'
 
 function ScrollProgressBar({ style }: { style?: SerializedStyles }) {
   const [progress, setProgress] = useState(0)

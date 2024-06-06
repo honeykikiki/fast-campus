@@ -15,7 +15,7 @@ function ReservationDonePage() {
 
   return (
     <div>
-      <Spacing size={80} />
+      <Spacing size={8} />
       <Flex direction="column" align="center">
         <img
           width={120}

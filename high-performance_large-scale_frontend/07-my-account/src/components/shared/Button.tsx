@@ -1,3 +1,5 @@
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import {
   ButtonColor,
   buttonColorMap,
@@ -5,10 +7,9 @@ import {
   buttonSizeMap,
   buttonWeakMap,
 } from '@styles/button'
-import { css } from '@emotion/react'
-import styled from '@emotion/styled'
+
 import Flex from './Flex'
-import { Spacing } from './Spacing'
+import Spacing from './Spacing'
 import MyText from './Text'
 
 interface ButtonProps {

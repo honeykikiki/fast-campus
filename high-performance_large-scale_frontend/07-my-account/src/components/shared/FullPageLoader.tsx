@@ -1,5 +1,7 @@
+import Image from 'next/image'
+
 import Flex from './Flex'
-import { Spacing } from './Spacing'
+import Spacing from './Spacing'
 import MyText from './Text'
 
 function FullPageLoader({ message }: { message?: string }) {
@@ -16,7 +18,7 @@ function FullPageLoader({ message }: { message?: string }) {
       align="center"
     >
       <Flex direction="column" align="center">
-        <img
+        <Image
           width={120}
           src="https://cdn.pixabay.com/animation/2023/06/13/15/12/15-12-47-323_512.gif"
           alt=""

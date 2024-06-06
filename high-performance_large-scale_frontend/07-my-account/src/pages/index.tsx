@@ -1,15 +1,14 @@
+import Account from '@/components/home/Account'
+import { BannerSkeleton } from '@/components/home/EventBanners'
+import Spacing from '@/components/shared/Spacing'
+import { User } from '@/models/user'
+import { getAccount } from '@/remote/account'
 import { CardListSkeleton } from '@components/home/CardList'
-
 import styled from '@emotion/styled'
 import { GetServerSidePropsContext } from 'next'
 import dynamic from 'next/dynamic'
 import { getSession, useSession } from 'next-auth/react'
 import { QueryClient, dehydrate } from 'react-query'
-import Account from '@/components/home/Account'
-import { BannerSkeleton } from '@/components/home/EventBanners'
-import { Spacing } from '@/components/shared/Spacing'
-import { User } from '@/models/user'
-import { getAccount } from '@/remote/account'
 
 const EventBanners = dynamic(() => import('@components/home/EventBanners'), {
   ssr: false,

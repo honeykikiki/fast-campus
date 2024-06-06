@@ -1,6 +1,6 @@
-import { useQuery } from 'react-query'
 import useAccount from '@/hooks/useAccount'
 import { getEventBanners } from '@/remote/banner'
+import { useQuery } from 'react-query'
 
 function useEventBanners() {
   // 유저가 계좌를 가지고 있는가?

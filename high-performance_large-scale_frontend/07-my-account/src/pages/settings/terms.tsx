@@ -1,4 +1,13 @@
 import { useCallback, useMemo } from 'react'
+
+import Button from '@/components/shared/Button'
+import ListRow from '@/components/shared/ListRows'
+import MyText from '@/components/shared/Text'
+import Top from '@/components/shared/Top'
+import { 약관목록 } from '@/constants/account'
+import useUser from '@/hooks/useUser'
+import { User } from '@/models/user'
+import { getTerm as getTerms, updateTerms } from '@/remote/account'
 import { GetServerSidePropsContext } from 'next'
 import { getSession } from 'next-auth/react'
 import {
@@ -8,14 +17,6 @@ import {
   useQuery,
   useQueryClient,
 } from 'react-query'
-import Button from '@/components/shared/Button'
-import ListRow from '@/components/shared/ListRows'
-import MyText from '@/components/shared/Text'
-import Top from '@/components/shared/Top'
-import { 약관목록 } from '@/constants/accout'
-import useUser from '@/hooks/useUser'
-import { User } from '@/models/user'
-import { getTerm as getTerms, updateTerms } from '@/remote/account'
 
 function TermsPage() {
   const user = useUser()

@@ -1,11 +1,7 @@
 import { useState } from 'react'
-import { GetServerSidePropsContext } from 'next'
-import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
-import { getSession } from 'next-auth/react'
+
 import Form from '@/components/account/Form'
 import Terms from '@/components/account/Terms'
-
 import FullPageLoader from '@/components/shared/FullPageLoader'
 import ProgressBar from '@/components/shared/ProgressBar'
 import useUser from '@/hooks/useUser'
@@ -13,6 +9,10 @@ import withAuth from '@/hooks/withAuth'
 import { Account } from '@/models/account'
 import { User } from '@/models/user'
 import { createAccount, getAccount, getTerm, setTerms } from '@/remote/account'
+import { GetServerSidePropsContext } from 'next'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
+import { getSession } from 'next-auth/react'
 
 const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
   ssr: false,

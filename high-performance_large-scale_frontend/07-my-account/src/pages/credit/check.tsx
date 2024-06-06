@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useMutation } from 'react-query'
+
 import useCreditCheck from '@/components/credit/hooks/useCreditCheck'
 import FixedBottomButton from '@/components/shared/FixedBottomButton'
 import FullPageLoader from '@/components/shared/FullPageLoader'
@@ -7,6 +7,7 @@ import { CHECK_STATUS } from '@/constants/credit'
 import { useAlertContext } from '@/context/AlertContext'
 import useUser from '@/hooks/useUser'
 import { updateCredit } from '@/remote/credit'
+import { useMutation } from 'react-query'
 
 function CreditCheckPage() {
   const [readyToPoll, setReadyToPoll] = useState(true)

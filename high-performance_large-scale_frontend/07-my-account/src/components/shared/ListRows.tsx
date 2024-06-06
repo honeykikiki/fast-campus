@@ -1,7 +1,8 @@
 import { css, SerializedStyles } from '@emotion/react'
+
 import Flex from './Flex'
 import Skeleton from './Skeleton'
-import { Spacing } from './Spacing'
+import Spacing from './Spacing'
 import MyText from './Text'
 
 interface ListRowProps {

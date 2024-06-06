@@ -1,9 +1,10 @@
 import Flex from '@/components/shared/Flex'
-import { Spacing } from '@/components/shared/Spacing'
+import Spacing from '@/components/shared/Spacing'
 import MyText from '@/components/shared/Text'
 import CardListAddButton from '@/components/test/CardListAddButton'
 import EventButtonAddBanner from '@/components/test/EventButtonAddBanner'
 import EventForm from '@/components/test/EventForm'
+import FAQAddButton from '@/components/test/FAQAddButton'
 import TransactionForm from '@/components/test/TransactionForm'
 
 function TestPage() {
@@ -35,6 +36,14 @@ function TestPage() {
 
       <MyText bold={true}>입출금 테스트</MyText>
       <TransactionForm />
+      <Spacing
+        size={20}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0' }}
+      />
+
+      <MyText bold={true}>FAQ 테스트</MyText>
+      <FAQAddButton />
       <Spacing
         size={20}
         backgroundColor="gray100"

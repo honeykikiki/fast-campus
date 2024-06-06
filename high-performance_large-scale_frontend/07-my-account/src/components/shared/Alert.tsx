@@ -1,10 +1,10 @@
+import { colors } from '@/styles/colorPlatte'
 import styled from '@emotion/styled'
 
 import Button from './Button'
 import Dimmed from './Dimmed'
 import Flex from './Flex'
 import Text from './Text'
-import { colors } from '@/styles/colorPlatte'
 
 interface AlertProps {
   open?: boolean

@@ -1,11 +1,12 @@
 import { Fragment, useCallback } from 'react'
+
+import { FORMS } from '@constants/account'
+import { AccountForm } from '@models/account'
+import Select from '@shared/Select'
+import Spacing from '@shared/Spacing'
+import TextFiled from '@shared/TextField'
 import dynamic from 'next/dynamic'
 import { useForm } from 'react-hook-form'
-import Select from '../shared/Select'
-import { Spacing } from '../shared/Spacing'
-import TextFiled from '../shared/TextField'
-import { FORMS } from '@/constants/accout'
-import { AccountForm } from '@/models/account'
 
 const FixedBottomButton = dynamic(() => import('../shared/FixedBottomButton'), {
   ssr: false,

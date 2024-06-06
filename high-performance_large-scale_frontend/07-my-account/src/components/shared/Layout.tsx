@@ -1,4 +1,5 @@
 import Head from 'next/head'
+
 import SEO from './SEO'
 
 function Layout({ children }: { children: React.ReactNode }) {

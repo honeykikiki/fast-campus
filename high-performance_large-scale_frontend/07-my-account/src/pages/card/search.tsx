@@ -1,7 +1,5 @@
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
-import { css } from '@emotion/react'
-import { useRouter } from 'next/router'
-import { useQuery } from 'react-query'
+
 import Badge from '@/components/shared/Badge'
 import Input from '@/components/shared/Input'
 import ListRow from '@/components/shared/ListRows'
@@ -10,6 +8,9 @@ import Top from '@/components/shared/Top'
 import useDebounce from '@/hooks/useDebounce'
 import { getSearchCards } from '@/remote/card'
 import { colors } from '@/styles/colorPlatte'
+import { css } from '@emotion/react'
+import { useRouter } from 'next/router'
+import { useQuery } from 'react-query'
 
 function CardSearchPage() {
   const [keyword, setKeyword] = useState('')

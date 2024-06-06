@@ -1,4 +1,3 @@
-import Alert from '@shared/Alert'
 import React, {
   ComponentProps,
   createContext,
@@ -7,6 +6,8 @@ import React, {
   useMemo,
   useState,
 } from 'react'
+
+import Alert from '@shared/Alert'
 import { createPortal } from 'react-dom'
 
 type AlertProps = ComponentProps<typeof Alert>

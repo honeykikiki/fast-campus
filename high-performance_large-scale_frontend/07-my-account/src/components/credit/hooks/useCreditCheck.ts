@@ -1,5 +1,5 @@
-import { useQuery } from 'react-query'
 import { CHECK_STATUS } from '@/constants/credit'
+import { useQuery } from 'react-query'
 
 interface useCreditCheckProps {
   onSuccess: (creditScore: number) => void

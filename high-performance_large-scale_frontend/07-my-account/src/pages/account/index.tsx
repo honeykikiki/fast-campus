@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic'
-import { Spacing } from '@/components/shared/Spacing'
+import Spacing from '@/components/shared/Spacing'
 import withAuth from '@/hooks/withAuth'
+import dynamic from 'next/dynamic'
 
 const MonthlyChart = dynamic(() => import('@/components/account/MonthlyChart'))
 

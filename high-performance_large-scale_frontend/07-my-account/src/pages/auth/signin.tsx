@@ -1,3 +1,7 @@
+import Button from '@/components/shared/Button'
+import Flex from '@/components/shared/Flex'
+import Spacing from '@/components/shared/Spacing'
+import MyText from '@/components/shared/Text'
 import { BuiltInProviderType } from 'next-auth/providers'
 import {
   ClientSafeProvider,
@@ -5,12 +9,8 @@ import {
   getProviders,
   signIn,
 } from 'next-auth/react'
-import Button from '@/components/shared/Button'
-import Flex from '@/components/shared/Flex'
-import { Spacing } from '@/components/shared/Spacing'
-import MyText from '@/components/shared/Text'
 
-function signinPage({
+function SigninPage({
   providers,
 }: {
   providers: Record<
@@ -51,4 +51,4 @@ export async function getServerSideProps() {
   }
 }
 
-export default signinPage
+export default SigninPage

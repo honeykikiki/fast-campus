@@ -1,5 +1,6 @@
-import { colors } from '@styles/colorPlatte'
 import styled from '@emotion/styled'
+import { colors } from '@styles/colorPlatte'
+
 import MyText from './Text'
 
 interface BadgeProps {

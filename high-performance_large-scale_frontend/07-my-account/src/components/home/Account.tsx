@@ -1,14 +1,16 @@
 import { act } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import Button from '../shared/Button'
-import Flex from '../shared/Flex'
-import ListRow from '../shared/ListRows'
-import { Spacing } from '../shared/Spacing'
-import MyText from '../shared/Text'
+
 import useAccount from '@/hooks/useAccount'
 import useUser from '@/hooks/useUser'
 import addDelimiter from '@/utils/addDelimiter'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import Button from '../shared/Button'
+import Flex from '../shared/Flex'
+import ListRow from '../shared/ListRows'
+import Spacing from '../shared/Spacing'
+import MyText from '../shared/Text'
 
 function Account() {
   const { data: account } = useAccount()

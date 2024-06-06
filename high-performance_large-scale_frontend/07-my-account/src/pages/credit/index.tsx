@@ -1,20 +1,20 @@
 import { useCallback } from 'react'
-import { GetServerSidePropsContext } from 'next'
-import dynamic from 'next/dynamic'
 
-import { useRouter } from 'next/router'
-import { getSession } from 'next-auth/react'
-import { QueryClient, dehydrate } from 'react-query'
 import useCredit from '@/components/credit/hooks/useCredit'
 import CreditScoreChart from '@/components/shared/CreditScoreChart'
 import Flex from '@/components/shared/Flex'
 import ListRow from '@/components/shared/ListRows'
-import { Spacing } from '@/components/shared/Spacing'
+import Spacing from '@/components/shared/Spacing'
 import MyText from '@/components/shared/Text'
 import { useAlertContext } from '@/context/AlertContext'
 import useUser from '@/hooks/useUser'
 import { User } from '@/models/user'
 import { getCredit } from '@/remote/credit'
+import { GetServerSidePropsContext } from 'next'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
+import { getSession } from 'next-auth/react'
+import { QueryClient, dehydrate } from 'react-query'
 
 const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
   ssr: false,
@@ -35,6 +35,7 @@ function CreditPage() {
           router.push('/auth/signin')
         },
       })
+
       return
     }
 

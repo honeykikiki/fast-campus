@@ -1,11 +1,12 @@
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { format, parseISO } from 'date-fns'
 import { memo, useMemo } from 'react'
+
+import { colors } from '@/styles/colorPlatte'
 import { AxisBottom } from '@visx/axis'
 import { Group } from '@visx/group'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
 import { Bar } from '@visx/shape'
-import { colors } from '@/styles/colorPlatte'
 
 // 월별 데이터
 // 날짜

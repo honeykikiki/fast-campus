@@ -1,11 +1,11 @@
 import Link from 'next/link'
+
 import useCredit from '../credit/hooks/useCredit'
 import Button from '../shared/Button'
 import CreditScoreChart from '../shared/CreditScoreChart'
 import Flex from '../shared/Flex'
 import ListRow from '../shared/ListRows'
-
-import { Spacing } from '../shared/Spacing'
+import Spacing from '../shared/Spacing'
 import MyText from '../shared/Text'
 
 function CreditScore() {

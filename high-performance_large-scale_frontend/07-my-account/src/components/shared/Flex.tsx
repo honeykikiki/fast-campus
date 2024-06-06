@@ -1,5 +1,6 @@
-import styled from '@emotion/styled'
 import { CSSProperties } from 'react'
+
+import styled from '@emotion/styled'
 
 interface FlexProps {
   align?: CSSProperties['alignItems']

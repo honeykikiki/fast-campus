@@ -1,15 +1,16 @@
+import Flex from '@components/shared/Flex'
+import ListRow from '@components/shared/ListRows'
+import MyText from '@components/shared/Text'
+import Top from '@components/shared/Top'
+import { Card } from '@models/card'
+
 import { motion } from 'framer-motion'
 import { GetServerSidePropsContext } from 'next'
-
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useQuery } from 'react-query'
-import Flex from '@/components/shared/Flex'
-import ListRow from '@/components/shared/ListRows'
-import MyText from '@/components/shared/Text'
-import Top from '@/components/shared/Top'
-import { Card } from '@/models/card'
+
 import { getCard } from '@/remote/card'
 
 const FixedBottomButton = dynamic(

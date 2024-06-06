@@ -1,10 +1,11 @@
 import { isAfter, parseISO } from 'date-fns'
-import { GetServerSidePropsContext } from 'next'
-import { useQuery } from 'react-query'
+
 import Preview from '@/components/event/Preview'
 import { useAlertContext } from '@/context/AlertContext'
 import { Event } from '@/models/event'
 import { getEvent } from '@/remote/event'
+import { GetServerSidePropsContext } from 'next'
+import { useQuery } from 'react-query'
 
 interface EventPageProps {
   initialEvent: Event

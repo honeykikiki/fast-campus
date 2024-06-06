@@ -1,6 +1,8 @@
-import { colors } from '@styles/colorPlatte'
-import { css } from '@emotion/react'
 import React, { MouseEvent } from 'react'
+
+import { css } from '@emotion/react'
+import { colors } from '@styles/colorPlatte'
+
 import Flex from './Flex'
 import MyText from './Text'
 

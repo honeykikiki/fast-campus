@@ -1,7 +1,7 @@
-import { useInfiniteQuery } from 'react-query'
 import useUser from '@/hooks/useUser'
 import { TransactionFilterType } from '@/models/transaction'
 import { getTransactions } from '@/remote/transaction'
+import { useInfiniteQuery } from 'react-query'
 
 function useTransactionㄴ({
   suspense,

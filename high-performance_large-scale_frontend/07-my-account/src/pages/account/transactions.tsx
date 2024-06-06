@@ -1,11 +1,5 @@
 import { format, parseISO } from 'date-fns'
 import { useCallback, useState } from 'react'
-import { css } from '@emotion/react'
-import { GetServerSidePropsContext } from 'next'
-
-import { getSession } from 'next-auth/react'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import { QueryClient, dehydrate } from 'react-query'
 
 import useTransaction from '@/components/account/hooks/useTransaction'
 import Flex from '@/components/shared/Flex'
@@ -16,6 +10,11 @@ import { TransactionFilterType } from '@/models/transaction'
 import { User } from '@/models/user'
 import { getTransactions } from '@/remote/transaction'
 import addDelimiter from '@/utils/addDelimiter'
+import { css } from '@emotion/react'
+import { GetServerSidePropsContext } from 'next'
+import { getSession } from 'next-auth/react'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import { QueryClient, dehydrate } from 'react-query'
 
 const FILTER: Array<{ label: string; value: TransactionFilterType }> = [
   {

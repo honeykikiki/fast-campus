@@ -1,6 +1,7 @@
-import { useQuery } from 'react-query'
-import useUser from './useUser'
 import { getAccount } from '@/remote/account'
+import { useQuery } from 'react-query'
+
+import useUser from './useUser'
 
 function useAccount() {
   const user = useUser()

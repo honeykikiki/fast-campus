@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import dynamic from 'next/dynamic'
-import Agreement from '../shared/Agreement'
 
-import { 약관목록 } from '@/constants/accout'
+import { 약관목록 } from '@/constants/account'
 import { Term } from '@/models/account'
+import dynamic from 'next/dynamic'
+
+import Agreement from '../shared/Agreement'
 
 const FixedBottomButton = dynamic(() => import('../shared/FixedBottomButton'), {
   ssr: false,

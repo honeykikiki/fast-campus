@@ -1,7 +1,9 @@
 import { collection, doc, getDocs, query, where } from 'firebase/firestore'
-import { store } from './firebase'
+
 import { COLLECTION } from '@/constants/collection'
 import { EventBanner } from '@/models/banner'
+
+import { store } from './firebase'
 
 export async function getEventBanners({ hasAccount }: { hasAccount: boolean }) {
   const eventBannerQuery = query(
