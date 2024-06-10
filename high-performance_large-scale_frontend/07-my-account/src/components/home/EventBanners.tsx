@@ -1,11 +1,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import useEventBanners from './hooks/useEventBanners'
 import withSuspense from '../../hooks/withSuspense'
 import ErrorBoundary from '../shared/ErrorBoundary'
 import Flex from '../shared/Flex'
 import Skeleton from '../shared/Skeleton'
 import MyText from '../shared/Text'
+import useEventBanners from './hooks/useEventBanners'
 
 import { css } from '@emotion/react'
 import Image from 'next/image'
