@@ -12,9 +12,9 @@
         //   "order": "asc",
         //   "caseInsensitive": true
         // }
-        "groups": ["external", "internal", "builtin", ["parent", "type"], "sibling", "index", "object"],
-        "newlines-between": "always",
-        "alphabetize": { "order": "asc", "caseInsensitive": true }
+
+        // "groups": ["external", "internal", "builtin", ["parent", "type"], "sibling", "index", "object"],
+        // "alphabetize": { "order": "asc", "caseInsensitive": true }
       }
     ]
   }

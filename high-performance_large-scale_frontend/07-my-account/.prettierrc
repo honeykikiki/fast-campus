@@ -6,5 +6,8 @@
   "trailingComma": "all",
   "endOfLine": "lf",
   "semi": false,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "json": {
+    "sortKeys": true
+  }
 }

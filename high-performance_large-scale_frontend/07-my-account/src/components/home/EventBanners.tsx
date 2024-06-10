@@ -1,15 +1,14 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import { css } from '@emotion/react'
-import Image from 'next/image'
-import Link from 'next/link'
-
 import withSuspense from '../../hooks/withSuspense'
 import Flex from '../shared/Flex'
 import Skeleton from '../shared/Skeleton'
 import MyText from '../shared/Text'
 
 import useEventBanners from './hooks/useEventBanners'
+import Link from 'next/link'
+import Image from 'next/image'
+import { css } from '@emotion/react'
 
 function EventBanners() {
   const { data } = useEventBanners()

@@ -11,10 +11,9 @@ import {
   where,
 } from 'firebase/firestore'
 
+import { store } from './firebase'
 import { COLLECTION } from '@/constants/collection'
 import { Transaction, TransactionFilterType } from '@/models/transaction'
-
-import { store } from './firebase'
 
 export async function createTransaction(newTransaction: Transaction) {
   return setDoc(doc(collection(store, COLLECTION.TRANSACTION)), newTransaction)

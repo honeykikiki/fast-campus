@@ -1,7 +1,3 @@
-import { colors } from '@/styles/colorPlatte'
-import { css } from '@emotion/react'
-import { useRouter } from 'next/router'
-
 import withSuspense from '../../hooks/withSuspense'
 import Badge from '../shared/Badge'
 import Button from '../shared/Button'
@@ -9,6 +5,9 @@ import ListRow from '../shared/ListRows'
 import MyText from '../shared/Text'
 
 import useCards from './hooks/useCards'
+import { useRouter } from 'next/router'
+import { css } from '@emotion/react'
+import { colors } from '@/styles/colorPlatte'
 
 function CardList() {
   const { data } = useCards()

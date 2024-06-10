@@ -1,10 +1,9 @@
 import { collection, doc, writeBatch } from 'firebase/firestore'
 import { useCallback } from 'react'
 
+import Button from '../shared/Button'
 import { COLLECTION } from '@/constants/collection'
 import { store } from '@/remote/firebase'
-
-import Button from '../shared/Button'
 
 const FAQS = [
   {

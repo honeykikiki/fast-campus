@@ -10,10 +10,9 @@ import {
   where,
 } from 'firebase/firestore'
 
+import { store } from './firebase'
 import { COLLECTION } from '@/constants/collection'
 import { Card } from '@/models/card'
-
-import { store } from './firebase'
 
 export async function getCards(pageParam?: QuerySnapshot<Card>) {
   const cardQuery =

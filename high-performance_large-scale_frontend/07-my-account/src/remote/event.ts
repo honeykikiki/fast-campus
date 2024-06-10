@@ -1,9 +1,8 @@
 import { collection, doc, getDoc } from 'firebase/firestore'
 
+import { store } from './firebase'
 import { COLLECTION } from '@/constants/collection'
 import { Event } from '@/models/event'
-
-import { store } from './firebase'
 
 export async function getEvent(id: string) {
   const snapshot = await getDoc(doc(collection(store, COLLECTION.EVENT), id))

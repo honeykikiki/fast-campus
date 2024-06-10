@@ -1,5 +1,4 @@
 import { collection, getDocs } from 'firebase/firestore'
-
 import ListRow from '@/components/shared/ListRows'
 import { COLLECTION } from '@/constants/collection'
 import { store } from '@/remote/firebase'

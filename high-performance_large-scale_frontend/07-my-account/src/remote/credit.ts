@@ -1,9 +1,7 @@
 import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
-
+import { store } from './firebase'
 import { COLLECTION } from '@/constants/collection'
 import { Credit } from '@/models/credit'
-
-import { store } from './firebase'
 
 export function updateCredit({
   userId,

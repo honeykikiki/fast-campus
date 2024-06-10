@@ -1,9 +1,8 @@
 import { collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
 
+import { store } from './firebase'
 import { COLLECTION } from '@/constants/collection'
 import { Account } from '@/models/account'
-
-import { store } from './firebase'
 
 export function setTerms({
   userId,

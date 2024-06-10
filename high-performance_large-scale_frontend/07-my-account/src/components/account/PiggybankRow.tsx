@@ -1,5 +1,8 @@
 import { differenceInDays } from 'date-fns'
 
+import Flex from '../shared/Flex'
+import ListRow from '../shared/ListRows'
+import MyText from '../shared/Text'
 import useUser from '@/hooks/useUser'
 import withSuspense from '@/hooks/withSuspense'
 import { getPiggybank } from '@/remote/piggybank'
@@ -7,10 +10,6 @@ import addDelimiter from '@/utils/addDelimiter'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
-
-import Flex from '../shared/Flex'
-import ListRow from '../shared/ListRows'
-import MyText from '../shared/Text'
 
 function PiggybankRow() {
   const router = useRouter()

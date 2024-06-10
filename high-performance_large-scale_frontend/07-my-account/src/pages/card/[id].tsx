@@ -3,15 +3,15 @@ import ListRow from '@components/shared/ListRows'
 import MyText from '@components/shared/Text'
 import Top from '@components/shared/Top'
 import { Card } from '@models/card'
-
-import { motion } from 'framer-motion'
 import { GetServerSidePropsContext } from 'next'
+import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useQuery } from 'react-query'
 
 import { getCard } from '@/remote/card'
+import SEO from '@/components/shared/SEO'
 
 const FixedBottomButton = dynamic(
   () => import('@/components/shared/FixedBottomButton'),
@@ -38,6 +38,11 @@ function CardDetailPage({ initialCard }: CardDetailPageProps) {
 
   return (
     <div>
+      <SEO
+        title={`${corpName} ${name}`}
+        description={subTitle}
+        image="https://cdn.pixabay.com/photo/2023/08/22/16/02/chrysanthemum-8206709_1280.jpg"
+      />
       <Top title={`${corpName} ${name}`} subTitle={subTitle} />
       <ul>
         {benefit.map((text, index) => (

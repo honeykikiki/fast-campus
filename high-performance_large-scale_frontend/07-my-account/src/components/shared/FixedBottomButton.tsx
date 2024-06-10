@@ -1,9 +1,8 @@
+import Button from './Button'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { colors } from '@styles/colorPlatte'
 import { createPortal } from 'react-dom'
-
-import Button from './Button'
 
 interface FixedBottomButtonProps {
   label: string

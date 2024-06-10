@@ -1,11 +1,10 @@
 import { memo, useEffect, useRef, useState } from 'react'
 
+import MyText from './Text'
 import { colors } from '@/styles/colorPlatte'
 import addDelimiter from '@/utils/addDelimiter'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-
-import MyText from './Text'
 
 const 신용점수_최대값 = 1_000
 

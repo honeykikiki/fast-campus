@@ -1,6 +1,5 @@
-import { css } from '@emotion/react'
-
 import { colorPalette } from './colorPlatte'
+import { css } from '@emotion/react'
 
 export default css`
   ${colorPalette}

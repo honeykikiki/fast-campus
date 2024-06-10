@@ -1,13 +1,12 @@
+import Button from '../shared/Button'
+import Flex from '../shared/Flex'
+import MyText from '../shared/Text'
 import { Event } from '@/models/event'
 import { typographyMap } from '@/styles/typography'
 import { css } from '@emotion/react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import ReactMarkDown from 'react-markdown'
-
-import Button from '../shared/Button'
-import Flex from '../shared/Flex'
-import MyText from '../shared/Text'
 
 const FixedBottomButton = dynamic(
   () => import('@/components/shared/FixedBottomButton'),

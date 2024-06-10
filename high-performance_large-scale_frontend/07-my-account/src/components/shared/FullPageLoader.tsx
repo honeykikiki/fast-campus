@@ -1,8 +1,7 @@
-import Image from 'next/image'
-
 import Flex from './Flex'
 import Spacing from './Spacing'
 import MyText from './Text'
+import Image from 'next/image'
 
 function FullPageLoader({ message }: { message?: string }) {
   return (

@@ -68,8 +68,15 @@ function AccountNewPage({ initialStep }: { initialStep: number }) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession(context)
+  if (session == null) {
+    return {
+      props: {
+        initialStep: 0,
+      },
+    }
+  }
 
-  const agreedTerms = await getTerm((session?.user as User).id)
+  const agreedTerms = await getTerm((session?.user as User)?.id)
 
   if (agreedTerms == null) {
     return {

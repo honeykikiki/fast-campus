@@ -1,7 +1,6 @@
-import { css } from '@emotion/react'
-
 import Flex from './Flex'
 import MyText from './Text'
+import { css } from '@emotion/react'
 
 interface TopProps {
   title: string

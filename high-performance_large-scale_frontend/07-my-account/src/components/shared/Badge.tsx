@@ -1,7 +1,6 @@
+import MyText from './Text'
 import styled from '@emotion/styled'
 import { colors } from '@styles/colorPlatte'
-
-import MyText from './Text'
 
 interface BadgeProps {
   label: string
