@@ -1,6 +1,6 @@
 import Layout from '@components/shared/Layout'
 import globalStyles from '@styles/globalStyles'
-
+import ErrorBoundary from '@/components/shared/ErrorBoundary'
 import NavBar from '@/components/shared/NavBar'
 import { AlertContextProvider } from '@/context/AlertContext'
 import { Global } from '@emotion/react'
@@ -20,10 +20,12 @@ export default function App({
       <SessionProvider session={session}>
         <QueryClientProvider client={client}>
           <Hydrate state={dehydratedState}>
-            <AlertContextProvider>
-              <NavBar />
-              <Component {...pageProps} />
-            </AlertContextProvider>
+            <ErrorBoundary>
+              <AlertContextProvider>
+                <NavBar />
+                <Component {...pageProps} />
+              </AlertContextProvider>
+            </ErrorBoundary>
           </Hydrate>
         </QueryClientProvider>
       </SessionProvider>

@@ -11,6 +11,7 @@ export async function getEventBanners({ hasAccount }: { hasAccount: boolean }) {
   )
 
   const snapShot = await getDocs(eventBannerQuery)
+
   return snapShot.docs.map((doc) => ({
     id: doc.id,
     ...(doc.data() as EventBanner),

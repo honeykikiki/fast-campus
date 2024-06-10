@@ -1,17 +1,16 @@
+import SEO from '@/components/shared/SEO'
+import { getCard } from '@/remote/card'
 import Flex from '@components/shared/Flex'
 import ListRow from '@components/shared/ListRows'
 import MyText from '@components/shared/Text'
 import Top from '@components/shared/Top'
 import { Card } from '@models/card'
-import { GetServerSidePropsContext } from 'next'
 import { motion } from 'framer-motion'
+import { GetServerSidePropsContext } from 'next'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useQuery } from 'react-query'
-
-import { getCard } from '@/remote/card'
-import SEO from '@/components/shared/SEO'
 
 const FixedBottomButton = dynamic(
   () => import('@/components/shared/FixedBottomButton'),

@@ -6,8 +6,8 @@ import Button from '../shared/Button'
 import Flex from '../shared/Flex'
 import Spacing from '../shared/Spacing'
 import TextFiled from '../shared/TextField'
-import { store } from '@/remote/firebase'
 import { COLLECTION } from '@/constants/collection'
+import { store } from '@/remote/firebase'
 
 function EventForm() {
   const [formValues, setFormValues] = useState({

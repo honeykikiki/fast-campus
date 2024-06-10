@@ -1,14 +1,15 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import useEventBanners from './hooks/useEventBanners'
 import withSuspense from '../../hooks/withSuspense'
+import ErrorBoundary from '../shared/ErrorBoundary'
 import Flex from '../shared/Flex'
 import Skeleton from '../shared/Skeleton'
 import MyText from '../shared/Text'
 
-import useEventBanners from './hooks/useEventBanners'
-import Link from 'next/link'
-import Image from 'next/image'
 import { css } from '@emotion/react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 function EventBanners() {
   const { data } = useEventBanners()
@@ -55,6 +56,14 @@ export function BannerSkeleton() {
   )
 }
 
-export default withSuspense(EventBanners, {
+function WrapErrorBoundary() {
+  return (
+    <ErrorBoundary fallbackComponent={<></>}>
+      <EventBanners />
+    </ErrorBoundary>
+  )
+}
+
+export default withSuspense(WrapErrorBoundary, {
   fallback: <BannerSkeleton />,
 })

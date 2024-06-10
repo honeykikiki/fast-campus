@@ -2,8 +2,8 @@ import { forwardRef, SelectHTMLAttributes } from 'react'
 
 import Flex from './Flex'
 import MyText from './Text'
-import { colors } from '@styles/colorPlatte'
 import styled from '@emotion/styled'
+import { colors } from '@styles/colorPlatte'
 
 export interface Option {
   label: string

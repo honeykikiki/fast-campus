@@ -6,15 +6,15 @@
     "import/order": [
       "error",
       {
-        // "groups": ["builtin", "external", "internal", ["parent", "type"], "sibling", "index", "object"],
+        "groups": ["external"],
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+
         // "groups": ["internal", "external", "builtin", ["parent", "type"], "sibling", "index", "object"],
         // "alphabetize": {
         //   "order": "asc",
         //   "caseInsensitive": true
         // }
-
         // "groups": ["external", "internal", "builtin", ["parent", "type"], "sibling", "index", "object"],
-        // "alphabetize": { "order": "asc", "caseInsensitive": true }
       }
     ]
   }
