@@ -1,0 +1,17 @@
+*.DS_Store
+*.log
+*.tsbuildinfo
+
+# " If you're using Zero-Installs: "
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+**/package.json
+**/node_modules
+
+**/dist/*
+dist
