@@ -10,7 +10,7 @@
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-**/package.json
+**/packge-lock.json
 **/node_modules
 
 **/dist/*

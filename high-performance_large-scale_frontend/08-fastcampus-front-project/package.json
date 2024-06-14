@@ -1,0 +1,16 @@
+{
+  "name": "fastcampus-front-project",
+  "version": "0.0.1",
+  "workspaces": [
+    "packages/**/*",
+    "services/**/*"
+  ],
+  "scripts": {
+    "build": "nx build",
+    "graph": "nx run-many --target=build --graph"
+  },
+  "packageManager": "yarn@3.6.3",
+  "dependencies": {
+    "nx": "16.8.1"
+  }
+}
