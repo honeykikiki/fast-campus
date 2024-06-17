@@ -1,1 +1,1 @@
-# esbuild.config
+# esbuild-config

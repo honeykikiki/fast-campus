@@ -13,8 +13,8 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
-  "eslint.nodePath": "high-performance_large-scale_frontend/08-fastcampus-front-project/.yarn/sdks",
   "typescript.tsdk": "high-performance_large-scale_frontend/08-fastcampus-front-project/.yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
+  "eslint.nodePath": "high-performance_large-scale_frontend/08-fastcampus-front-project/.yarn/sdks",
   "prettier.prettierPath": "high-performance_large-scale_frontend/08-fastcampus-front-project/.yarn/sdks/prettier/index.cjs"
 }

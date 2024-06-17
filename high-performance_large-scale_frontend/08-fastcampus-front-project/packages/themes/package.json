@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "main": "dist/index.js",
-  "export": {
+  "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
@@ -20,6 +20,6 @@
   },
   "devDependencies": {
     "@fastcampus/esbuild-config": "workspace:^",
-    "typescript": "^5.4.5"
+    "typescript": "^5.2.2"
   }
 }
