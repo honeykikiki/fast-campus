@@ -28,7 +28,6 @@ node_modules 삭제
     - node_modules를 사용 하지않는다고 선언
   - yarn install
 
-
 # vscode가 yarn이 가져오는 의존성을 사용하기 위해
   - ZipFs Plugin
   - https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs
