@@ -19,6 +19,9 @@
   > root 실행
   - yarn workspace @fastcampus/storybook dlx storybook init --type react
 
+## 내부 워크스페이스 패키지 다운 방법
+ > yarn add --dev @fastcampus/themes
+ > yarn add --dev @fastcampus/react-components-layout
 
 ## 프로젝트 구조
   ### 최상위 폴더 및 파일
@@ -49,3 +52,76 @@
 
   ### services 폴더
   - 각종 서비스 관련 파일이 포함되어 있는 폴더입니다. 서비스 모듈과 관련된 파일이 여기에 위치합니다.
+
+
+# Dependencies 설명 및 설치 명령어
+
+### @typescript-eslint/eslint-plugin (^6.5.0)
+- 설명: TypeScript 코드에서 ESLint를 사용할 수 있게 해주는 플러그인입니다.
+- 설치 명령어:
+  > yarn add @typescript-eslint/eslint-plugin -D
+
+### @typescript-eslint/parser (^6.5.0)
+- 설명: TypeScript 코드를 파싱하여 ESLint가 이해할 수 있게 해주는 파서입니다.
+- 설치 명령어:
+  > yarn add @typescript-eslint/parser -D
+
+### eslint (^8.48.0)
+- 설명: JavaScript 및 TypeScript 코드의 문법 및 스타일 문제를 발견하고 고칠 수 있는 린터입니다.
+- 설치 명령어:
+  > yarn add eslint -D
+
+### eslint-config-prettier (^9.0.0)
+- 설명: ESLint와 Prettier를 함께 사용할 때 발생할 수 있는 충돌을 방지하는 설정입니다.
+- 설치 명령어:
+  > yarn add eslint-config-prettier -D
+
+### eslint-plugin-import (^2.28.1)
+- 설명: 모듈 import 구문을 검증하고 관리하기 위한 ESLint 플러그인입니다.
+- 설치 명령어:
+  > yarn add eslint-plugin-import -D
+
+### eslint-plugin-json-format (^2.0.1)
+- 설명: JSON 파일의 형식을 검사하고 일관성을 유지하는 데 도움을 주는 ESLint 플러그인입니다.
+- 설치 명령어:
+  > yarn add eslint-plugin-json-format -D
+
+### eslint-plugin-jsx-a11y (^6.7.1)
+- 설명: JSX 코드에서 접근성을 검증하고 문제를 보고하는 ESLint 플러그인입니다.
+- 설치 명령어:
+  > yarn add eslint-plugin-jsx-a11y -D
+
+### eslint-plugin-react (^7.33.2)
+- 설명: React 코드의 린팅을 지원하는 ESLint 플러그인입니다.
+- 설치 명령어:
+  > yarn add eslint-plugin-react -D
+
+### eslint-plugin-react-hooks (^4.6.0)
+- 설명: React Hooks 사용 시 발생할 수 있는 문제를 검증하는 ESLint 플러그인입니다.
+- 설치 명령어:
+  > yarn add eslint-plugin-react-hooks -D
+
+### eslint-plugin-simple-import-sort (^10.0.0)
+- 설명: import 구문을 자동으로 정렬해주는 ESLint 플러그인입니다.
+- 설치 명령어:
+  > yarn add eslint-plugin-simple-import-sort -D
+
+### eslint-plugin-storybook (^0.6.13)
+- 설명: Storybook 파일의 린팅을 지원하는 ESLint 플러그인입니다.
+- 설치 명령어:
+  > yarn add eslint-plugin-storybook -D
+
+### nx (^16.8.1)
+- 설명: 모노레포 관리 도구로, 대규모 프로젝트를 효율적으로 관리할 수 있게 해줍니다.
+- 설치 명령어:
+  > yarn add nx -D
+
+### prettier (^3.0.3)
+- 설명: 코드 포매터로, 코드의 스타일을 일관되게 유지하는 데 도움을 줍니다.
+- 설치 명령어:
+  > yarn add prettier -D
+
+### typescript (^5.2.2)
+- 설명: TypeScript는 JavaScript의 슈퍼셋으로, 정적 타입 검사를 제공합니다.
+- 설치 명령어:
+  > yarn add typescript -D
