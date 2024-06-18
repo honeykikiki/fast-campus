@@ -2488,6 +2488,8 @@ __metadata:
     "@storybook/react-vite": ^8.1.9
     "@storybook/test": ^8.1.9
     prop-types: ^15.8.1
+    react: ^18.3.1
+    react-dom: ^18.3.1
     storybook: ^8.1.9
     storybook-addon-root-attributes: ^2.1.3
     vite: 4.4.3
@@ -10774,7 +10776,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
+"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react-dom@npm:^18.3.1":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
   dependencies:
@@ -10892,7 +10894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
+"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react@npm:^18.3.1":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
   dependencies:

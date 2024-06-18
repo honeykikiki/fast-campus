@@ -3,13 +3,17 @@ import { Text as _Text } from "@fastcampus/react-components-layout";
 import { classes, vars } from "@fastcampus/themes";
 
 export default {
-  title: "React Components/Layout/Text",
+  title: "React Components/Layout/Typography/Text",
   component: _Text,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
   argTypes: {
+    as: {
+      options: ["p", "span", "div", "b", "i", "u", "strong", "em"],
+      control: "select",
+    },
     fontSize: {
       options: Object.keys(classes.typography.text),
       control: "select",
@@ -21,10 +25,12 @@ export default {
   },
 };
 
-export const BlockStory = {
+export const Text = {
   args: {
     as: "p",
+    children: "Hello World",
     fontSize: "xl",
-    children: "hello word",
+    color: "gray",
+    background: "blue",
   },
 };
