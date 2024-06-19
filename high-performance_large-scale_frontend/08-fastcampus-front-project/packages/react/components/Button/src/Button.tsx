@@ -7,6 +7,8 @@ import {
   buttonStyle,
   enableColorVariant,
   hoverColorVariant,
+  spanStyle,
+  spinnerStyle,
 } from "./style.css";
 import { vars } from "@fastcampus/themes";
 
@@ -15,13 +17,16 @@ const Button = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {
     variant = "solid",
     size = "md",
     color = "gray",
-
+    leftIcon,
+    rightIcon,
+    isLoading,
     isDisabled = false,
     children,
+    onKeyDown,
     style,
   } = props;
 
-  const endableColor = vars.colors.$scale[color][500];
+  const enableColor = vars.colors.$scale[color][500];
   const hoverColor =
     variant === "solid"
       ? vars.colors.$scale[color][600]
@@ -31,31 +36,44 @@ const Button = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {
       ? vars.colors.$scale[color][700]
       : vars.colors.$scale[color][100];
 
-  console.log(variant);
+  const disabled = isDisabled || isLoading;
 
-  const disabled = isDisabled;
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    onKeyDown?.(event);
+
+    if (event.key === "Enter" || event.key === "13") {
+      event.preventDefault();
+      event.currentTarget.click();
+    }
+  };
 
   return (
     <button
       {...props}
       ref={ref}
+      onKeyDown={handleKeyDown}
+      role="button"
       className={clsx([
         buttonStyle({
           size,
           variant,
         }),
       ])}
+      data-loading={isLoading}
       disabled={disabled}
       style={{
         ...assignInlineVars({
-          [enableColorVariant]: endableColor,
+          [enableColorVariant]: enableColor,
           [hoverColorVariant]: hoverColor,
           [activeColorVariant]: activeColor,
         }),
         ...style,
       }}
     >
-      {children}
+      {isLoading && <div className={spinnerStyle({ size })} />}
+      {leftIcon && <span className={spanStyle({ size })}>{leftIcon}</span>}
+      <span>{children}</span>
+      {rightIcon && <span className={spanStyle({ size })}>{rightIcon}</span>}
     </button>
   );
 };

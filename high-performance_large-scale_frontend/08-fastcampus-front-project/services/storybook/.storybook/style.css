@@ -1,5 +1,11 @@
 body {
   background-color: var(--gray-50);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 body * {

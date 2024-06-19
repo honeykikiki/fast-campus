@@ -3,10 +3,10 @@ import { Button as _Button } from "@fastcampus/react-components-button";
 import { vars } from "@fastcampus/themes";
 
 export default {
-  title: "React Components/Layout/Button",
+  title: "React Components/Button",
   component: _Button,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   tags: ["autodocs"],
   argTypes: {
@@ -31,5 +31,7 @@ export const ButtonStory = {
     children: "Button",
     variant: "outline",
     isDisabled: false,
+    isLoading: false,
+    leftIcon: "😀",
   },
 };
