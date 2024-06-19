@@ -20,13 +20,14 @@ const Divider = (props: DividerProps, ref: React.Ref<HTMLHRElement>) => {
           height: "100%",
           borderWidth: `0 0 0 ${size}px`,
         };
+
   return (
     <hr
       {...props}
       ref={ref}
       style={{
         borderStyle: variant,
-        border: vars.colors.$scale?.[color]?.[200] ?? color,
+        borderColor: vars.colors.$scale?.[color]?.[200] ?? color,
         ...borderStyle,
         ...props.style,
       }}
