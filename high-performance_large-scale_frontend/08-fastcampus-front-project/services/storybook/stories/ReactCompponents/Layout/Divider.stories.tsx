@@ -1,6 +1,7 @@
 import "@fastcampus/react-components-layout/style.css";
 import { Box, Divider as _Divider } from "@fastcampus/react-components-layout";
 import { vars } from "@fastcampus/themes";
+import React from "react";
 
 export default {
   title: "React Components/Layout/Divider",
@@ -34,7 +35,7 @@ export default {
 
 export const Divider = {
   args: {
-    color: "gray",
+    color: "red",
     size: 1,
     variant: "solid",
     orientation: "horizontal",
