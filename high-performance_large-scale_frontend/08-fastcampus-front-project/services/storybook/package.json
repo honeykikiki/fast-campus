@@ -3,6 +3,7 @@
   "packageManager": "yarn@3.6.3",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.5.0",
+    "@fastcampus/react-components-button": "workspace:^",
     "@fastcampus/react-components-layout": "workspace:^",
     "@fastcampus/themes": "workspace:^",
     "@storybook/addon-essentials": "^8.1.9",
