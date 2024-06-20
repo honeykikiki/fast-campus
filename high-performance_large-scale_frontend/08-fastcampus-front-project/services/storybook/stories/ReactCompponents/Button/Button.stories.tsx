@@ -1,8 +1,8 @@
 import "@fastcampus/react-components-button/style.css";
-import { Button as _Button } from "@fastcampus/react-components-button";
+import { Button, Button as _Button } from "@fastcampus/react-components-button";
 import { vars } from "@fastcampus/themes";
 import { Text } from "@fastcampus/react-components-layout";
-import { useButton } from "@fastcampus/react-hooks-button";
+import { useButton, useToggleButton } from "@fastcampus/react-hooks-button";
 import React from "react";
 
 export default {
@@ -41,6 +41,7 @@ export const ButtonStory = {
 
 export const TextButtonStory = {
   render: () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { buttonProps } = useButton({
       elementType: "div",
       onClick: () => {
@@ -61,6 +62,28 @@ export const TextButtonStory = {
       >
         텍스트를 입력 바랍니다.
       </Text>
+    );
+  },
+};
+
+export const ToggleButtonStory = {
+  render: () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { buttonProps, isSelected } = useToggleButton(
+      { elementType: "button" },
+      false,
+    );
+
+    console.log(buttonProps);
+
+    return (
+      <Button
+        {...buttonProps}
+        variant={isSelected ? "solid" : "outline"}
+        color="green"
+      >
+        {isSelected ? "on" : "off"}
+      </Button>
     );
   },
 };
