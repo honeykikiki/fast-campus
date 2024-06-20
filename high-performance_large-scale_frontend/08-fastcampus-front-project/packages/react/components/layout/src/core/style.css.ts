@@ -10,7 +10,7 @@ export const BaseStyle = style({
   "&:focus-visible": {
     outline: "none",
 
-    boxShadow: vars.box.shadows.inner,
+    boxShadow: vars.box.shadows.outline,
   },
 });
 

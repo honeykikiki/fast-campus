@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TextProps } from "./types";
 import { clsx } from "clsx";
-import { StyleSprinkles } from "../core/style.css";
+import { BaseStyle, StyleSprinkles } from "../core/style.css";
 import { extractSprinkleProps } from "../utils/properties";
 import { vars } from "@fastcampus/themes";
 import { textStyle } from "./style.css";
@@ -15,6 +15,7 @@ const Text = (props: TextProps, ref: React.Ref<HTMLElement>) => {
       ...props,
       ref,
       className: clsx([
+        BaseStyle,
         StyleSprinkles(
           extractSprinkleProps(props, Array.from(StyleSprinkles.properties)),
         ),

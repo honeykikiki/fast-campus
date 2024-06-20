@@ -2453,6 +2453,7 @@ __metadata:
   resolution: "@fastcampus/react-components-button@workspace:packages/react/components/Button"
   dependencies:
     "@fastcampus/esbuild-config": "workspace:^"
+    "@fastcampus/react-hooks-button": "workspace:^"
     "@fastcampus/themes": "workspace:^"
     "@types/react": ^18.2.21
     "@types/react-dom": ^18.2.7
@@ -2497,6 +2498,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fastcampus/react-hooks-button@workspace:^, @fastcampus/react-hooks-button@workspace:packages/react/hooks/Button":
+  version: 0.0.0-use.local
+  resolution: "@fastcampus/react-hooks-button@workspace:packages/react/hooks/Button"
+  dependencies:
+    "@fastcampus/esbuild-config": "workspace:^"
+    "@types/react": ^18.2.21
+    "@types/react-dom": ^18.2.7
+    clsx: 2.0.0
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    typescript: ^5.2.2
+  peerDependencies:
+    react: "*"
+  languageName: unknown
+  linkType: soft
+
 "@fastcampus/storybook@workspace:services/storybook":
   version: 0.0.0-use.local
   resolution: "@fastcampus/storybook@workspace:services/storybook"
@@ -2504,6 +2521,7 @@ __metadata:
     "@chromatic-com/storybook": ^1.5.0
     "@fastcampus/react-components-button": "workspace:^"
     "@fastcampus/react-components-layout": "workspace:^"
+    "@fastcampus/react-hooks-button": "workspace:^"
     "@fastcampus/themes": "workspace:^"
     "@storybook/addon-essentials": ^8.1.9
     "@storybook/addon-interactions": ^8.1.9
