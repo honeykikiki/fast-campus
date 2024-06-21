@@ -43,7 +43,7 @@ export const TextButtonStory = {
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { buttonProps } = useButton({
-      elementType: "div",
+      elementType: "button",
       onClick: () => {
         console.log("sss");
       },
@@ -73,8 +73,6 @@ export const ToggleButtonStory = {
       { elementType: "button" },
       false,
     );
-
-    console.log(buttonProps);
 
     return (
       <Button
