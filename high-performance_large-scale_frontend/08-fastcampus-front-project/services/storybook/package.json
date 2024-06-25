@@ -7,6 +7,7 @@
     "@fastcampus/react-components-button": "workspace:^",
     "@fastcampus/react-components-input": "workspace:^",
     "@fastcampus/react-components-layout": "workspace:^",
+    "@fastcampus/react-components-select": "workspace:^",
     "@fastcampus/react-hooks-button": "workspace:^",
     "@fastcampus/themes": "workspace:^",
     "@storybook/addon-essentials": "^8.1.9",
