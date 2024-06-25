@@ -19,6 +19,37 @@
   > root 실행
   - yarn workspace @fastcampus/storybook dlx storybook init --type react
 
+# 테스트
+> yarn workspace @fastcampus/storybook add --dev vitest @vitejs/plugin-react @vitest/ui
+
+vite.config.ts
+``` ts
+  /// <reference types="vitest" />
+
+  import { defineConfig } from "vite";
+  import react from "@vitejs/plugin-react";
+
+  export default defineConfig({
+    plugins: [react()],
+    test: {
+      globals: true,
+      environment: "happy-dom",
+      include: ["./stories/**/*.test.ts?(x)"],
+    },
+  });
+```
+- yarn add -D happy-dom
+``` yaml
+  packageExtensions:
+    "local-pkg@*":
+      dependencies:
+        "happy-dom": "^14.12.3"
+```
+
+- 테스팅 라이브러리 추가
+  > yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event
+
+
 ## 내부 워크스페이스 패키지 다운 방법
  > yarn add --dev @fastcampus/themes
  > yarn add --dev @fastcampus/react-components-layout
