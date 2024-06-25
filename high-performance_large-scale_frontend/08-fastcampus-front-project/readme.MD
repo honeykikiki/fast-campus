@@ -22,6 +22,15 @@
 # 테스트
 > yarn workspace @fastcampus/storybook add --dev vitest @vitejs/plugin-react @vitest/ui
 
+# 접근성 테스트
+> yarn add -D @storybook/addon-a11y
+
+# 비주얼 회귀 테스트 (Visual Regression Tests) chromatic or storybook visual test
+https://www.chromatic.com
+https://storybook.js.org/docs/writing-tests/visual-testing
+> yarn add --dev chromatic
+> yarn add -D storybook-addon-pseudo-states
+
 vite.config.ts
 ``` ts
   /// <reference types="vitest" />

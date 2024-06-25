@@ -21,5 +21,5 @@ export type InputGroupProps = {
 export type InputLeftAddonProps = {
   color?: Color;
   size?: Size;
-  children?: React.ReactNode[];
+  children: React.ReactNode;
 };

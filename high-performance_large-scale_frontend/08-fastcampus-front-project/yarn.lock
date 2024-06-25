@@ -2863,6 +2863,7 @@ __metadata:
     "@fastcampus/react-components-toast": "workspace:^"
     "@fastcampus/react-hooks-button": "workspace:^"
     "@fastcampus/themes": "workspace:^"
+    "@storybook/addon-a11y": ^8.1.10
     "@storybook/addon-essentials": ^8.1.9
     "@storybook/addon-interactions": ^8.1.9
     "@storybook/addon-links": ^8.1.9
@@ -2877,11 +2878,13 @@ __metadata:
     "@testing-library/user-event": ^14.5.2
     "@vitejs/plugin-react": ^4.3.1
     "@vitest/ui": ^1.6.0
+    chromatic: ^11.5.4
     happy-dom: ^14.12.3
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
     storybook: ^8.1.9
+    storybook-addon-pseudo-states: ^3.1.1
     storybook-addon-root-attributes: ^2.1.3
     vite: 4.4.3
     vitest: ^1.6.0
@@ -3629,6 +3632,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-a11y@npm:^8.1.10":
+  version: 8.1.10
+  resolution: "@storybook/addon-a11y@npm:8.1.10"
+  dependencies:
+    "@storybook/addon-highlight": 8.1.10
+    axe-core: ^4.2.0
+  checksum: e7bfa417b377a99957f2637c8925cd493f426599d415336978444a1f1ac3990f5b739c683cfc1f25816c9adc856c012b856685c5f836c5482f9e624a72f1c662
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-actions@npm:8.1.9":
   version: 8.1.9
   resolution: "@storybook/addon-actions@npm:8.1.9"
@@ -3713,6 +3726,15 @@ __metadata:
     "@storybook/preview-api": 8.1.9
     ts-dedent: ^2.0.0
   checksum: 9b194a04006dd93577e34915e2c2dc2f46e7e269e285342741600dcaf0a11aedc7436b975d96fac31c1cc470b158dde89078a75a3925a8eeadd2696a7a117c5f
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-highlight@npm:8.1.10":
+  version: 8.1.10
+  resolution: "@storybook/addon-highlight@npm:8.1.10"
+  dependencies:
+    "@storybook/global": ^5.0.0
+  checksum: 71ac388942193342d3832f9377492155e2eee2ef47c92437f6aba7cebf3b28e02125f80209aaa99e00eaa1b26324f86c9423c2b176a1dca0739e549cc762946a
   languageName: node
   linkType: hard
 
@@ -5827,6 +5849,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axe-core@npm:^4.2.0":
+  version: 4.9.1
+  resolution: "axe-core@npm:4.9.1"
+  checksum: 41d9227871781f96c2952e2a777fca73624959dd0e98864f6d82806a77602f82b4fc490852082a7e524d8cd864e50d8b4d9931819b4a150112981d8c932110c5
+  languageName: node
+  linkType: hard
+
 "axe-core@npm:^4.6.2":
   version: 4.8.1
   resolution: "axe-core@npm:4.8.1"
@@ -6247,7 +6276,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^11.4.0":
+"chromatic@npm:^11.4.0, chromatic@npm:^11.5.4":
   version: 11.5.4
   resolution: "chromatic@npm:11.5.4"
   peerDependencies:
@@ -12648,6 +12677,13 @@ __metadata:
   version: 2.14.3
   resolution: "store2@npm:2.14.3"
   checksum: 971a47aa479ff5491f89ee3fcbaf4ddafe0cfb55ac2f4cf4b4fc7b21d349fa3a761f79368d1573b9f65af08b3cf0f6973eed56a213b8bb4cb7e820ac048d1613
+  languageName: node
+  linkType: hard
+
+"storybook-addon-pseudo-states@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "storybook-addon-pseudo-states@npm:3.1.1"
+  checksum: 70c32c3624b389e3d6bfdc8ee3bfe2e97a37798bd3a05d63eac2a3baaae3b0cb1f4cceedd8e39c194e88e5b3cf7647acf69ff4c05dd4e74ab07b101063edcc6c
   languageName: node
   linkType: hard
 
