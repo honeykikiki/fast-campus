@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: "read"
-      action: "read"
+      actions: "read"
 
     steps:
       - uses: actions/checkout@v3
@@ -24,7 +24,6 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-        working-directory: ./high-performance_large-scale_frontend/08-fastcampus-front-project
 
       - name: Install dependencies
         run: yarn install --immutable
