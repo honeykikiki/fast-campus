@@ -13,6 +13,8 @@ jobs:
 
       - name: Derive Appropriate SHAs for vase and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v3
+        with:
+          working-directory: ./high-performance_large-scale_frontend/08-fastcampus-front-project
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -22,9 +24,12 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
+        working-directory: ./high-performance_large-scale_frontend/08-fastcampus-front-project
 
       - name: Test
         run: yarn affected:test --parallel=5
+        working-directory: ./high-performance_large-scale_frontend/08-fastcampus-front-project
 
       - name: Build
         run: yarn affected:build --parallel=5
+        working-directory: ./high-performance_large-scale_frontend/08-fastcampus-front-project
