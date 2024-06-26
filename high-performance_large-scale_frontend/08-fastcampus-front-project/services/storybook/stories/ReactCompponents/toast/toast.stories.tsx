@@ -23,7 +23,6 @@ export const Example = () => {
           payload: {
             message: "tastats",
           },
-          duration: 10000,
         });
       }}
     >

@@ -35,7 +35,7 @@ describe("Toast 컴포넌트 테스트", () => {
     const toastContainer = container.querySelector("#toast-container");
 
     // THEN
-    await vi.advanceTimersByTimeAsync(2999);
+    await vi.advanceTimersByTimeAsync(3001);
     expect(toastContainer?.hasChildNodes()).toBeFalsy();
   });
 });
