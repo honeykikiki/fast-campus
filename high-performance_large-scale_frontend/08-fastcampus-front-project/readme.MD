@@ -59,6 +59,12 @@ vite.config.ts
   > yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event
 
 
+# storybook 문서화
+- 예시 Toast.mdx
+
+# nextra 문서화
+> yarn add next react react-dom nextra nextra-theme-docs
+
 ## 내부 워크스페이스 패키지 다운 방법
  > yarn add --dev @fastcampus/themes
  > yarn add --dev @fastcampus/react-components-layout
