@@ -23,7 +23,7 @@ export const Example = () => {
           payload: {
             message: "tastats",
           },
-          // duration: 1,
+          duration: 10000,
         });
       }}
     >
@@ -32,7 +32,7 @@ export const Example = () => {
   );
 };
 
-export const ButtonStory = {
+export const ToastStory = {
   render: () => (
     <ToastProvider>
       <Example />
