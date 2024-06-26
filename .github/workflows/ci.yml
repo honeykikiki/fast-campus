@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Change Directory
-        run: cd ./high-performance_large-scale_frontend/08-fastcampus-front-project
+        run: cd high-performance_large-scale_frontend/08-fastcampus-front-project
 
       - uses: actions/checkout@v3
         with:
